@@ -1,6 +1,6 @@
 #CCP4I VERSION CCP4Interface 7.0.057
 #CCP4I SCRIPT DEF CCP4_Project_Database
-#CCP4I DATE 17 May 2018  15:47:54
+#CCP4I DATE 17 May 2018  16:28:05
 #CCP4I USER fpoitevi
 #CCP4I PROJECT 4Y9H /Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/CCP4_DATABASE
 NJOBS                    5                                       
@@ -48,15 +48,15 @@ INPUT_FILES_STATUS,4     ""
 OUTPUT_FILES,4           "4y9h_refmac3.pdb 4y9h-sf_refmac3.mtz 4Y9H_4_frompdb.refmac.cif"
 OUTPUT_FILES_DIR,4       "4Y9H 4Y9H 4Y9H"
 OUTPUT_FILES_STATUS,4    ""
-STATUS,5                  RUNNING
-DATE,5                   1526597248
+STATUS,5                  FINISHED
+DATE,5                   1526597319
 LOGFILE,5                5_refmac5.log
 TASKNAME,5               refmac5
 TITLE,5                  "Rigid body refinement using isotropic B factors"
 INPUT_FILES,5            "4y9h.pdb 4y9h-sf.mtz"
 INPUT_FILES_DIR,5        "4Y9H 4Y9H"
 INPUT_FILES_STATUS,5     ""
-OUTPUT_FILES,5           "4y9h_refmac4.pdb 4y9h-sf_refmac4.mtz 4y9h.cif"
-OUTPUT_FILES_DIR,5       "4Y9H 4Y9H 4Y9H"
+OUTPUT_FILES,5           "4y9h_refmac4.pdb 4y9h-sf_refmac4.mtz 4y9h.cif 4Y9H_5_frompdb.refmac.cif"
+OUTPUT_FILES_DIR,5       "4Y9H 4Y9H 4Y9H 4Y9H"
 OUTPUT_FILES_STATUS,5    ""
 

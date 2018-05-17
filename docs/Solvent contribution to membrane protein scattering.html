@@ -11816,6 +11816,7 @@ What are possible improvements in order to increase the amount of extractable in
 <h3 id="Density-modification">Density modification<a class="anchor-link" href="#Density-modification">&#182;</a></h3><p>A first idea would be to consider that improper treatment of the solvent region leads to a signature in the plot of Rfree by resolution shell (see <a href="#phenix-unmerged">phenix doc</a> ). It would be interesting to see how this plot actually looks like for a representative set of membrane versus water.</p>
 <p>One way to correct is to play with the mask.
 Look at <a href="#afonine2008">Afonine's account</a> or Murshudov's code in <a href="#refmac-solv">refmac</a>. <a href="#refmac">Refmac</a> is open source (while <a href="#phenix">phenix</a> is not), and things seem to happen in <code>solvent_contr_mask.f</code>. I think DEN(i,j,k) is set to 0 in the protein, and <code>D22</code> elsewhere, so we could just modulate that a little.</p>
+<p>For a given mask, one still has to optimize a few parameters, and <a href="#afonine2013">phenix</a> is supposed to be doing a better job at it...</p>
 
 </div>
 </div>
@@ -11858,6 +11859,8 @@ Look at <a href="#afonine2008">Afonine's account</a> or Murshudov's code in <a h
 <li><p><a name="holton2014"></a><strong>Holton</strong>, Classen, Frankel, Tainer. <a href="https://www.ncbi.nlm.nih.gov/pubmed/25040949/"><em>The R-factor gap in macromolecular crystallography: ...</em></a> (2014) FEBS J</p>
 </li>
 <li><p><a name="afonine2008"></a><strong>Afonine</strong>. <a href="https://mcl1.ncifcrf.gov/nihxray/Tips-and-Tricks-phenix_refine_2008_may_22_CCP4_final.pdf"><em>What is phenix.refine</em></a> (2008) CCP4</p>
+</li>
+<li><p><a name="afonine2013"></a><strong>Afonine</strong>, Grosse-Kunstleve, Adams, Urzhumtsev. <a href="https://scripts.iucr.org/cgi-bin/paper?dz5273"><em>Bulk-solvent and overall scaling revisited: ...</em></a> (2013) Acta Cryst D</p>
 </li>
 <li><p><a name="phenix"></a> <strong>Adams</strong> <a href="https://www.phenix-online.org/"><em>PHENIX website</em></a></p>
 </li>
