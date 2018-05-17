@@ -11775,7 +11775,8 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Solvent-treatment-in-macromolecular-crystallography">Solvent treatment in macromolecular crystallography<a class="anchor-link" href="#Solvent-treatment-in-macromolecular-crystallography">&#182;</a></h1><p>Is there room for improvement in the way solvent regions are accounted for/modelled in macromolecular crystallography ? Waht are possible improvements in order to increase the amount of extractable information, and better resulting models.</p>
+<h1 id="Solvent-treatment-in-macromolecular-crystallography">Solvent treatment in macromolecular crystallography<a class="anchor-link" href="#Solvent-treatment-in-macromolecular-crystallography">&#182;</a></h1><p>Is there room for improvement in the way solvent regions are accounted for/modelled in macromolecular crystallography ? 
+What are possible improvements in order to increase the amount of extractable information, and better resulting models.</p>
 
 </div>
 </div>
@@ -11784,8 +11785,8 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><p>Untapped potential (Holton) ?</p>
-<p>Membrane proteins of known structures: <a href="http://blanco.biomol.uci.edu/mpstruc/">http://blanco.biomol.uci.edu/mpstruc/</a></p>
+<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><p>Untapped potential <a href="#holton2014">Holton (2014)</a> ?</p>
+<p>Membrane proteins of known structures: <a href="#mpstruct">(MPstruct)</a></p>
 
 </div>
 </div>
@@ -11802,7 +11803,8 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&quot;Structure&quot;-of-the-solvent---MD-of-unit-cells">"Structure" of the solvent - MD of unit cells<a class="anchor-link" href="#&quot;Structure&quot;-of-the-solvent---MD-of-unit-cells">&#182;</a></h3><p>See Wall(2018) for a possible method. Coarse-grained simulations of unit cells (with fixed macromolecules) might give some insight on how detergent and lipids partition themselves in the solvent channel. Might be useful as a starting point for refining against Bragg and continuous scattering.</p>
+<h3 id="Simulations">Simulations<a class="anchor-link" href="#Simulations">&#182;</a></h3><p>Coarse-grained simulations of unit cells (with fixed macromolecules) might give some insight on how detergent and lipids partition themselves in the solvent channel. Might be useful as a starting point for refining against Bragg and continuous scattering.</p>
+<p>See <a href="#wall2018">Wall (2018)</a> for a possible method. The difficulty lies in equilibrating the system while preserving the volume of the unit cell. For efficient simulation of the lipid distribution, check-out <a href="#martini">Martini</a>.</p>
 
 </div>
 </div>
@@ -11811,11 +11813,79 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Density-modification">Density modification<a class="anchor-link" href="#Density-modification">&#182;</a></h3><p>A first idea would be to consider that improper treatment of the solvent region leads to a signature in the plot of Rfree by resolution shell (see <a href="https://www.phenix-online.org/documentation/reference/unmerged_data.html">https://www.phenix-online.org/documentation/reference/unmerged_data.html</a> ). It would be interesting to see how this plot actually looks like for a representative set of membrane versus water.</p>
+<h3 id="Density-modification">Density modification<a class="anchor-link" href="#Density-modification">&#182;</a></h3><p>A first idea would be to consider that improper treatment of the solvent region leads to a signature in the plot of Rfree by resolution shell (see <a href="#phenix-unmerged">phenix doc</a> ). It would be interesting to see how this plot actually looks like for a representative set of membrane versus water.</p>
 <p>One way to correct is to play with the mask.
-Look at Afonine's account in <a href="../refs/Tips-and-Tricks-phenix_refine_2008_may_22_CCP4_final.pdf">phenix2008</a>, or Murshudov's code in <a href="http://www.ccp4.ac.uk/html/refmac5/keywords/xray-principal.html#solv">refmac</a>. Refmac is open source, and things seem to happen in <code>solvent_contr_mask.f</code>. I think DEN(i,j,k) is set to 0 in the protein, and 1 elsewhere, so we could just modulate that a little.</p>
-<p>Trying to install refmac:</p>
-<h4 id="option-1:--on-my-Mac-(failed-so-far)">option 1:  on my Mac (failed so far)<a class="anchor-link" href="#option-1:--on-my-Mac-(failed-so-far)">&#182;</a></h4><p>install <a href="http://www.ccp4.ac.uk/dev/main.php">ccp4</a> (failed so far). Second try: <a href="http://devtools.fg.oisin.rc-harwell.ac.uk/src-readme.html">downloaded this</a>. Had to install BLAS and LAPACK libraries <a href="https://pheiter.wordpress.com/2012/09/04/howto-installing-lapack-and-blas-on-mac-os/">see here</a>. Encountered a problem with the -static option, that seems to cause problems with my gcc. Trying again following the BUILD protocol...</p>
+Look at <a href="#afonine2008">Afonine's account</a> or Murshudov's code in <a href="#refmac-solv">refmac</a>. <a href="#refmac">Refmac</a> is open source (while <a href="#phenix">phenix</a> is not), and things seem to happen in <code>solvent_contr_mask.f</code>. I think DEN(i,j,k) is set to 0 in the protein, and <code>D22</code> elsewhere, so we could just modulate that a little.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Systems-considered">Systems considered<a class="anchor-link" href="#Systems-considered">&#182;</a></h3><h4 id="GLIC">GLIC<a class="anchor-link" href="#GLIC">&#182;</a></h4><p><a href="http://www.rcsb.org/structure/4IL4">GLIC with Se-DDM</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><ul>
+<li><p><a name="holton2014"></a><strong>Holton</strong>, Classen, Frankel, Tainer. <a href="https://www.ncbi.nlm.nih.gov/pubmed/25040949/"><em>The R-factor gap in macromolecular crystallography: ...</em></a> (2014) FEBS J</p>
+</li>
+<li><p><a name="afonine2008"></a><strong>Afonine</strong>. <a href="https://mcl1.ncifcrf.gov/nihxray/Tips-and-Tricks-phenix_refine_2008_may_22_CCP4_final.pdf"><em>What is phenix.refine</em></a> (2008) CCP4</p>
+</li>
+<li><p><a name="phenix"></a> <strong>Adams</strong> <a href="https://www.phenix-online.org/"><em>PHENIX website</em></a></p>
+</li>
+<li><p><a name="phenix-unmerged"></a> <strong>Adams</strong> <a href="https://www.phenix-online.org/documentation/reference/unmerged_data.html"><em>Phenix documentation - unmerged data</em></a></p>
+</li>
+<li><p><a name="refmac"></a><strong>Murshudov</strong>. <a href="http://www.ccp4.ac.uk/html/refmac5.html"><em>REFMAC website</em></a></p>
+</li>
+<li><p><a name="refmac-solv"></a> <strong>Murshudov</strong>. <a href="http://www.ccp4.ac.uk/html/refmac5/keywords/xray-principal.html#solv"><em>Refmac5 User's guide - solvent</em></a></p>
+</li>
+<li><p><a name="weichenberger2015"></a><strong>Weichenberger</strong>, Afonine, Kantardjieff, Rupp. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4427195/"><em>The solvent component of macromolecular crystals</em></a> (2015) Acta D</p>
+</li>
+<li><p><a name="carpenter2008"></a><strong>Carpenter</strong>, Beis, Cameron, Iwata. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2580798/"><em>Overcoming the challenges of membrane protein crystallography</em></a> (2008) COSB</p>
+</li>
+<li><p><a name="mpstruct"></a> <strong>White</strong> <a href="http://blanco.biomol.uci.edu/mpstruc/"><em>MPStruct website</em></a></p>
+</li>
+<li><p><a name="urzhumtsev2000"></a><strong>Urzhumtsev</strong>. <a href="http://www.ccp4.ac.uk/newsletters/newsletter38/08_solvent.html"><em>MODELLING OF DISORDERED SOLVENT IN MACROMOLECULAR CRYSTALS</em></a> (2000) (CCP4 newsletter)</p>
+</li>
+<li><p><a name="wall2018"></a><strong>Wall</strong>. <a href="https://journals.iucr.org/m/issues/2018/02/00/ec5007/index.html"><em>Internal protein motions in molecular-dynamics simulations of Bragg and diffuse X-ray scattering.</em></a> (2018) IUCrJ</p>
+</li>
+<li><p><a name="martini"></a> <strong>Marrinck</strong> <a href="http://cgmartini.nl/index.php"><em>MARTINI website</em></a></p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<hr>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Appendix">Appendix<a class="anchor-link" href="#Appendix">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="CCP4-Installation">CCP4 Installation<a class="anchor-link" href="#CCP4-Installation">&#182;</a></h3><h4 id="option-1:--on-my-Mac-(failed-so-far)">option 1:  on my Mac (failed so far)<a class="anchor-link" href="#option-1:--on-my-Mac-(failed-so-far)">&#182;</a></h4><p>install <a href="http://www.ccp4.ac.uk/dev/main.php">ccp4</a> (failed so far). Second try: <a href="http://devtools.fg.oisin.rc-harwell.ac.uk/src-readme.html">downloaded this</a>. Had to install BLAS and LAPACK libraries <a href="https://pheiter.wordpress.com/2012/09/04/howto-installing-lapack-and-blas-on-mac-os/">see here</a>. Encountered a problem with the -static option, that seems to cause problems with my gcc. Trying again following the BUILD protocol...</p>
 <p><code>(in SRC = /Applications/ccp4-7.0/src/ccp4-src-2016-02-10/ )
  ./build patchelf : OK
  ./update qt4 : OK
@@ -11843,31 +11913,76 @@ Also installed <a href="https://github.com/VerKnowSys/Sofin-llds">ld</a> in <cod
 <p>Seems that we already have most libraries, and can probably install missing ones with pip within myana <a href="https://confluence.slac.stanford.edu/display/PSDMInternal/User+Documentation#UserDocumentation-UserCondaEnvironments">How-To</a>. Let's follow the <a href="http://devtools.fg.oisin.rc-harwell.ac.uk/src-readme.html">procedure</a>:</p>
 <p><code>./build patchelf (had to do that twive)
 ./update qt4
-./build qt4</code></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Systems-considered">Systems considered<a class="anchor-link" href="#Systems-considered">&#182;</a></h3><h4 id="GLIC">GLIC<a class="anchor-link" href="#GLIC">&#182;</a></h4><p><a href="http://www.rcsb.org/structure/4IL4">GLIC with Se-DDM</a></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><ul>
-<li>Holton, Classen, Frankel, Tainer. <em>The R-factor gap in macromolecular crystallography: an untapped potential for insights on accurate structures.</em> (2014) FEBS J <a href="https://www.ncbi.nlm.nih.gov/pubmed/25040949/">(link)</a></li>
-<li>Weichenberger, Afonine, Kantardjieff, Rupp. <em>The solvent component of macromolecular crystals</em> (2015) Acta D <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4427195/">(link)</a></li>
-<li>Carpenter, Beis, Cameron, Iwata. <em>Overcoming the challenges of membrane protein crystallography</em> (2008) COSB <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2580798/">(link)</a></li>
-<li><a href="http://blanco.biomol.uci.edu/mpstruc/">http://blanco.biomol.uci.edu/mpstruc/</a></li>
-<li>Urzhumtsev. <em>MODELLING OF DISORDERED SOLVENT IN MACROMOLECULAR CRYSTALS</em> <a href="http://www.ccp4.ac.uk/newsletters/newsletter38/08_solvent.html">(CCP4 newsletter)</a></li>
-<li>Wall. <em>Internal protein motions in molecular-dynamics simulations of Bragg and diffuse X-ray scattering.</em> (2018) IUCrJ <a href="https://journals.iucr.org/m/issues/2018/02/00/ec5007/index.html">(link)</a></li>
+./build qt4
+./build ccp4-linux</code></p>
+<p>problem installing <code>scala</code>:
+<code>CMake Error at /reg/neh/home5/fpoitevi/.conda/envs/myana/share/cmake-3.6/Modules/FindLAPACK.cmake:364 (message):
+  A required library with LAPACK API not found.  Please specify library
+  location.
+Call Stack (most recent call first):
+  CMakeLists.txt:4 (find_package)</code>
+Attempted fixes:</p>
+<ul>
+<li><a href="https://github.com/ros-planning/moveit_robots/issues/33">add set(LAPACK_lapack_WORKS TRUE) to checkout/scala/CMakeLists.txt</a>: failed</li>
+<li><code>conda install -n myana -c conda-forge lapack</code>: worked</li>
+</ul>
+<p>problem installing <code>cctbx-phaser</code>":</p>
+<p><code>*** Building cctbx-phaser *** [26/110]
+make -j 2
+sh bin/libtbx.scons -j 2
+scons: Reading SConscript files ...
+libtbx.scons: using flags from initial environment: 
+              CXXFLAGS =  -O2
+              CFLAGS =  -O2
+              CPPFLAGS =  
+              LDFLAGS =  -L/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/ccp4-7.0/lib 
+              extra LINKFLAGS: ['-L/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/ccp4-7.0/lib', '']
+libtbx.scons: OpenMP is available.
+AttributeError: environment instance has no attribute 'boost_version':
+  File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/builddir/cctbx-phaser-dials-2015-12-22/SConstruct", line 8:
+    SConscript("boost_adaptbx/SConscript")
+  File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/scons/engine/SCons/Script/SConscript.py", line 614:
+    return method(*args, **kw)
+  File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/scons/engine/SCons/Script/SConscript.py", line 551:
+    return _SConscript(self.fs, *files, **subst_kw)
+  File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/scons/engine/SCons/Script/SConscript.py", line 260:
+    exec _file_ in call_stack[-1].globals
+  File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/cctbx_project/boost_adaptbx/SConscript", line 23:
+    env_etc.boost_version = libtbx.env.boost_version
+usr+sys time: 0.98 seconds
+wall clock time: 2.23 seconds
+make: *** [default] Error 2</code></p>
+<p>Comparing with <a href="http://devtools.fg.oisin.rc-harwell.ac.uk/nightly/7.0/logs-linux64/2015-11-17-1435/cctbx-phaser.html">nightly built log</a>, identified an error in the configure step:</p>
+<p><code>Processing: "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/cctbx_project/crys3d/libtbx_refresh.py"
+  Processing *.ui files in "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/cctbx_project/crys3d/qttbx"
+Traceback (most recent call last):
+  File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/cctbx_project/libtbx/configure.py", line 22, in &lt;module&gt;
+    if not run():
+  File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/cctbx_project/libtbx/configure.py", line 17, in run
+    libtbx.env_config.cold_start(sys.argv)
+  File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/cctbx_project/libtbx/env_config.py", line 2279, in cold_start
+    env.refresh()
+  File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/cctbx_project/libtbx/env_config.py", line 1547, in refresh
+    module.process_libtbx_refresh_py()
+  File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/cctbx_project/libtbx/env_config.py", line 1824, in process_libtbx_refresh_py
+    execfile(abs(custom_refresh), {}, {"self": self})
+  File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/cctbx_project/crys3d/libtbx_refresh.py", line 10, in &lt;module&gt;
+    uic.compileUiDir(ui_dir, recurse=True)
+  File "/reg/g/psdm/sw/releases/ana-current/arch/x86_64-rhel7-gcc48-opt/python/PyQt4/uic/__init__.py", line 134, in compileUiDir
+    compile_ui(root, ui)
+  File "/reg/g/psdm/sw/releases/ana-current/arch/x86_64-rhel7-gcc48-opt/python/PyQt4/uic/__init__.py", line 126, in compile_ui
+    compileUi(ui_file, py_file, **compileUi_args)
+  File "/reg/g/psdm/sw/releases/ana-current/arch/x86_64-rhel7-gcc48-opt/python/PyQt4/uic/__init__.py", line 164, in compileUi
+    from PyQt4.QtCore import PYQT_VERSION_STR
+ImportError: /reg/g/psdm/sw/releases/ana-current/arch/x86_64-rhel7-gcc48-opt/python/PyQt4/QtCore.so: undefined symbol: PyUnicodeUCS2_AsUTF8String</code></p>
+<p>Might be one of the 'known error' ? <code>Compiling Phaser with GCC 4.2 and OpenMP causes "internal compiler error". Use newer compiler or remove --enable-openmp-if-possible=True from checkout/devtools/conf.py.</code> Trying that out...: failed (was probably not accounted for, or overwritten somehow). Cancelled the build procedure, and restarted it. Although this time the change was taken into account, outcome was same... Reverting the change.</p>
+<p>Might be a <a href="https://stackoverflow.com/questions/2584198/undefined-symbol-pyunicodeucs2-decode-whilst-trying-to-install-psycopg2?utm_medium=organic&amp;utm_source=google_rich_qa&amp;utm_campaign=google_rich_qa">UCS2/UCS4 problem</a> ?</p>
+<p><strong>giving up on</strong></p>
+<ul>
+<li>cctbx-phase (hence pointless, aimless, feckless) for now</li>
+<li>giving up tclck84 as well</li>
+<li>diff_image</li>
+<li>ccp4mapwish</li>
 </ul>
 
 </div>
