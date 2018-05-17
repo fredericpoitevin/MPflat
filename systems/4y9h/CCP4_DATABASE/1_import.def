@@ -1,0 +1,113 @@
+#CCP4I VERSION CCP4Interface 7.0.057
+#CCP4I SCRIPT DEF import
+#CCP4I DATE 17 May 2018  14:36:02
+#CCP4I USER fpoitevi
+#CCP4I JOB_ID 1
+#CCP4I PROJECT 4Y9H
+#CCP4I TASKNAME import
+#CCP4I LOG_FILE 1_import.log
+#CCP4I EDIT_SCRIPT 0
+#CCP4I HTML_LOG 0
+#CCP4I REMOTE 0
+#CCP4I SERVER_HOST localhost
+#CCP4I SERVER_PORT 4441
+#CCP4I DATABASE_SERVER 0
+#CCP4I DATABASE_SERVER_HOST localhost
+#CCP4I DATABASE_SERVER_PORT 0
+
+ANOMALOUS                 0
+APPLY_TRUNCATE            WILSON
+CELL_1                    45.215
+CELL_2                    102.794
+CELL_3                    128.337
+CELL_4                    90.0
+CELL_5                    90.0
+CELL_6                    90.0
+CHECKHKL                  0
+CIF_INPUT_FILE            4y9h-sf.cif
+COLUMN_NAME,10            FOM
+COLUMN_NAME,11            I
+COLUMN_NAME,12            SIGI
+COLUMN_NAME,0             H
+COLUMN_NAME,1             H
+COLUMN_NAME,2             K
+COLUMN_NAME,3             L
+COLUMN_NAME,4             FREE
+COLUMN_NAME,5             FP
+COLUMN_NAME,6             SIGFP
+COLUMN_NAME,7             FC
+COLUMN_NAME,8             PHIC
+COLUMN_NAME,9             PHIB
+COL_TYPE,10               W
+COL_TYPE,11               J
+COL_TYPE,12               Q
+COL_TYPE,0                H
+COL_TYPE,1                H
+COL_TYPE,2                H
+COL_TYPE,3                H
+COL_TYPE,4                I
+COL_TYPE,5                F
+COL_TYPE,6                Q
+COL_TYPE,7                F
+COL_TYPE,8                P
+COL_TYPE,9                P
+CONTENTS_ATOM_COUNT,0     ""
+CONTENTS_ATOM_TYPE,0      ""
+CONTENTS_MODE             NRES
+CONTENTS_NRES             ""
+CONTENTS_PDB              ""
+CONTENTS_USE_VPAT         0
+CONTENTS_VPAT             10.0
+CTYPOUT                   "H H H I F Q F P P W J Q"
+DIR_CIF_INPUT_FILE        4Y9H
+DIR_CONTENTS_PDB          4Y9H
+DIR_HKLOUT                4Y9H
+DIR_HKL_INPUT_FILE        4Y9H
+DIR_IMPORT_FREER_MTZ      4Y9H
+DIR_MTZ_INPUT_FILE        4Y9H
+DIR_TNT_INPUT_FILE        4Y9H
+EXTEND_RESOLUTION         0
+FALLOFF                   1
+FORMAT                    CIF
+FORTRAN_FORMAT            ""
+FREER_FRACTION            0.05
+FREER_MODE                1
+HARVEST_DNAME             frompdb
+HARVEST_INPUT_NAMES       1
+HARVEST_MODE              PROJECT
+HARVEST_PNAME             4Y9H
+HARVEST_PRIVATE           0
+HARVEST_RSIZE             80
+HARVEST_XNAME             frompdb
+HKLOUT                    4y9h-sf.mtz
+HKL_INPUT_FILE            ""
+IMEANIN                   I
+IMPORT_FREER_LABIN        ""
+IMPORT_FREER_MTZ          ""
+IMPORT_TRUNCATE_PROG      CTRUNCATE
+INCL_SYS_ABS              ""
+INPUT_FILES               CIF_INPUT_FILE
+LABIN_FREER               FREE
+LABIN_FREER_1             FREE
+LABOUT                    "H K L FREE FP SIGFP FC PHIC PHIB FOM I SIGI"
+MTZ_INPUT_FILE            ""
+NCOL                      12
+N_CONTENTS                0
+OUTPUT_FILES              HKLOUT
+RANGE_MODE                default
+RANGE_NUMBER              60
+RANGE_WIDTH               ""
+RESOLUTION_MAX            ""
+RUN_TRUNCATE              0
+RUN_UNIQUE                1
+SCALE_RESOLUTION          0
+SCALE_RESOLUTION_MAX      ""
+SCALE_RESOLUTION_MIN      4.0
+SIGIMEANIN                SIGI
+SKIPLINE                  0
+SPACE_GROUP               "'C 2 2 21'"
+TITLE                     cif2mtz_test
+TNT_INPUT_FILE            ""
+UNIQUE_INPUT              ""
+UNIQUE_OUT                ""
+

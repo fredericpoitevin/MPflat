@@ -1,0 +1,40 @@
+#CCP4I VERSION CCP4Interface 7.0.057
+#CCP4I SCRIPT DEF CCP4_Project_Database
+#CCP4I DATE 17 May 2018  15:56:32
+#CCP4I USER fpoitevi
+#CCP4I PROJECT 6F1L /Users/fpoitevi/gdrive/Toolkit/MPflat/systems/6f1l/CCP4_DATABASE
+NJOBS                    3                                       
+STATUS,1                  FINISHED
+DATE,1                   1526596078
+LOGFILE,1                1_import.log
+TASKNAME,1               import
+TITLE,1                  "cif2mtz_6f1l"
+INPUT_FILES,1            "6f1l-sf.cif"
+INPUT_FILES_DIR,1        "6F1L"
+INPUT_FILES_STATUS,1     ""
+OUTPUT_FILES,1           "6f1l-sf.mtz"
+OUTPUT_FILES_DIR,1       "6F1L"
+OUTPUT_FILES_STATUS,1    ""
+STATUS,2                  FINISHED
+DATE,2                   1526597470
+LOGFILE,2                2_refmac5.log
+TASKNAME,2               refmac5
+TITLE,2                  "with solvent"
+INPUT_FILES,2            "6f1l.pdb 6f1l-sf.mtz"
+INPUT_FILES_DIR,2        "6F1L 6F1L"
+INPUT_FILES_STATUS,2     ""
+OUTPUT_FILES,2           "6f1l_refmac1.pdb 6f1l-sf_refmac1.mtz 6F1L_2_frompdb.refmac.cif"
+OUTPUT_FILES_DIR,2       "6F1L 6F1L 6F1L"
+OUTPUT_FILES_STATUS,2    ""
+STATUS,3                  FINISHED
+DATE,3                   1526597493
+LOGFILE,3                3_refmac5.log
+TASKNAME,3               refmac5
+TITLE,3                  "without solvent"
+INPUT_FILES,3            "6f1l.pdb 6f1l-sf.mtz"
+INPUT_FILES_DIR,3        "6F1L 6F1L"
+INPUT_FILES_STATUS,3     ""
+OUTPUT_FILES,3           "6f1l_refmac2.pdb 6f1l-sf_refmac2.mtz 6F1L_3_frompdb.refmac.cif"
+OUTPUT_FILES_DIR,3       "6F1L 6F1L 6F1L"
+OUTPUT_FILES_STATUS,3    ""
+

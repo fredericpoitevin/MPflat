@@ -1,0 +1,2056 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<!-- Baubles info
+     Version 0.0.8
+     Java loggraph:
+          archive  = JLogGraph.jar
+          codebase = file:///Applications/ccp4-7.0/bin
+          code     = JLogGraph.class
+-->
+<!-- Inline stylesheet -->
+<style type="text/css"><!-- /* Hide the stylesheet from older browsers */
+  body { font-family: Verdana, Arial, sans-serif;
+         font-size: 17px;
+         background-color: white; }
+  h1 { background-color: gray; }
+  h2 { background-color: lightgray; }
+  .logfile { background-color: #fffddc; }
+  .ccp4i   { font-weight: bold; }
+  .banner  { background-color: lightgray;
+             border-top-style: solid;
+             border-bottom-style: solid;
+             border-color: gray;
+             border-width: 2px; }
+  .summary  { font-weight: bold;
+              color: red;
+              font-size: 90%;
+              white-space: pre;
+              background-color: #ffffc6;
+              border-style: solid;
+              border-width: 1px;
+              border-color: orange; }
+  .non_summary { font-size: 80%; }
+  .result   { margin-left:5%; margin-right:5%; }
+  .references { font-size: 70%; }
+  .progname { font-size: 150%; font-weight: bold; }
+  .proginfo { font-size: 90%; font-style: italic; }
+  .progvers { font-size: 90%; font-style: italic; font-weight: bold; }
+  .progterm { font-size: 90%; font-style: italic; font-weight: bold; }
+  .doclink { font-size: 90%; position: absolute; right: 5%;}
+  .applet  { border-bottom: 1px solid gray; }
+  table,td,th { border-style: solid;
+                border-width: 2px;
+                border-spacing: 0;
+                border-color: gray;
+                padding: 1px;
+                font-size: 90%; }
+  td,th { padding-left: 8px; padding-right: 8px; }
+  .loggraph_tables      { border-style: none;
+                          background-color: #cfcdff; }
+  table.loggraph_tables { padding: 8px;
+                          background-color: white; }
+  .inner_control > a { font-size: 70%;
+                       background-color: white;
+                       position: relative; bottom: 0px; left: 80%; }
+-->
+</style>
+<!-- Javascript functions to hide/display folder content -->
+<script type="text/javascript">
+<!--  to hide script contents from old browsers
+
+// Pick loggraph
+// Hides all loggraphs and then shows just the one of
+// interest
+function pick_loggraph(name,i,nloggraphs)
+{
+    hide_all_loggraphs(name,nloggraphs);
+    show_loggraph(name,i);
+}
+
+// Function to display a loggraph associated with a log
+function show_loggraph(name,i)
+{
+    var loggraph_name = name + "_loggraph_" + i;
+    var loggraph_title = name + "_loggraph_title_" + i;
+    showElement(loggraph_name);
+    // Also make the title link bold
+    var obj = document.getElementById(loggraph_title);
+    obj.style.fontWeight = "bold";
+}
+
+// Function to hide a loggraph associated with a log
+function hide_loggraph(name,i)
+{
+    var loggraph_name = name + "_loggraph_" + i;
+    var loggraph_title = name + "_loggraph_title_" + i;
+    hideElement(loggraph_name);
+    // Also make the title link normal
+    var obj = document.getElementById(loggraph_title);
+    obj.style.fontWeight = "normal";
+}
+
+// Function to hide all loggraphs associated with a log
+function hide_all_loggraphs(name,n)
+{
+    // Loop over all graphs up to n and hide each one
+    for (var i=0; i<n; i++){
+      hide_loggraph(name,i);
+    }
+}
+
+// Function to open the complete log file from the
+// hidden state
+function open_full_logfile(name) {
+
+    // Show the entire logfile
+    var classname = name + "_logfile";
+    setDisplayByClass(classname,"block");
+    
+    // Show the controls for toggling between
+    // summary and complete views
+    classname = name + "_logfile_open_controls";
+    setDisplayByClass(classname,"block");
+    
+    // Hide the controls for accessing the logfile
+    // when it's hidden
+    classname = name + "_logfile_closed_controls";
+    setDisplayByClass(classname,"none");
+
+    // Show the full view
+    show_full_logfile(name);
+}
+
+// Function to open the log file summary from the
+// hidden state
+function open_summary_logfile(name) {
+
+    // Show the entire logfile
+    var classname = name + "_logfile";
+    setDisplayByClass(classname,"block");
+    
+    // Show the controls for toggling between
+    // summary and complete views
+    classname = name + "_logfile_open_controls";
+    setDisplayByClass(classname,"block");
+    
+    // Hide the controls for accessing the logfile
+    // when it's hidden
+    classname = name + "_logfile_closed_controls";
+    setDisplayByClass(classname,"none");
+
+    // Show the summary view
+    show_only_summary(name);
+}
+
+// Function to hide the complete log file
+function close_logfile(name)
+{
+    // Hide the entire logfile
+    var classname = name + "_logfile";
+    setDisplayByClass(classname,"none");
+    
+    // Hide the controls for toggling between
+    // summary and complete views
+    classname = name + "_logfile_open_controls";
+    setDisplayByClass(classname,"none");
+    
+    // Show the controls for accessing the logfile
+    // when it's hidden
+    classname = name + "_logfile_closed_controls";
+    setDisplayByClass(classname,"block");
+}
+
+// Function to show only summary for a program log
+function show_only_summary(name)
+{
+    // Hide everything that isn't a summary
+    // i.e. all the elements that have belong to
+    // classes ending with "_non_summary"
+    var classname = name + "_non_summary";
+    setDisplayByClass(classname,"none");
+
+    // Now deal with control elements
+
+    // Hide all controls that offer the option of
+    // showing the summary only
+    classname = name + "_show_summary_control";
+    setDisplayByClass(classname,"none");
+
+    // Show all controls that offer the option if
+    // showing the full log file
+    classname = name + "_show_full_logfile_control";
+    setDisplayByClass(classname,"block");
+}
+
+// Function to show full version of a program log
+function show_full_logfile(name)
+{
+    // Show all the associated elements that
+    // have class ending with "_non_summary"
+    var classname = name + "_non_summary";
+    setDisplayByClass(classname,"block");
+
+    // Now deal with control elements
+
+    // Show all controls that offer the option of
+    // showing the summary only
+    classname = name + "_show_summary_control";
+    setDisplayByClass(classname,"block");
+
+    // Hide all controls that offer the option if
+    // showing the full log file
+    classname = name + "_show_full_logfile_control";
+    setDisplayByClass(classname,"none");
+}
+
+// Open the view of a logfile fragment
+function open_fragment(n)
+{
+   var closed_classname = "fragment_closed_" + n;
+   setDisplayByClass(closed_classname,"none");
+   var open_classname = "fragment_open_" + n;
+   setDisplayByClass(open_classname,"block");
+}
+
+// Close the view of a logfile fragment
+function close_fragment(n)
+{
+   var closed_classname = "fragment_open_" + n;
+   setDisplayByClass(closed_classname,"none");
+   var open_classname = "fragment_closed_" + n;
+   setDisplayByClass(open_classname,"block");
+}
+
+// General function to reveal a specific element
+// Specify the id of an element and its display
+// style will be changed to "block"
+function showElement(name)
+{
+    // This changes the display style to be "block"
+    var obj = document.getElementById(name);
+    obj.style.display = "block";
+}
+
+// General function to hide a specific element
+// Specify the id of an element and its display
+// style will be changed to "none"
+function hideElement(name)
+{
+    // This changes the display style to be "none"
+    var obj = document.getElementById(name);
+    obj.style.display = "none";
+}
+
+// General function to set the display property for all elements
+// with a specific class
+// This is able to deal with elements that belong to multiple
+// classes
+function setDisplayByClass(classname,value)
+{
+    // Get all elements in the document
+    var elements = document.getElementsByTagName("*");
+
+    // For each element look for the "class" attribute
+    for (var i = 0; i < elements.length; i++) {
+        var node = elements.item(i);
+        // First try to get the class attribute using 'class'
+        // This seems to work on Firefox 2.* and 1.5
+        var classes = node.getAttribute('class');
+        if (classes == null) {
+            // If the attribute is null then try using the
+            // 'className' attribute instead
+            // This works for IE7 and IE6
+            classes = node.getAttribute('className');
+        }
+        if (classes != null) {
+            classes = classes.split(" ");
+            for (var k in classes) {
+                if (classes[k] == classname) {
+	            node.style.display = value;
+                }
+            }
+        }
+    }
+}
+
+// end hiding contents from old browsers  -->
+</script>
+<title>baubles: 1_import.log</title>
+</head>
+<body>
+<!-- Start of logfile -->
+<!-- baubles $Id: baubles.py,v 1.9 2010/01/12 15:45:25 rmk65 Exp $ -->
+<h1>1_import.log</h1>
+<!-- Index linking to individual programs -->
+<p>The logfile is composed of output from the following programs:</p>
+<ul>
+<li><a href="#Cif2Mtz_0">Cif2Mtz</a> <span class="termination_message">Finished with: Normal termination</span></li>
+<li><a href="#Mtzdump_1">Mtzdump</a> <span class="termination_message">Finished with: NO REFLECTIONS LISTED</span></li>
+<li><a href="#Unique_2">Unique</a> <span class="termination_message">Finished with: Normal Termination</span></li>
+<li><a href="#Cad_3">Cad</a> <span class="termination_message">Finished with: *** Normal Termination of CAD ***</span></li>
+<li><a href="#Freerflag_4">Freerflag</a> <span class="termination_message">Finished with: Normal termination</span></li>
+<li><a href="#Mtzutils_5">Mtzutils</a> <span class="termination_message">Finished with: Normal termination</span></li>
+</ul>
+<div class="banner">
+<a name="Cif2Mtz_0">
+<span class="progname">Cif2Mtz</span>
+<span class="progvers">Version 7.0.057</span>
+<span class="proginfo">Run at 14:36:02 on 17/ 5/2018</span>
+<span class="progterm">Finished with: Normal termination</span>
+</a>
+</div>
+<div class="doclink"><p><a href="/Applications/ccp4-7.0/html/cif2mtz.html">[Documentation]</a></p></div>
+
+<!-- Top-level visibility controls for CIF2MTZ_0 -->
+
+<div class="CIF2MTZ_0_logfile_closed_controls">
+   <!-- Controls available when logfile is completely hidden -->
+   <p>
+   <a href="javascript://"
+      onclick="open_summary_logfile('CIF2MTZ_0')">[Show logfile summary]</a>
+   <a href="javascript://"
+      onclick="open_full_logfile('CIF2MTZ_0')">[Show full logfile]</a>
+   </p>
+</div>
+
+    <div class="CIF2MTZ_0_logfile_open_controls" style="display: none">
+   <!-- Controls available if some or all the logfile is visible -->
+   <div class="CIF2MTZ_0_show_full_logfile_control" style="display: none">
+      <p>Current view: summary only
+      <a href="javascript://"
+         onclick="show_full_logfile('CIF2MTZ_0')">[Show full logfile]</a>
+      <a href="javascript://"
+         onclick="close_logfile('CIF2MTZ_0')">[Hide logfile]</a>
+     </p>
+   </div>
+   <div class="CIF2MTZ_0_show_summary_control">
+      <p>Current view: full logfile
+      <a href="javascript://"
+         onclick="show_only_summary('CIF2MTZ_0')">[Show logfile summary]</a>
+      <a href="javascript://"
+         onclick="close_logfile('CIF2MTZ_0')">[Hide logfile]</a>
+      </p>
+   </div>
+</div>
+
+<!-- Start of the CIF2MTZ_0 logfile -->
+<div class="CIF2MTZ_0_logfile" style="display: none">
+
+<div class="logfile">
+
+<div class="summary"><pre> ###############################################################
+ ###############################################################
+ ###############################################################
+ ### CCP4 7.0.057: cif2mtz          version 7.0.057 :         ##
+ ###############################################################
+ User: fpoitevi  Run date: 17/ 5/2018 Run time: 14:36:02 
+
+ Please reference: Collaborative Computational Project, Number 4. 2011.
+ &quot;Overview of the CCP4 suite and current developments&quot;. Acta Cryst. D67, 235-242.
+ as well as any specific reference in the program write-up.
+
+</pre></div>
+
+<div class="CIF2MTZ_0_non_summary non_summary"><pre> Data line--- title cif2mtz_test
+ Data line--- symmetry 'C 2 2 21'
+ Data line--- cell 45.215 102.794 128.337 90.0 90.0 90.0
+ Data line--- PNAME 4Y9H
+ Data line--- DNAME frompdb
+ Data line--- XNAME frompdb
+ Data line--- end
+
+ --- CIF Dictionary loaded ---
+Logical name: &quot;MMCIFDIC&quot;, full name &quot;/Applications/ccp4-7.0/lib/ccp4/cif_mmdic.lib&quot;
+Information from DICTIONARY category:
+Title: mmcif_pdbx.dic                   Version: 4.064        Datablock id: mmcif_pdbx.dic 
+
+ --- Opening CIF ---
+Logical name: &quot;HKLIN&quot;, full name &quot;/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/4y9h-sf.cif&quot;
+
+ --- CIF opened read-only for input ---
+The file contains the following data blocks:
+     data_r4y9hsf (at line 1)
+
+ Found column            1  with label H                              and type H
+ Found column            2  with label K                              and type H
+ Found column            3  with label L                              and type H
+ Found column            4  with label FREE                           and type I
+ Found column            5  with label FP                             and type F
+ Found column            6  with label SIGFP                          and type Q
+ Found column            7  with label FC                             and type F
+ Found column            8  with label PHIC                           and type P
+ Found column            9  with label FOM                            and type W
+Reciprocal space symmetry: 
+Space group: &quot;C 2 2 21&quot; Point group: &quot;PG222&quot; Laue group: &quot;mmm&quot; 
+Reference asymmetric unit: &quot;h&gt;=0 and k&gt;=0 and l&gt;=0&quot; 
+  (change of basis may be applied) 
+
+ Spacegroup 20 &quot;C 2 2 21&quot; 
+ Original indices for reflection hkl with symmetry number ISYM 
+
+                              Bijvoet positive 
+       ISYM              ISYM              ISYM              ISYM              
+  ISYM   1  +h,+k,+l       3  -h,-k,+l       5  +h,-k,-l       7  -h,+k,-l    
+
+                              Bijvoet negative 
+       ISYM              ISYM              ISYM              ISYM              
+  ISYM   2  -h,-k,-l       4  +h,+k,-l       6  -h,+k,+l       8  +h,-k,+l    
+</pre>
+  <!-- Add a control in the non-summary to flip back
+     to the summary only -->
+  <div class="CIF2MTZ_0_inner_control inner_control">
+     <a href="javascript://" onclick="show_only_summary('CIF2MTZ_0')">[Show summary only]</a>
+  </div>
+</div>
+
+<div class="summary"><pre> WRITTEN OUTPUT MTZ FILE 
+ Logical Name: HKLOUT   Filename: /tmp/fpoitevi/4Y9H_1_1_mtz.tmp 
+
+ * Title:
+
+ cif2mtz_test
+
+ * Base dataset:
+
+        0 HKL_base
+          HKL_base
+          HKL_base
+
+ * Number of Datasets = 1
+
+ * Dataset ID, project/crystal/dataset names, cell dimensions, wavelength:
+
+        1 4Y9H
+          frompdb
+          frompdb
+             45.2150  102.7940  128.3370   90.0000   90.0000   90.0000
+             0.00000
+
+ * Number of Columns = 9
+
+ * Number of Reflections = 55771
+
+ * Missing value set to NaN in input mtz file
+
+ * HISTORY for current MTZ file :
+
+ From cif2mtz 17/ 5/2018 14:36:02 
+
+ * Column Labels, Types, Ranges [and Dataset IDs] :
+
+ H                               H              0.0000             31.0000        0 
+ K                               H              0.0000             71.0000        0 
+ L                               H              0.0000             89.0000        0 
+ FREE                            I              0.0000              1.0000        1 
+ FP                              F             21.9030           4492.5801        1 
+ SIGFP                           Q              1.2561            107.8470        1 
+ FC                              F              0.0444          38553.4492        1 
+ PHIC                            P              0.0000            360.0000        1 
+ FOM                             W              0.0000              1.0000        1 
+
+ * Cell Dimensions : (obsolete - refer to dataset cell dimensions above)
+
+   45.2150  102.7940  128.3370   90.0000   90.0000   90.0000 
+
+ *  Resolution Range :
+
+    0.00024    0.48998     (     64.169 -      1.429 A )
+
+ * Sort Order :
+
+      0     0     0     0     0
+
+ * Number of Symmetry Operations = 8 
+ * Number of Primitive Operations = 4 
+ * Space Group = 20 'C 2 2 21' 
+ * Lattice Type = C 
+ * Point Group Name = PG222 
+
+ * Symmetry Operations : 
+
+ Symmetry 1 X,  Y,  Z                                                   
+  1.00  0.00  0.00  0.00 
+  0.00  1.00  0.00  0.00 
+  0.00  0.00  1.00  0.00 
+  0.00  0.00  0.00  1.00 
+ Symmetry 2 -X,  -Y,  Z+1/2                                             
+ -1.00  0.00  0.00  0.00 
+  0.00 -1.00  0.00  0.00 
+  0.00  0.00  1.00  0.50 
+  0.00  0.00  0.00  1.00 
+ Symmetry 3 X,  -Y,  -Z                                                 
+  1.00  0.00  0.00  0.00 
+  0.00 -1.00  0.00  0.00 
+  0.00  0.00 -1.00  0.00 
+  0.00  0.00  0.00  1.00 
+ Symmetry 4 -X,  Y,  -Z+1/2                                             
+ -1.00  0.00  0.00  0.00 
+  0.00  1.00  0.00  0.00 
+  0.00  0.00 -1.00  0.50 
+  0.00  0.00  0.00  1.00 
+ Symmetry 5 X+1/2,  Y+1/2,  Z                                           
+  1.00  0.00  0.00  0.50 
+  0.00  1.00  0.00  0.50 
+  0.00  0.00  1.00  0.00 
+  0.00  0.00  0.00  1.00 
+ Symmetry 6 -X+1/2,  -Y+1/2,  Z+1/2                                     
+ -1.00  0.00  0.00  0.50 
+  0.00 -1.00  0.00  0.50 
+  0.00  0.00  1.00  0.50 
+  0.00  0.00  0.00  1.00 
+ Symmetry 7 X+1/2,  -Y+1/2,  -Z                                         
+  1.00  0.00  0.00  0.50 
+  0.00 -1.00  0.00  0.50 
+  0.00  0.00 -1.00  0.00 
+  0.00  0.00  0.00  1.00 
+ Symmetry 8 -X+1/2,  Y+1/2,  -Z+1/2                                     
+ -1.00  0.00  0.00  0.50 
+  0.00  1.00  0.00  0.50 
+  0.00  0.00 -1.00  0.50 
+  0.00  0.00  0.00  1.00 
+
+  55771 input reflections processed
+
+</pre></div>
+
+<div class="CIF2MTZ_0_non_summary non_summary"><pre></pre>
+  <!-- Add a control in the non-summary to flip back
+     to the summary only -->
+  <div class="CIF2MTZ_0_inner_control inner_control">
+     <a href="javascript://" onclick="show_only_summary('CIF2MTZ_0')">[Show summary only]</a>
+  </div>
+</div>
+
+<div class="summary"><pre> cif2mtz:  Normal termination
+Times: User:       0.9s System:    0.1s Elapsed:     0:01  
+
+</pre></div>
+
+
+</div>
+
+<!-- Tail-end visibility controls for CIF2MTZ_0 -->
+
+<div class="CIF2MTZ_0_logfile_closed_controls">
+   <!-- Controls available when logfile is completely hidden -->
+   <p>
+   <a href="javascript://"
+      onclick="open_summary_logfile('CIF2MTZ_0')">[Show logfile summary]</a>
+   <a href="javascript://"
+      onclick="open_full_logfile('CIF2MTZ_0')">[Show full logfile]</a>
+   </p>
+</div>
+
+    <div class="CIF2MTZ_0_logfile_open_controls" style="display: none">
+   <!-- Controls available if some or all the logfile is visible -->
+   <div class="CIF2MTZ_0_show_full_logfile_control" style="display: none">
+      <p>Current view: summary only
+      <a href="javascript://"
+         onclick="show_full_logfile('CIF2MTZ_0')">[Show full logfile]</a>
+      <a href="javascript://"
+         onclick="close_logfile('CIF2MTZ_0')">[Hide logfile]</a>
+     </p>
+   </div>
+   <div class="CIF2MTZ_0_show_summary_control">
+      <p>Current view: full logfile
+      <a href="javascript://"
+         onclick="show_only_summary('CIF2MTZ_0')">[Show logfile summary]</a>
+      <a href="javascript://"
+         onclick="close_logfile('CIF2MTZ_0')">[Hide logfile]</a>
+      </p>
+   </div>
+</div>
+
+</div>
+<!-- End of CIF2MTZ_0 logfile -->
+
+<div class="banner">
+<a name="Mtzdump_1">
+<span class="progname">Mtzdump</span>
+<span class="progvers">Version 1.1</span>
+<span class="proginfo">Run at 14:36:03 on 17/ 5/2018</span>
+<span class="progterm">Finished with: NO REFLECTIONS LISTED</span>
+</a>
+</div>
+<div class="doclink"><p><a href="/Applications/ccp4-7.0/html/mtzdump.html">[Documentation]</a></p></div>
+
+<!-- Top-level visibility controls for MTZDUMP_1 -->
+
+<div class="MTZDUMP_1_logfile_closed_controls">
+   <!-- Controls available when logfile is completely hidden -->
+   <p>
+   <a href="javascript://"
+      onclick="open_summary_logfile('MTZDUMP_1')">[Show logfile summary]</a>
+   <a href="javascript://"
+      onclick="open_full_logfile('MTZDUMP_1')">[Show full logfile]</a>
+   </p>
+</div>
+
+    <div class="MTZDUMP_1_logfile_open_controls" style="display: none">
+   <!-- Controls available if some or all the logfile is visible -->
+   <div class="MTZDUMP_1_show_full_logfile_control" style="display: none">
+      <p>Current view: summary only
+      <a href="javascript://"
+         onclick="show_full_logfile('MTZDUMP_1')">[Show full logfile]</a>
+      <a href="javascript://"
+         onclick="close_logfile('MTZDUMP_1')">[Hide logfile]</a>
+     </p>
+   </div>
+   <div class="MTZDUMP_1_show_summary_control">
+      <p>Current view: full logfile
+      <a href="javascript://"
+         onclick="show_only_summary('MTZDUMP_1')">[Show logfile summary]</a>
+      <a href="javascript://"
+         onclick="close_logfile('MTZDUMP_1')">[Hide logfile]</a>
+      </p>
+   </div>
+</div>
+
+<!-- Start of the MTZDUMP_1 logfile -->
+<div class="MTZDUMP_1_logfile" style="display: none">
+
+<div class="logfile">
+
+<div class="summary"><pre> ###############################################################
+ ###############################################################
+ ###############################################################
+ ### CCP4 7.0.057: MTZDUMP              version 1.1 :         ##
+ ###############################################################
+ User: fpoitevi  Run date: 17/ 5/2018 Run time: 14:36:03 
+
+ Please reference: Collaborative Computational Project, Number 4. 2011.
+ &quot;Overview of the CCP4 suite and current developments&quot;. Acta Cryst. D67, 235-242.
+ as well as any specific reference in the program write-up.
+
+</pre></div>
+
+<div class="MTZDUMP_1_non_summary non_summary"><pre>  List  reflection:    0
+  Symmetry to be listed
+
+ OPENED INPUT MTZ FILE 
+ Logical Name: HKLIN   Filename: /tmp/fpoitevi/4Y9H_1_1_mtz.tmp 
+
+ * Title:
+
+ cif2mtz_test
+
+ * Base dataset:
+
+        0 HKL_base
+          HKL_base
+          HKL_base
+
+ * Number of Datasets = 1
+
+ * Dataset ID, project/crystal/dataset names, cell dimensions, wavelength:
+
+        1 4Y9H
+          frompdb
+          frompdb
+             45.2150  102.7940  128.3370   90.0000   90.0000   90.0000
+             0.00000
+
+ * Number of Columns = 9
+
+ * Number of Reflections = 55771
+
+ * Missing value set to NaN in input mtz file
+
+ * Column Labels :
+
+ H K L FREE FP SIGFP FC PHIC FOM
+
+ * Column Types :
+
+ H H H I F Q F P W
+
+ * Associated datasets :
+
+ 0 0 0 1 1 1 1 1 1
+
+ * Cell Dimensions : (obsolete - refer to dataset cell dimensions above)
+
+   45.2150  102.7940  128.3370   90.0000   90.0000   90.0000 
+
+ *  Resolution Range :
+
+    0.00024    0.48998     (     64.169 -      1.429 A )
+
+ * Sort Order :
+
+      0     0     0     0     0
+
+ * Number of Symmetry Operations = 8 
+ * Number of Primitive Operations = 4 
+ * Space Group = 20 'C 2 2 21' 
+ * Lattice Type = C 
+ * Point Group Name = PG222 
+
+ * Symmetry Operations : 
+
+ Symmetry 1 X,  Y,  Z                                                   
+  1.00  0.00  0.00  0.00 
+  0.00  1.00  0.00  0.00 
+  0.00  0.00  1.00  0.00 
+  0.00  0.00  0.00  1.00 
+ Symmetry 2 -X,  -Y,  Z+1/2                                             
+ -1.00  0.00  0.00  0.00 
+  0.00 -1.00  0.00  0.00 
+  0.00  0.00  1.00  0.50 
+  0.00  0.00  0.00  1.00 
+ Symmetry 3 X,  -Y,  -Z                                                 
+  1.00  0.00  0.00  0.00 
+  0.00 -1.00  0.00  0.00 
+  0.00  0.00 -1.00  0.00 
+  0.00  0.00  0.00  1.00 
+ Symmetry 4 -X,  Y,  -Z+1/2                                             
+ -1.00  0.00  0.00  0.00 
+  0.00  1.00  0.00  0.00 
+  0.00  0.00 -1.00  0.50 
+  0.00  0.00  0.00  1.00 
+ Symmetry 5 X+1/2,  Y+1/2,  Z                                           
+  1.00  0.00  0.00  0.50 
+  0.00  1.00  0.00  0.50 
+  0.00  0.00  1.00  0.00 
+  0.00  0.00  0.00  1.00 
+ Symmetry 6 -X+1/2,  -Y+1/2,  Z+1/2                                     
+ -1.00  0.00  0.00  0.50 
+  0.00 -1.00  0.00  0.50 
+  0.00  0.00  1.00  0.50 
+  0.00  0.00  0.00  1.00 
+ Symmetry 7 X+1/2,  -Y+1/2,  -Z                                         
+  1.00  0.00  0.00  0.50 
+  0.00 -1.00  0.00  0.50 
+  0.00  0.00 -1.00  0.00 
+  0.00  0.00  0.00  1.00 
+ Symmetry 8 -X+1/2,  Y+1/2,  -Z+1/2                                     
+ -1.00  0.00  0.00  0.50 
+  0.00  1.00  0.00  0.50 
+  0.00  0.00 -1.00  0.50 
+  0.00  0.00  0.00  1.00 
+
+  ******   EPSILON ZONES -  Reflection Classes and their multiplicity ****** 
+
+  EPSILON Zone   1
+  Reflections of type  h00 
+  Multiplicity   4
+
+  EPSILON Zone   2
+  Reflections of type  0k0 
+  Multiplicity   4
+
+  EPSILON Zone   3
+  Reflections of type  00l 
+  Multiplicity   4
+
+  EPSILON Zone   4
+  Reflections of type  hkl 
+  Multiplicity   2
+
+  ******   CENTRIC ZONES  ****** 
+
+  CENTRIC Zone   1
+  Reflections of type  0kl 
+
+  CENTRIC Zone   2
+  Reflections of type  h0l 
+
+  CENTRIC Zone   3
+  Reflections of type  hk0 
+
+ OVERALL FILE STATISTICS for resolution range   0.000 -   0.490
+ ======================= 
+
+ Col Sort    Min    Max    Num      %     Mean     Mean   Resolution   Type Column
+ num order               Missing complete          abs.   Low    High       label 
+
+   1 ASC      0      31      0  100.00     11.6     11.6  64.17   1.43   H  H
+   2 NONE     0      71      0  100.00     26.8     26.8  64.17   1.43   H  K
+   3 NONE     0      89      0  100.00     33.5     33.5  64.17   1.43   H  L
+   4 NONE    0.0     1.0   598   98.93     0.95     0.95  47.71   1.43   I  FREE
+   5 NONE   21.9  4492.6   598   98.93   209.46   209.46  47.71   1.43   F  FP
+   6 NONE    1.3   107.8   598   98.93    15.53    15.53  47.71   1.43   Q  SIGFP
+   7 NONE    0.0 38553.4     0  100.00   196.73   196.73  64.17   1.43   F  FC
+   8 NONE    0.0   360.0     0  100.00   177.10   177.10  64.17   1.43   P  PHIC
+   9 NONE  0.000   1.000     0  100.00    0.705    0.705  64.17   1.43   W  FOM
+
+ No. of reflections used in FILE STATISTICS    55771
+
+</pre>
+  <!-- Add a control in the non-summary to flip back
+     to the summary only -->
+  <div class="MTZDUMP_1_inner_control inner_control">
+     <a href="javascript://" onclick="show_only_summary('MTZDUMP_1')">[Show summary only]</a>
+  </div>
+</div>
+
+<div class="summary"><pre> MTZDUMP:   NO REFLECTIONS LISTED
+Times: User:       0.0s System:    0.0s Elapsed:     0:00  
+
+</pre></div>
+
+
+</div>
+
+<!-- Tail-end visibility controls for MTZDUMP_1 -->
+
+<div class="MTZDUMP_1_logfile_closed_controls">
+   <!-- Controls available when logfile is completely hidden -->
+   <p>
+   <a href="javascript://"
+      onclick="open_summary_logfile('MTZDUMP_1')">[Show logfile summary]</a>
+   <a href="javascript://"
+      onclick="open_full_logfile('MTZDUMP_1')">[Show full logfile]</a>
+   </p>
+</div>
+
+    <div class="MTZDUMP_1_logfile_open_controls" style="display: none">
+   <!-- Controls available if some or all the logfile is visible -->
+   <div class="MTZDUMP_1_show_full_logfile_control" style="display: none">
+      <p>Current view: summary only
+      <a href="javascript://"
+         onclick="show_full_logfile('MTZDUMP_1')">[Show full logfile]</a>
+      <a href="javascript://"
+         onclick="close_logfile('MTZDUMP_1')">[Hide logfile]</a>
+     </p>
+   </div>
+   <div class="MTZDUMP_1_show_summary_control">
+      <p>Current view: full logfile
+      <a href="javascript://"
+         onclick="show_only_summary('MTZDUMP_1')">[Show logfile summary]</a>
+      <a href="javascript://"
+         onclick="close_logfile('MTZDUMP_1')">[Hide logfile]</a>
+      </p>
+   </div>
+</div>
+
+</div>
+<!-- End of MTZDUMP_1 logfile -->
+
+<div class="banner">
+<a name="Unique_2">
+<span class="progname">Unique</span>
+<span class="progvers">Version 7.0.057</span>
+<span class="proginfo">Run at 14:36:03 on 17/ 5/2018</span>
+<span class="progterm">Finished with: Normal Termination</span>
+</a>
+</div>
+<div class="doclink"><p><a href="/Applications/ccp4-7.0/html/unique.html">[Documentation]</a></p></div>
+
+<!-- Top-level visibility controls for UNIQUE_2 -->
+
+<div class="UNIQUE_2_logfile_closed_controls">
+   <!-- Controls available when logfile is completely hidden -->
+   <p>
+   <a href="javascript://"
+      onclick="open_summary_logfile('UNIQUE_2')">[Show logfile summary]</a>
+   <a href="javascript://"
+      onclick="open_full_logfile('UNIQUE_2')">[Show full logfile]</a>
+   </p>
+</div>
+
+    <div class="UNIQUE_2_logfile_open_controls" style="display: none">
+   <!-- Controls available if some or all the logfile is visible -->
+   <div class="UNIQUE_2_show_full_logfile_control" style="display: none">
+      <p>Current view: summary only
+      <a href="javascript://"
+         onclick="show_full_logfile('UNIQUE_2')">[Show full logfile]</a>
+      <a href="javascript://"
+         onclick="close_logfile('UNIQUE_2')">[Hide logfile]</a>
+     </p>
+   </div>
+   <div class="UNIQUE_2_show_summary_control">
+      <p>Current view: full logfile
+      <a href="javascript://"
+         onclick="show_only_summary('UNIQUE_2')">[Show logfile summary]</a>
+      <a href="javascript://"
+         onclick="close_logfile('UNIQUE_2')">[Hide logfile]</a>
+      </p>
+   </div>
+</div>
+
+<!-- Start of the UNIQUE_2 logfile -->
+<div class="UNIQUE_2_logfile" style="display: none">
+
+<div class="logfile">
+
+<div class="summary"><pre> ###############################################################
+ ###############################################################
+ ###############################################################
+ ### CCP4 7.0.057: UNIQUE           version 7.0.057 :         ##
+ ###############################################################
+ User: fpoitevi  Run date: 17/ 5/2018 Run time: 14:36:03 
+
+ Please reference: Collaborative Computational Project, Number 4. 2011.
+ &quot;Overview of the CCP4 suite and current developments&quot;. Acta Cryst. D67, 235-242.
+ as well as any specific reference in the program write-up.
+
+</pre></div>
+
+<div class="UNIQUE_2_non_summary non_summary"><pre> Data line--- CELL 45.2150 102.7940 128.3370 90.0000 90.0000 90.0000
+ Data line--- SYMMETRY 'C 2 2 21'
+ Data line--- LABOUT F=FUNI SIGF=SIGFUNI
+ Data line--- RESOLUTION 1.429
+ Comment line--- ## This script run with the command   ##########
+ Comment line--- # /Applications/ccp4-7.0/bin/unique HKLOUT &quot;/tmp/fpoitevi/4Y9H_1_3_mtz.tmp&quot;
+ Comment line--- ################################################
+Reciprocal space symmetry: 
+Space group: &quot;C 2 2 21&quot; Point group: &quot;PG222&quot; Laue group: &quot;mmm&quot; 
+Reference asymmetric unit: &quot;h&gt;=0 and k&gt;=0 and l&gt;=0&quot; 
+  (change of basis may be applied) 
+
+ Spacegroup 20 &quot;C 2 2 21&quot; 
+ Original indices for reflection hkl with symmetry number ISYM 
+
+                              Bijvoet positive 
+       ISYM              ISYM              ISYM              ISYM              
+  ISYM   1  +h,+k,+l       3  -h,-k,+l       5  +h,-k,-l       7  -h,+k,-l    
+
+                              Bijvoet negative 
+       ISYM              ISYM              ISYM              ISYM              
+  ISYM   2  -h,-k,-l       4  +h,+k,-l       6  -h,+k,+l       8  +h,-k,+l    
+
+ Maximum and minimum Bragg spacings     1.429 10000.000 Angstroms
+
+ Limits on H,K,L..   0 to  31      0 to  71      0 to  89
+
+ WRITTEN OUTPUT MTZ FILE 
+ Logical Name: HKLOUT   Filename: /tmp/fpoitevi/4Y9H_1_3_mtz.tmp 
+
+ * Title:
+
+ * Base dataset:
+
+        0 HKL_base
+          HKL_base
+          HKL_base
+
+ * Number of Datasets = 0
+
+ * Dataset ID, project/crystal/dataset names, cell dimensions, wavelength:
+
+ * Number of Columns = 5
+
+ * Number of Reflections = 55768
+
+ * Missing value set to NaN in input mtz file
+
+ * Column Labels :
+
+ H K L FUNI SIGFUNI
+
+ * Column Types :
+
+ H H H F Q
+
+ * Associated datasets :
+
+ 0 0 0 0 0
+
+ * Cell Dimensions : (obsolete - refer to dataset cell dimensions above)
+
+   45.2150  102.7940  128.3370   90.0000   90.0000   90.0000 
+
+ *  Resolution Range :
+
+    0.00024    0.48970     (     64.169 -      1.429 A )
+
+ * Sort Order :
+
+      1     2     3     0     0
+
+ * Space group = 'C 2 2 21' (number     20)
+
+     207360 reflections tested
+      55768 reflections within resolution limits written to output file
+</pre>
+  <!-- Add a control in the non-summary to flip back
+     to the summary only -->
+  <div class="UNIQUE_2_inner_control inner_control">
+     <a href="javascript://" onclick="show_only_summary('UNIQUE_2')">[Show summary only]</a>
+  </div>
+</div>
+
+<div class="summary"><pre> UNIQUE:  Normal Termination
+Times: User:       0.1s System:    0.0s Elapsed:     0:00  
+
+</pre></div>
+
+
+</div>
+
+<!-- Tail-end visibility controls for UNIQUE_2 -->
+
+<div class="UNIQUE_2_logfile_closed_controls">
+   <!-- Controls available when logfile is completely hidden -->
+   <p>
+   <a href="javascript://"
+      onclick="open_summary_logfile('UNIQUE_2')">[Show logfile summary]</a>
+   <a href="javascript://"
+      onclick="open_full_logfile('UNIQUE_2')">[Show full logfile]</a>
+   </p>
+</div>
+
+    <div class="UNIQUE_2_logfile_open_controls" style="display: none">
+   <!-- Controls available if some or all the logfile is visible -->
+   <div class="UNIQUE_2_show_full_logfile_control" style="display: none">
+      <p>Current view: summary only
+      <a href="javascript://"
+         onclick="show_full_logfile('UNIQUE_2')">[Show full logfile]</a>
+      <a href="javascript://"
+         onclick="close_logfile('UNIQUE_2')">[Hide logfile]</a>
+     </p>
+   </div>
+   <div class="UNIQUE_2_show_summary_control">
+      <p>Current view: full logfile
+      <a href="javascript://"
+         onclick="show_only_summary('UNIQUE_2')">[Show logfile summary]</a>
+      <a href="javascript://"
+         onclick="close_logfile('UNIQUE_2')">[Hide logfile]</a>
+      </p>
+   </div>
+</div>
+
+</div>
+<!-- End of UNIQUE_2 logfile -->
+
+<div class="banner">
+<a name="Cad_3">
+<span class="progname">Cad</span>
+<span class="progvers">Version 7.0.057</span>
+<span class="proginfo">Run at 14:36:03 on 17/ 5/2018</span>
+<span class="progterm">Finished with: *** Normal Termination of CAD ***</span>
+</a>
+</div>
+<div class="doclink"><p><a href="/Applications/ccp4-7.0/html/cad.html">[Documentation]</a></p></div>
+
+<!-- Top-level visibility controls for CAD_3 -->
+
+<div class="CAD_3_logfile_closed_controls">
+   <!-- Controls available when logfile is completely hidden -->
+   <p>
+   <a href="javascript://"
+      onclick="open_summary_logfile('CAD_3')">[Show logfile summary]</a>
+   <a href="javascript://"
+      onclick="open_full_logfile('CAD_3')">[Show full logfile]</a>
+   </p>
+</div>
+
+    <div class="CAD_3_logfile_open_controls" style="display: none">
+   <!-- Controls available if some or all the logfile is visible -->
+   <div class="CAD_3_show_full_logfile_control" style="display: none">
+      <p>Current view: summary only
+      <a href="javascript://"
+         onclick="show_full_logfile('CAD_3')">[Show full logfile]</a>
+      <a href="javascript://"
+         onclick="close_logfile('CAD_3')">[Hide logfile]</a>
+     </p>
+   </div>
+   <div class="CAD_3_show_summary_control">
+      <p>Current view: full logfile
+      <a href="javascript://"
+         onclick="show_only_summary('CAD_3')">[Show logfile summary]</a>
+      <a href="javascript://"
+         onclick="close_logfile('CAD_3')">[Hide logfile]</a>
+      </p>
+   </div>
+</div>
+
+<!-- Start of the CAD_3 logfile -->
+<div class="CAD_3_logfile" style="display: none">
+
+<div class="logfile">
+
+<div class="summary"><pre> ###############################################################
+ ###############################################################
+ ###############################################################
+ ### CCP4 7.0.057: CAD              version 7.0.057 :         ##
+ ###############################################################
+ User: fpoitevi  Run date: 17/ 5/2018 Run time: 14:36:03 
+
+ Please reference: Collaborative Computational Project, Number 4. 2011.
+ &quot;Overview of the CCP4 suite and current developments&quot;. Acta Cryst. D67, 235-242.
+ as well as any specific reference in the program write-up.
+
+</pre></div>
+
+<div class="CAD_3_non_summary non_summary"><pre> Data line--- LABIN FILE 1  ALLIN
+ Data line--- LABIN FILE 2  ALLIN
+ Data line--- END
+ No CTYP lines input for file:  1
+ No CTYP lines input for file:  2
+    Indices output even if all data items flagged &quot;missing&quot;
+ Warning, NOT all LABOUT data lines given
+ Warning, NOT all LABOUT data lines given
+
+ OPENED INPUT MTZ FILE 
+ Logical Name: HKLIN1   Filename: /tmp/fpoitevi/4Y9H_1_1_mtz.tmp 
+
+ * Title:
+
+ cif2mtz_test
+
+ * Base dataset:
+
+        0 HKL_base
+          HKL_base
+          HKL_base
+
+ * Number of Datasets = 1
+
+ * Dataset ID, project/crystal/dataset names, cell dimensions, wavelength:
+
+        1 4Y9H
+          frompdb
+          frompdb
+             45.2150  102.7940  128.3370   90.0000   90.0000   90.0000
+             0.00000
+
+ * Number of Columns = 9
+
+ * Number of Reflections = 55771
+
+ * Missing value set to NaN in input mtz file
+
+ * Column Labels :
+
+ H K L FREE FP SIGFP FC PHIC FOM
+
+ * Column Types :
+
+ H H H I F Q F P W
+
+ * Associated datasets :
+
+ 0 0 0 1 1 1 1 1 1
+
+ * Cell Dimensions : (obsolete - refer to dataset cell dimensions above)
+
+   45.2150  102.7940  128.3370   90.0000   90.0000   90.0000 
+
+ *  Resolution Range :
+
+    0.00024    0.48998     (     64.169 -      1.429 A )
+
+ * Sort Order :
+
+      0     0     0     0     0
+
+ * Space group = 'C 2 2 21' (number     20)
+
+Reciprocal space symmetry: 
+Space group: &quot;C 2 2 21&quot; Point group: &quot;PG222&quot; Laue group: &quot;mmm&quot; 
+Reference asymmetric unit: &quot;h&gt;=0 and k&gt;=0 and l&gt;=0&quot; 
+  (change of basis may be applied) 
+
+ Spacegroup 20 &quot;C 2 2 21&quot; 
+ Original indices for reflection hkl with symmetry number ISYM 
+
+                              Bijvoet positive 
+       ISYM              ISYM              ISYM              ISYM              
+  ISYM   1  +h,+k,+l       3  -h,-k,+l       5  +h,-k,-l       7  -h,+k,-l    
+
+                              Bijvoet negative 
+       ISYM              ISYM              ISYM              ISYM              
+  ISYM   2  -h,-k,-l       4  +h,+k,-l       6  -h,+k,+l       8  +h,-k,+l    
+
+ Chosen Asymmetric unit of reciprocal space: 
+ [mmm] hkl:h&gt;=0, k&gt;=0, l&gt;=0
+
+ ** &quot;Missing&quot; flag set in HKLIN1 to Nan:
+
+ ** &quot;Missing&quot; entries LISTED as           -999.000
+ Data line--- LABIN  E1=FREE  E2=FP  E3=SIGFP  E4=FC  E5=PHIC  E6=FOM
+
+ After Processing File_Number:  1
+ Number of columns so far    :   9
+ Accumulated Out_Put_MTZ_labels are:
+  E11=FREE  E21=FP  E31=SIGFP  E41=FC
+  E51=PHIC  E61=FOM 
+
+ MTZOUT_LABELS are H K L and -
+  FREE  FP  SIGFP  FC
+  PHIC  FOM 
+
+ OPENED INPUT MTZ FILE 
+ Logical Name: HKLIN2   Filename: /tmp/fpoitevi/4Y9H_1_3_mtz.tmp 
+
+ * Title:
+
+ * Base dataset:
+
+        0 HKL_base
+          HKL_base
+          HKL_base
+
+ * Number of Datasets = 0
+
+ * Dataset ID, project/crystal/dataset names, cell dimensions, wavelength:
+
+ * Number of Columns = 5
+
+ * Number of Reflections = 55768
+
+ * Missing value set to NaN in input mtz file
+
+ * Column Labels :
+
+ H K L FUNI SIGFUNI
+
+ * Column Types :
+
+ H H H F Q
+
+ * Associated datasets :
+
+ 0 0 0 0 0
+
+ * Cell Dimensions : (obsolete - refer to dataset cell dimensions above)
+
+   45.2150  102.7940  128.3370   90.0000   90.0000   90.0000 
+
+ *  Resolution Range :
+
+    0.00024    0.48970     (     64.169 -      1.429 A )
+
+ * Sort Order :
+
+      1     2     3     0     0
+
+ * Space group = 'C 2 2 21' (number     20)
+
+ Data line--- LABIN  E1=FUNI  E2=SIGFUNI
+
+ After Processing File_Number:  2
+ Number of columns so far    :  11
+ Accumulated Out_Put_MTZ_labels are:
+  E11=FREE  E21=FP  E31=SIGFP  E41=FC
+  E51=PHIC  E61=FOM  E12=FUNI  E22=SIGFUNI
+ 
+ MTZOUT_LABELS are H K L and -
+  FREE  FP  SIGFP  FC
+  PHIC  FOM  FUNI  SIGFUNI
+ 
+        3 sort keys, in columns    1   2   3
+
+ Data line--- LABIN  E1=FREE  E2=FP  E3=SIGFP  E4=FC  E5=PHIC  E6=FOM
+
+ OPENED INPUT MTZ FILE 
+ Logical Name: HKLIN1   Filename: /tmp/fpoitevi/4Y9H_1_1_mtz.tmp 
+
+ * Title:
+
+ cif2mtz_test
+
+ * Base dataset:
+
+        0 HKL_base
+          HKL_base
+          HKL_base
+
+ * Number of Datasets = 1
+
+ * Dataset ID, project/crystal/dataset names, cell dimensions, wavelength:
+
+        1 4Y9H
+          frompdb
+          frompdb
+             45.2150  102.7940  128.3370   90.0000   90.0000   90.0000
+             0.00000
+
+ * Number of Columns = 9
+
+ * Number of Reflections = 55771
+
+ * Missing value set to NaN in input mtz file
+
+ * Column Labels :
+
+ H K L FREE FP SIGFP FC PHIC FOM
+
+ * Column Types :
+
+ H H H I F Q F P W
+
+ * Associated datasets :
+
+ 0 0 0 1 1 1 1 1 1
+
+ * Cell Dimensions : (obsolete - refer to dataset cell dimensions above)
+
+   45.2150  102.7940  128.3370   90.0000   90.0000   90.0000 
+
+ *  Resolution Range :
+
+    0.00024    0.48998     (     64.169 -      1.429 A )
+
+ * Sort Order :
+
+      0     0     0     0     0
+
+ * Space group = 'C 2 2 21' (number     20)
+
+ Reading from HKLIN mtz file_Number = :1
+ This file written with MTZLIB Version Number : MTZ:V1.1  
+ File HKLIN1 contains a total of      9 Columns
+ and a total of      55771 Reflections
+
+  ******   EPSILON ZONES -  Reflection Classes and their multiplicity ****** 
+
+  EPSILON Zone   1
+  Reflections of type  h00 
+  Multiplicity   4
+
+  EPSILON Zone   2
+  Reflections of type  0k0 
+  Multiplicity   4
+
+  EPSILON Zone   3
+  Reflections of type  00l 
+  Multiplicity   4
+
+  EPSILON Zone   4
+  Reflections of type  hkl 
+  Multiplicity   2
+
+  ******   CENTRIC ZONES  ****** 
+
+  CENTRIC Zone   1
+  Reflections of type  0kl 
+
+  CENTRIC Zone   2
+  Reflections of type  h0l 
+
+  CENTRIC Zone   3
+  Reflections of type  hk0 
+
+ For file HKLIN1
+ Total Number of HKL read                         =      55771
+ Total Number of HKL systematic absent            =          0
+ Total Number of HKL reject for resolution limits =          0
+ Total Number of HKL passed to sort for this file =      60454
+ Data line--- LABIN  E1=FUNI  E2=SIGFUNI
+
+ OPENED INPUT MTZ FILE 
+ Logical Name: HKLIN2   Filename: /tmp/fpoitevi/4Y9H_1_3_mtz.tmp 
+
+ * Title:
+
+ * Base dataset:
+
+        0 HKL_base
+          HKL_base
+          HKL_base
+
+ * Number of Datasets = 0
+
+ * Dataset ID, project/crystal/dataset names, cell dimensions, wavelength:
+
+ * Number of Columns = 5
+
+ * Number of Reflections = 55768
+
+ * Missing value set to NaN in input mtz file
+
+ * Column Labels :
+
+ H K L FUNI SIGFUNI
+
+ * Column Types :
+
+ H H H F Q
+
+ * Associated datasets :
+
+ 0 0 0 0 0
+
+ * Cell Dimensions : (obsolete - refer to dataset cell dimensions above)
+
+   45.2150  102.7940  128.3370   90.0000   90.0000   90.0000 
+
+ *  Resolution Range :
+
+    0.00024    0.48970     (     64.169 -      1.429 A )
+
+ * Sort Order :
+
+      1     2     3     0     0
+
+ * Space group = 'C 2 2 21' (number     20)
+
+ Reading from HKLIN mtz file_Number = :2
+ This file written with MTZLIB Version Number : MTZ:V1.1  
+ File HKLIN2 contains a total of      5 Columns
+ and a total of      55768 Reflections
+
+ For file HKLIN2
+ Total Number of HKL read                         =      55768
+ Total Number of HKL systematic absent            =          0
+ Total Number of HKL reject for resolution limits =          0
+ Total Number of HKL passed to sort for this file =      60451
+
+ Total number read for all files    =     111539
+ Total passed to sort for all files =     120905
+ Total number systematic absent     =          0
+ Total number rejected outside resol=          0
+
+ Number of columns per file:
+ File_Number =    1 Number_Columns_Selected =     6
+
+ File_Number =    2 Number_Columns_Selected =     2
+
+ Data line--- LABOUT E11=FREE E21=FP E31=SIGFP E41=FC E51=PHIC E61=FOM E12=FUNI E22=SIGFUNI
+
+ WRITTEN OUTPUT MTZ FILE 
+ Logical Name: HKLOUT   Filename: /tmp/fpoitevi/4Y9H_1_4_mtz.tmp 
+
+ * Title:
+
+ cif2mtz_test
+
+ * Base dataset:
+
+        0 HKL_base
+          HKL_base
+          HKL_base
+
+ * Number of Datasets = 1
+
+ * Dataset ID, project/crystal/dataset names, cell dimensions, wavelength:
+
+        1 4Y9H
+          frompdb
+          frompdb
+             45.2150  102.7940  128.3370   90.0000   90.0000   90.0000
+             0.00000
+
+ * Number of Columns = 11
+
+ * Number of Reflections = 55771
+
+ * Missing value set to NaN in input mtz file
+
+ * Column Labels :
+
+ H K L FUNI SIGFUNI FREE FP SIGFP FC PHIC FOM
+
+ * Column Types :
+
+ H H H F Q I F Q F P W
+
+ * Associated datasets :
+
+ 0 0 0 0 0 1 1 1 1 1 1
+
+ * Cell Dimensions : (obsolete - refer to dataset cell dimensions above)
+
+   45.2150  102.7940  128.3370   90.0000   90.0000   90.0000 
+
+ *  Resolution Range :
+
+    0.00024    0.48998     (     64.169 -      1.429 A )
+
+ * Sort Order :
+
+      1     2     3     0     0
+
+ * Space group = 'C 2 2 21' (number     20)
+
+ Total number from Sorting Routine =     120905
+ Final Total of Unique records to HKLOUT =      55771
+ Final Total of Missing records to HKLOUT =          0
+</pre>
+  <!-- Add a control in the non-summary to flip back
+     to the summary only -->
+  <div class="CAD_3_inner_control inner_control">
+     <a href="javascript://" onclick="show_only_summary('CAD_3')">[Show summary only]</a>
+  </div>
+</div>
+
+<div class="summary"><pre> CAD:   *** Normal Termination of CAD ***
+Times: User:       0.3s System:    0.0s Elapsed:     0:00  
+
+</pre></div>
+
+
+</div>
+
+<!-- Tail-end visibility controls for CAD_3 -->
+
+<div class="CAD_3_logfile_closed_controls">
+   <!-- Controls available when logfile is completely hidden -->
+   <p>
+   <a href="javascript://"
+      onclick="open_summary_logfile('CAD_3')">[Show logfile summary]</a>
+   <a href="javascript://"
+      onclick="open_full_logfile('CAD_3')">[Show full logfile]</a>
+   </p>
+</div>
+
+    <div class="CAD_3_logfile_open_controls" style="display: none">
+   <!-- Controls available if some or all the logfile is visible -->
+   <div class="CAD_3_show_full_logfile_control" style="display: none">
+      <p>Current view: summary only
+      <a href="javascript://"
+         onclick="show_full_logfile('CAD_3')">[Show full logfile]</a>
+      <a href="javascript://"
+         onclick="close_logfile('CAD_3')">[Hide logfile]</a>
+     </p>
+   </div>
+   <div class="CAD_3_show_summary_control">
+      <p>Current view: full logfile
+      <a href="javascript://"
+         onclick="show_only_summary('CAD_3')">[Show logfile summary]</a>
+      <a href="javascript://"
+         onclick="close_logfile('CAD_3')">[Hide logfile]</a>
+      </p>
+   </div>
+</div>
+
+</div>
+<!-- End of CAD_3 logfile -->
+
+<div class="banner">
+<a name="Freerflag_4">
+<span class="progname">Freerflag</span>
+<span class="progvers">Version 2.2</span>
+<span class="proginfo">Run at 14:36:03 on 17/ 5/2018</span>
+<span class="progterm">Finished with: Normal termination</span>
+</a>
+</div>
+<div class="doclink"><p><a href="/Applications/ccp4-7.0/html/freerflag.html">[Documentation]</a></p></div>
+
+<!-- Top-level visibility controls for FREERFLAG_4 -->
+
+<div class="FREERFLAG_4_logfile_closed_controls">
+   <!-- Controls available when logfile is completely hidden -->
+   <p>
+   <a href="javascript://"
+      onclick="open_summary_logfile('FREERFLAG_4')">[Show logfile summary]</a>
+   <a href="javascript://"
+      onclick="open_full_logfile('FREERFLAG_4')">[Show full logfile]</a>
+   </p>
+</div>
+
+    <div class="FREERFLAG_4_logfile_open_controls" style="display: none">
+   <!-- Controls available if some or all the logfile is visible -->
+   <div class="FREERFLAG_4_show_full_logfile_control" style="display: none">
+      <p>Current view: summary only
+      <a href="javascript://"
+         onclick="show_full_logfile('FREERFLAG_4')">[Show full logfile]</a>
+      <a href="javascript://"
+         onclick="close_logfile('FREERFLAG_4')">[Hide logfile]</a>
+     </p>
+   </div>
+   <div class="FREERFLAG_4_show_summary_control">
+      <p>Current view: full logfile
+      <a href="javascript://"
+         onclick="show_only_summary('FREERFLAG_4')">[Show logfile summary]</a>
+      <a href="javascript://"
+         onclick="close_logfile('FREERFLAG_4')">[Hide logfile]</a>
+      </p>
+   </div>
+</div>
+
+<!-- Start of the FREERFLAG_4 logfile -->
+<div class="FREERFLAG_4_logfile" style="display: none">
+
+<div class="logfile">
+
+<div class="summary"><pre> ###############################################################
+ ###############################################################
+ ###############################################################
+ ### CCP4 7.0.057: FREERFLAG            version 2.2 : 10/07/16##
+ ###############################################################
+ User: fpoitevi  Run date: 17/ 5/2018 Run time: 14:36:03 
+
+ Please reference: Collaborative Computational Project, Number 4. 2011.
+ &quot;Overview of the CCP4 suite and current developments&quot;. Acta Cryst. D67, 235-242.
+ as well as any specific reference in the program write-up.
+
+</pre></div>
+
+<div class="FREERFLAG_4_non_summary non_summary"><pre> Data line--- COMPLETE FREE=FREE
+ Data line--- END
+
+ OPENED INPUT MTZ FILE 
+ Logical Name: HKLIN   Filename: /tmp/fpoitevi/4Y9H_1_4_mtz.tmp 
+
+ * Title:
+
+ cif2mtz_test
+
+ * Base dataset:
+
+        0 HKL_base
+          HKL_base
+          HKL_base
+
+ * Number of Datasets = 1
+
+ * Dataset ID, project/crystal/dataset names, cell dimensions, wavelength:
+
+        1 4Y9H
+          frompdb
+          frompdb
+             45.2150  102.7940  128.3370   90.0000   90.0000   90.0000
+             0.00000
+
+ * Number of Columns = 11
+
+ * Number of Reflections = 55771
+
+ * Missing value set to NaN in input mtz file
+
+ * Column Labels :
+
+ H K L FUNI SIGFUNI FREE FP SIGFP FC PHIC FOM
+
+ * Column Types :
+
+ H H H F Q I F Q F P W
+
+ * Associated datasets :
+
+ 0 0 0 0 0 1 1 1 1 1 1
+
+ * Cell Dimensions : (obsolete - refer to dataset cell dimensions above)
+
+   45.2150  102.7940  128.3370   90.0000   90.0000   90.0000 
+
+ *  Resolution Range :
+
+    0.00024    0.48998     (     64.169 -      1.429 A )
+
+ * Sort Order :
+
+      1     2     3     0     0
+
+ * Space group = 'C 2 2 21' (number     20)
+
+  ******   EPSILON ZONES -  Reflection Classes and their multiplicity ****** 
+
+  EPSILON Zone   1
+  Reflections of type  h00 
+  Multiplicity   4
+
+  EPSILON Zone   2
+  Reflections of type  0k0 
+  Multiplicity   4
+
+  EPSILON Zone   3
+  Reflections of type  00l 
+  Multiplicity   4
+
+  EPSILON Zone   4
+  Reflections of type  hkl 
+  Multiplicity   2
+ 
+ Grid of reflections initialized:
+ H K L min   -33 -74 -92
+ H K L max    33  74  92
+ H K L inc    67 149 185
+ ngrid      1846855
+ 
+***** Twin laws are not used but reflections that are symmetry equivalent in the crystal 
+point group acquire the same flag.
+ lookup =            1           2           3           6
+ lsprgi = H                             K                             
+ L                             FREE                          
+***** COMPLETE keyword was used.
+The number of missing flags =        598
+Old style freeR flags detected in the input.
+Number of flags 0 and 1:       2797     52376
+Used fraction:     0.0507 = 1/19.73
+Using 0 as the free set.
+***** All Input Reflections  expected to be binned into two segments *****
+ *** labelled 0 or -1 for one segment( test set), and 1 for all the others (work set) ***
+ *** The work set will be renumbered 1 through  19 ** 
+ 
+ Number of symmetry operations in the composition point group:  4
+ 
+ WRITTEN OUTPUT MTZ FILE 
+ Logical Name: HKLOUT   Filename: /tmp/fpoitevi/4Y9H_1_5_mtz.tmp 
+
+ * Title:
+
+ cif2mtz_test
+
+ * Base dataset:
+
+        0 HKL_base
+          HKL_base
+          HKL_base
+
+ * Number of Datasets = 1
+
+ * Dataset ID, project/crystal/dataset names, cell dimensions, wavelength:
+
+        1 4Y9H
+          frompdb
+          frompdb
+             45.2150  102.7940  128.3370   90.0000   90.0000   90.0000
+             0.00000
+
+ * Number of Columns = 11
+
+ * Number of Reflections = 55771
+
+ * Missing value set to NaN in input mtz file
+
+ * Column Labels :
+
+ H K L FUNI SIGFUNI FREE FP SIGFP FC PHIC FOM
+
+ * Column Types :
+
+ H H H F Q I F Q F P W
+
+ * Associated datasets :
+
+ 0 0 0 0 0 1 1 1 1 1 1
+
+ * Cell Dimensions : (obsolete - refer to dataset cell dimensions above)
+
+   45.2150  102.7940  128.3370   90.0000   90.0000   90.0000 
+
+ *  Resolution Range :
+
+    0.00024    0.48998     (     64.169 -      1.429 A )
+
+ * Sort Order :
+
+      1     2     3     0     0
+
+ * Space group = 'C 2 2 21' (number     20)
+
+ Number of reflections:   55771
+ Number for flagged reflections for each bin: 
+ Reflection flag =:      Number:
+                     0              2828    2797
+                     1              2753    2735
+                     2              2770    2736
+                     3              2756    2729
+                     4              2668    2645
+                     5              2781    2749
+                     6              2749    2714
+                     7              2774    2750
+                     8              2890    2856
+                     9              2747    2723
+                    10              2829    2798
+                    11              2779    2746
+                    12              2802    2773
+                    13              2754    2719
+                    14              2825    2788
+                    15              2882    2853
+                    16              2770    2748
+                    17              2838    2808
+                    18              2707    2675
+                    19              2869    2831
+Averages:     9.535    2788    2758
+</pre>
+  <!-- Add a control in the non-summary to flip back
+     to the summary only -->
+  <div class="FREERFLAG_4_inner_control inner_control">
+     <a href="javascript://" onclick="show_only_summary('FREERFLAG_4')">[Show summary only]</a>
+  </div>
+</div>
+
+<div class="summary"><pre> FREERFLAG:  Normal termination
+Times: User:       0.2s System:    0.0s Elapsed:     0:01  
+
+</pre></div>
+
+
+</div>
+
+<!-- Tail-end visibility controls for FREERFLAG_4 -->
+
+<div class="FREERFLAG_4_logfile_closed_controls">
+   <!-- Controls available when logfile is completely hidden -->
+   <p>
+   <a href="javascript://"
+      onclick="open_summary_logfile('FREERFLAG_4')">[Show logfile summary]</a>
+   <a href="javascript://"
+      onclick="open_full_logfile('FREERFLAG_4')">[Show full logfile]</a>
+   </p>
+</div>
+
+    <div class="FREERFLAG_4_logfile_open_controls" style="display: none">
+   <!-- Controls available if some or all the logfile is visible -->
+   <div class="FREERFLAG_4_show_full_logfile_control" style="display: none">
+      <p>Current view: summary only
+      <a href="javascript://"
+         onclick="show_full_logfile('FREERFLAG_4')">[Show full logfile]</a>
+      <a href="javascript://"
+         onclick="close_logfile('FREERFLAG_4')">[Hide logfile]</a>
+     </p>
+   </div>
+   <div class="FREERFLAG_4_show_summary_control">
+      <p>Current view: full logfile
+      <a href="javascript://"
+         onclick="show_only_summary('FREERFLAG_4')">[Show logfile summary]</a>
+      <a href="javascript://"
+         onclick="close_logfile('FREERFLAG_4')">[Hide logfile]</a>
+      </p>
+   </div>
+</div>
+
+</div>
+<!-- End of FREERFLAG_4 logfile -->
+
+<div class="banner">
+<a name="Mtzutils_5">
+<span class="progname">Mtzutils</span>
+<span class="progvers">Version 7.0.057</span>
+<span class="proginfo">Run at 14:36:04 on 17/ 5/2018</span>
+<span class="progterm">Finished with: Normal termination</span>
+</a>
+</div>
+<div class="doclink"><p><a href="/Applications/ccp4-7.0/html/mtzutils.html">[Documentation]</a></p></div>
+
+<!-- Top-level visibility controls for MTZUTILS_5 -->
+
+<div class="MTZUTILS_5_logfile_closed_controls">
+   <!-- Controls available when logfile is completely hidden -->
+   <p>
+   <a href="javascript://"
+      onclick="open_summary_logfile('MTZUTILS_5')">[Show logfile summary]</a>
+   <a href="javascript://"
+      onclick="open_full_logfile('MTZUTILS_5')">[Show full logfile]</a>
+   </p>
+</div>
+
+    <div class="MTZUTILS_5_logfile_open_controls" style="display: none">
+   <!-- Controls available if some or all the logfile is visible -->
+   <div class="MTZUTILS_5_show_full_logfile_control" style="display: none">
+      <p>Current view: summary only
+      <a href="javascript://"
+         onclick="show_full_logfile('MTZUTILS_5')">[Show full logfile]</a>
+      <a href="javascript://"
+         onclick="close_logfile('MTZUTILS_5')">[Hide logfile]</a>
+     </p>
+   </div>
+   <div class="MTZUTILS_5_show_summary_control">
+      <p>Current view: full logfile
+      <a href="javascript://"
+         onclick="show_only_summary('MTZUTILS_5')">[Show logfile summary]</a>
+      <a href="javascript://"
+         onclick="close_logfile('MTZUTILS_5')">[Hide logfile]</a>
+      </p>
+   </div>
+</div>
+
+<!-- Start of the MTZUTILS_5 logfile -->
+<div class="MTZUTILS_5_logfile" style="display: none">
+
+<div class="logfile">
+
+<div class="summary"><pre> ###############################################################
+ ###############################################################
+ ###############################################################
+ ### CCP4 7.0.057: MTZUTILS         version 7.0.057 :         ##
+ ###############################################################
+ User: fpoitevi  Run date: 17/ 5/2018 Run time: 14:36:04 
+
+ Please reference: Collaborative Computational Project, Number 4. 2011.
+ &quot;Overview of the CCP4 suite and current developments&quot;. Acta Cryst. D67, 235-242.
+ as well as any specific reference in the program write-up.
+
+</pre></div>
+
+<div class="MTZUTILS_5_non_summary non_summary"><pre> Data line--- EXCLUDE FUNI SIGFUNI
+ Data line--- END
+
+ OPENED INPUT MTZ FILE 
+ Logical Name: HKLIN   Filename: /tmp/fpoitevi/4Y9H_1_5_mtz.tmp 
+
+ * Title:
+
+ cif2mtz_test
+
+ * Base dataset:
+
+        0 HKL_base
+          HKL_base
+          HKL_base
+
+ * Number of Datasets = 1
+
+ * Dataset ID, project/crystal/dataset names, cell dimensions, wavelength:
+
+        1 4Y9H
+          frompdb
+          frompdb
+             45.2150  102.7940  128.3370   90.0000   90.0000   90.0000
+             0.00000
+
+ * Number of Columns = 11
+
+ * Number of Reflections = 55771
+
+ * Missing value set to NaN in input mtz file
+
+ * Column Labels :
+
+ H K L FUNI SIGFUNI FREE FP SIGFP FC PHIC FOM
+
+ * Column Types :
+
+ H H H F Q I F Q F P W
+
+ * Associated datasets :
+
+ 0 0 0 0 0 1 1 1 1 1 1
+
+ * Cell Dimensions : (obsolete - refer to dataset cell dimensions above)
+
+   45.2150  102.7940  128.3370   90.0000   90.0000   90.0000 
+
+ *  Resolution Range :
+
+    0.00024    0.48998     (     64.169 -      1.429 A )
+
+ * Sort Order :
+
+      1     2     3     0     0
+
+ * Space group = 'C 2 2 21' (number     20)
+
+ Reading from HKLIN MTZ File_Number = : 1
+ This file written with MTZLIB Version Number : MTZ:V1.1  
+ File HKLIN contains a total of     11 Columns
+ and a total of      55771 Reflections
+Reciprocal space symmetry: 
+Space group: &quot;C 2 2 21&quot; Point group: &quot;PG222&quot; Laue group: &quot;mmm&quot; 
+Reference asymmetric unit: &quot;h&gt;=0 and k&gt;=0 and l&gt;=0&quot; 
+  (change of basis may be applied) 
+
+ Spacegroup 20 &quot;C 2 2 21&quot; 
+ Original indices for reflection hkl with symmetry number ISYM 
+
+                              Bijvoet positive 
+       ISYM              ISYM              ISYM              ISYM              
+  ISYM   1  +h,+k,+l       3  -h,-k,+l       5  +h,-k,-l       7  -h,+k,-l    
+
+                              Bijvoet negative 
+       ISYM              ISYM              ISYM              ISYM              
+  ISYM   2  -h,-k,-l       4  +h,+k,-l       6  -h,+k,+l       8  +h,-k,+l    
+ For EXCLUDE Option, Column Label &gt;&gt; FUNI                          
+ will be Excluded from File_Number:   1
+ For EXCLUDE Option, Column Label &gt;&gt; SIGFUNI                       
+ will be Excluded from File_Number:   1
+  Reflections are forwarded to output file:     55771
+
+ WRITTEN OUTPUT MTZ FILE 
+ Logical Name: HKLOUT   Filename: /Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/4y9h-sf.mtz 
+
+ * Title:
+
+ cif2mtz_test
+
+ * Base dataset:
+
+        0 HKL_base
+          HKL_base
+          HKL_base
+
+ * Number of Datasets = 1
+
+ * Dataset ID, project/crystal/dataset names, cell dimensions, wavelength:
+
+        1 4Y9H
+          frompdb
+          frompdb
+             45.2150  102.7940  128.3370   90.0000   90.0000   90.0000
+             0.00000
+
+ * Number of Columns = 9
+
+ * Number of Reflections = 55771
+
+ * Missing value set to NaN in input mtz file
+
+ * Column Labels :
+
+ H K L FREE FP SIGFP FC PHIC FOM
+
+ * Column Types :
+
+ H H H I F Q F P W
+
+ * Associated datasets :
+
+ 0 0 0 1 1 1 1 1 1
+
+ * Cell Dimensions : (obsolete - refer to dataset cell dimensions above)
+
+   45.2150  102.7940  128.3370   90.0000   90.0000   90.0000 
+
+ *  Resolution Range :
+
+    0.00024    0.48998     (     64.169 -      1.429 A )
+
+ * Sort Order :
+
+      1     2     3     0     0
+
+ * Space group = 'C 2 2 21' (number     20)
+
+</pre>
+  <!-- Add a control in the non-summary to flip back
+     to the summary only -->
+  <div class="MTZUTILS_5_inner_control inner_control">
+     <a href="javascript://" onclick="show_only_summary('MTZUTILS_5')">[Show summary only]</a>
+  </div>
+</div>
+
+<div class="summary"><pre> MTZUTILS:  Normal termination
+Times: User:       0.1s System:    0.0s Elapsed:     0:00  
+
+</pre></div>
+
+
+</div>
+
+<!-- Tail-end visibility controls for MTZUTILS_5 -->
+
+<div class="MTZUTILS_5_logfile_closed_controls">
+   <!-- Controls available when logfile is completely hidden -->
+   <p>
+   <a href="javascript://"
+      onclick="open_summary_logfile('MTZUTILS_5')">[Show logfile summary]</a>
+   <a href="javascript://"
+      onclick="open_full_logfile('MTZUTILS_5')">[Show full logfile]</a>
+   </p>
+</div>
+
+    <div class="MTZUTILS_5_logfile_open_controls" style="display: none">
+   <!-- Controls available if some or all the logfile is visible -->
+   <div class="MTZUTILS_5_show_full_logfile_control" style="display: none">
+      <p>Current view: summary only
+      <a href="javascript://"
+         onclick="show_full_logfile('MTZUTILS_5')">[Show full logfile]</a>
+      <a href="javascript://"
+         onclick="close_logfile('MTZUTILS_5')">[Hide logfile]</a>
+     </p>
+   </div>
+   <div class="MTZUTILS_5_show_summary_control">
+      <p>Current view: full logfile
+      <a href="javascript://"
+         onclick="show_only_summary('MTZUTILS_5')">[Show logfile summary]</a>
+      <a href="javascript://"
+         onclick="close_logfile('MTZUTILS_5')">[Hide logfile]</a>
+      </p>
+   </div>
+</div>
+
+</div>
+<!-- End of MTZUTILS_5 logfile -->
+
+<hr />
+<p><em>Generated for you by baubles 0.0.8 on Thu May 17 14:36:04 2018</em></p>
+</body>
+</html>

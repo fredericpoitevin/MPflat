@@ -11824,7 +11824,28 @@ Look at <a href="#afonine2008">Afonine's account</a> or Murshudov's code in <a h
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Systems-considered">Systems considered<a class="anchor-link" href="#Systems-considered">&#182;</a></h3><h4 id="GLIC">GLIC<a class="anchor-link" href="#GLIC">&#182;</a></h4><p><a href="http://www.rcsb.org/structure/4IL4">GLIC with Se-DDM</a></p>
+<h3 id="Systems-considered">Systems considered<a class="anchor-link" href="#Systems-considered">&#182;</a></h3><h4 id="bacteriorhodospin-in-bicelles">bacteriorhodospin in bicelles<a class="anchor-link" href="#bacteriorhodospin-in-bicelles">&#182;</a></h4><p>We compare in the table below bR with lysozyme (6f1l), after 20 cycles of rigid-body refinement with refmac5, with and without solvent contribution.</p>
+<table>
+<thead><tr>
+<th></th>
+<th>without solvent</th>
+<th>with solvent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4Y9H (refmac)</td>
+<td><img src="4y9h-refmac-without-solvent.png" alt="without solvent"></td>
+<td><img src="4y9h-refmac-with-solvent.png" alt="with solvent"> </td>
+</tr>
+<tr>
+<td>6F1L (refmac)</td>
+<td><img src="6f1l-refmac-without-solvent.png" alt="without solvent"></td>
+<td><img src="6f1l-refmac-with-solvent.png" alt="with solvent"> </td>
+</tr>
+</tbody>
+</table>
+<h4 id="GLIC">GLIC<a class="anchor-link" href="#GLIC">&#182;</a></h4><p><a href="http://www.rcsb.org/structure/4IL4">GLIC with Se-DDM</a></p>
 
 </div>
 </div>
@@ -11845,6 +11866,8 @@ Look at <a href="#afonine2008">Afonine's account</a> or Murshudov's code in <a h
 <li><p><a name="refmac"></a><strong>Murshudov</strong>. <a href="http://www.ccp4.ac.uk/html/refmac5.html"><em>REFMAC website</em></a></p>
 </li>
 <li><p><a name="refmac-solv"></a> <strong>Murshudov</strong>. <a href="http://www.ccp4.ac.uk/html/refmac5/keywords/xray-principal.html#solv"><em>Refmac5 User's guide - solvent</em></a></p>
+</li>
+<li><p><a name="refmac-ppt"></a> <strong>Murshudov</strong>. <a href="http://www.ysbl.york.ac.uk/refmac/ACA_workshop/Garib.ppt"><em>Refmac PPT</em></a></p>
 </li>
 <li><p><a name="weichenberger2015"></a><strong>Weichenberger</strong>, Afonine, Kantardjieff, Rupp. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4427195/"><em>The solvent component of macromolecular crystals</em></a> (2015) Acta D</p>
 </li>
@@ -11975,15 +11998,17 @@ Traceback (most recent call last):
   File "/reg/g/psdm/sw/releases/ana-current/arch/x86_64-rhel7-gcc48-opt/python/PyQt4/uic/__init__.py", line 164, in compileUi
     from PyQt4.QtCore import PYQT_VERSION_STR
 ImportError: /reg/g/psdm/sw/releases/ana-current/arch/x86_64-rhel7-gcc48-opt/python/PyQt4/QtCore.so: undefined symbol: PyUnicodeUCS2_AsUTF8String</code></p>
-<p>Might be one of the 'known error' ? <code>Compiling Phaser with GCC 4.2 and OpenMP causes "internal compiler error". Use newer compiler or remove --enable-openmp-if-possible=True from checkout/devtools/conf.py.</code> Trying that out...: failed (was probably not accounted for, or overwritten somehow). Cancelled the build procedure, and restarted it. Although this time the change was taken into account, outcome was same... Reverting the change.</p>
-<p>Might be a <a href="https://stackoverflow.com/questions/2584198/undefined-symbol-pyunicodeucs2-decode-whilst-trying-to-install-psycopg2?utm_medium=organic&amp;utm_source=google_rich_qa&amp;utm_campaign=google_rich_qa">UCS2/UCS4 problem</a> ?</p>
-<p><strong>giving up on</strong></p>
 <ul>
-<li>cctbx-phase (hence pointless, aimless, feckless) for now</li>
-<li>giving up tclck84 as well</li>
-<li>diff_image</li>
-<li>ccp4mapwish</li>
+<li><p>Might be one of the 'known error' ? <code>Compiling Phaser with GCC 4.2 and OpenMP causes "internal compiler error". Use newer compiler or remove --enable-openmp-if-possible=True from checkout/devtools/conf.py.</code> Trying that out...: failed (was probably not accounted for, or overwritten somehow). Cancelled the build procedure, and restarted it. Although this time the change was taken into account, outcome was same... Reverting the change.</p>
+</li>
+<li><p>Might be a <a href="https://stackoverflow.com/questions/2584198/undefined-symbol-pyunicodeucs2-decode-whilst-trying-to-install-psycopg2?utm_medium=organic&amp;utm_source=google_rich_qa&amp;utm_campaign=google_rich_qa">UCS2/UCS4 problem</a> ?</p>
+</li>
 </ul>
+<p><code>*** module ccp4-linux not built due to non buildable default *** [110/110]
+*** module ccp4-linux not built due to non buildable tcltk84 *** [110/110]
+*** module ccp4-linux not built due to non buildable arcimboldo *** [110/110]
+*** the following modules were not built *** [110/110]
+cctbx-phaser pointless aimless feckless tcltk84 diff-image ccp4mapwish blend lxml ccp4mg default scipy arcimboldo ccp4-linux</code></p>
 
 </div>
 </div>

@@ -1,0 +1,31 @@
+<Job>
+<Title>cif2mtz_test</Title>
+<SubJob_000>
+<RunDate>17/ 5/2018</RunDate>
+<RunTime>14:36:02</RunTime>
+</SubJob_000>
+<SubJob_001>
+<RunDate>17/ 5/2018</RunDate>
+<RunTime>14:36:03</RunTime>
+</SubJob_001>
+<SubJob_002>
+<RunDate>17/ 5/2018</RunDate>
+<RunTime>14:36:03</RunTime>
+</SubJob_002>
+<SubJob_003>
+<RunDate>17/ 5/2018</RunDate>
+<RunTime>14:36:03</RunTime>
+</SubJob_003>
+<SubJob_004>
+<RunDate>17/ 5/2018</RunDate>
+<RunTime>14:36:03</RunTime>
+</SubJob_004>
+<SubJob_005>
+<RunDate>17/ 5/2018</RunDate>
+<RunTime>14:36:04</RunTime>
+</SubJob_005>
+<Files>
+<File_001 path="/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/4y9h-sf.cif" />
+<File_002 path="/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/4y9h-sf.mtz" />
+</Files>
+</Job>
