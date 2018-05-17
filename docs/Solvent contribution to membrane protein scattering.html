@@ -11775,7 +11775,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Solvent-treatment-in-macromolecular-crystallography">Solvent treatment in macromolecular crystallography<a class="anchor-link" href="#Solvent-treatment-in-macromolecular-crystallography">&#182;</a></h2><p>We address here whether there is room for improvement in the way solvent regions are accounted for/modelled in macromolecular crystallography, and whether possible improvements can be designed to increase the amount of extractable information, and better resulting models.</p>
+<h1 id="Solvent-treatment-in-macromolecular-crystallography">Solvent treatment in macromolecular crystallography<a class="anchor-link" href="#Solvent-treatment-in-macromolecular-crystallography">&#182;</a></h1><p>Is there room for improvement in the way solvent regions are accounted for/modelled in macromolecular crystallography ? Waht are possible improvements in order to increase the amount of extractable information, and better resulting models.</p>
 
 </div>
 </div>
@@ -11784,7 +11784,9 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Theory">Theory<a class="anchor-link" href="#Theory">&#182;</a></h3>
+<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><p>Untapped potential (Holton) ?</p>
+<p>Membrane proteins of known structures: <a href="http://blanco.biomol.uci.edu/mpstruc/">http://blanco.biomol.uci.edu/mpstruc/</a></p>
+
 </div>
 </div>
 </div>
@@ -11792,7 +11794,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Macromolecule-in-aqueous-phase">Macromolecule in aqueous phase<a class="anchor-link" href="#Macromolecule-in-aqueous-phase">&#182;</a></h4>
+<h2 id="Methods">Methods<a class="anchor-link" href="#Methods">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -11800,7 +11802,8 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Macromolecule-in-mixed-phase-(water/oil)">Macromolecule in mixed phase (water/oil)<a class="anchor-link" href="#Macromolecule-in-mixed-phase-(water/oil)">&#182;</a></h4>
+<h3 id="&quot;Structure&quot;-of-the-solvent---MD-of-unit-cells">"Structure" of the solvent - MD of unit cells<a class="anchor-link" href="#&quot;Structure&quot;-of-the-solvent---MD-of-unit-cells">&#182;</a></h3><p>See Wall(2018) for a possible method. Coarse-grained simulations of unit cells (with fixed macromolecules) might give some insight on how detergent and lipids partition themselves in the solvent channel. Might be useful as a starting point for refining against Bragg and continuous scattering.</p>
+
 </div>
 </div>
 </div>
@@ -11808,7 +11811,40 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Existing/Implemented-methods">Existing/Implemented methods<a class="anchor-link" href="#Existing/Implemented-methods">&#182;</a></h3>
+<h3 id="Density-modification">Density modification<a class="anchor-link" href="#Density-modification">&#182;</a></h3><p>A first idea would be to consider that improper treatment of the solvent region leads to a signature in the plot of Rfree by resolution shell (see <a href="https://www.phenix-online.org/documentation/reference/unmerged_data.html">https://www.phenix-online.org/documentation/reference/unmerged_data.html</a> ). It would be interesting to see how this plot actually looks like for a representative set of membrane versus water.</p>
+<p>One way to correct is to play with the mask.
+Look at Afonine's account in <a href="../refs/Tips-and-Tricks-phenix_refine_2008_may_22_CCP4_final.pdf">phenix2008</a>, or Murshudov's code in <a href="http://www.ccp4.ac.uk/html/refmac5/keywords/xray-principal.html#solv">refmac</a>. Refmac is open source, and things seem to happen in <code>solvent_contr_mask.f</code>. I think DEN(i,j,k) is set to 0 in the protein, and 1 elsewhere, so we could just modulate that a little.</p>
+<p>Trying to install refmac:</p>
+<h4 id="option-1:--on-my-Mac-(failed-so-far)">option 1:  on my Mac (failed so far)<a class="anchor-link" href="#option-1:--on-my-Mac-(failed-so-far)">&#182;</a></h4><p>install <a href="http://www.ccp4.ac.uk/dev/main.php">ccp4</a> (failed so far). Second try: <a href="http://devtools.fg.oisin.rc-harwell.ac.uk/src-readme.html">downloaded this</a>. Had to install BLAS and LAPACK libraries <a href="https://pheiter.wordpress.com/2012/09/04/howto-installing-lapack-and-blas-on-mac-os/">see here</a>. Encountered a problem with the -static option, that seems to cause problems with my gcc. Trying again following the BUILD protocol...</p>
+<p><code>(in SRC = /Applications/ccp4-7.0/src/ccp4-src-2016-02-10/ )
+ ./build patchelf : OK
+ ./update qt4 : OK
+ ./build qt4 : failed, instead linked /Applications/ccp4-7.0/lib/qt4 in SRC/ccp4-dev/lib/
+ ./build ccp4-osx : failed list = molrep, sfcheck</code></p>
+<p>edited <code>cj.rc</code>:</p>
+<ul>
+<li>number of jobs : 4</li>
+</ul>
+<p>Now going to refmac only, <code>makefile_linuxgfortran</code> seems promising...
+We need</p>
+<p><code>gfortran: error: /Applications/ccp4-7.0/lib/libmmdb.a: No such file or directory
+gfortran: error: /Applications/ccp4-7.0/lib/libfftw.a: No such file or directory</code></p>
+<p>working on <code>makefile</code>, reinstalled gcc with Homebrew (version 8), and had to change <code>/opt/local/bin/as</code> to <code>/opt/local/bin/as.bak</code>, and <code>/opt/local/bin/ld</code> to <code>/opt/local/bin/ld.bak</code>
+As a consequence, had to change <code>gibbs_gm_sampler.f90</code> so <code>random_seed</code> from the updated gcc work.
+Also installed <a href="https://github.com/VerKnowSys/Sofin-llds">ld</a> in <code>usr/local/bin</code>, and <code>sudo ln -s /usr/local/bin/ld</code> in <code>/opt/local/bin</code>.</p>
+<p>(for the record, maybe check <a href="ftp://ftp.ccp4.ac.uk/ccp4/6.0.2/prerelease/ (failed so far">this</a>).</p>
+<h4 id="option-2:-on-psana">option 2: on psana<a class="anchor-link" href="#option-2:-on-psana">&#182;</a></h4><p>careful with <a href="https://confluence.slac.stanford.edu/display/PCDS/Data+Retention+Policy">data retention policy</a> : <code>df -h ~fpoitevi</code></p>
+<p>will work on psana in <code>/reg/d/psdm/misc/CryoEM/cgati/detergent-flattening</code></p>
+<h5 id="Installation">Installation<a class="anchor-link" href="#Installation">&#182;</a></h5><p>untarred ccp4 in <code>/reg/neh/home5/fpoitevi/Toolkit/ccp4/</code>.</p>
+<p>Thought of using <code>yum</code> for a moment.
+<code>pip install rpm-py-installer : failed (no permission)
+(can be solved by doing it in myana)
+(did not try further)</code></p>
+<p>Seems that we already have most libraries, and can probably install missing ones with pip within myana <a href="https://confluence.slac.stanford.edu/display/PSDMInternal/User+Documentation#UserDocumentation-UserCondaEnvironments">How-To</a>. Let's follow the <a href="http://devtools.fg.oisin.rc-harwell.ac.uk/src-readme.html">procedure</a>:</p>
+<p><code>./build patchelf (had to do that twive)
+./update qt4
+./build qt4</code></p>
+
 </div>
 </div>
 </div>
@@ -11816,7 +11852,8 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="The-case-of-water-soluble-proteins">The case of water-soluble proteins<a class="anchor-link" href="#The-case-of-water-soluble-proteins">&#182;</a></h4>
+<h3 id="Systems-considered">Systems considered<a class="anchor-link" href="#Systems-considered">&#182;</a></h3><h4 id="GLIC">GLIC<a class="anchor-link" href="#GLIC">&#182;</a></h4><p><a href="http://www.rcsb.org/structure/4IL4">GLIC with Se-DDM</a></p>
+
 </div>
 </div>
 </div>
@@ -11824,34 +11861,14 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="The-case-of-detergent-solubilized-proteins">The case of detergent solubilized proteins<a class="anchor-link" href="#The-case-of-detergent-solubilized-proteins">&#182;</a></h4>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="The-case-of-LCP">The case of LCP<a class="anchor-link" href="#The-case-of-LCP">&#182;</a></h4>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Untapped-potential-?">Untapped potential ?<a class="anchor-link" href="#Untapped-potential-?">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><ol>
+<h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><ul>
 <li>Holton, Classen, Frankel, Tainer. <em>The R-factor gap in macromolecular crystallography: an untapped potential for insights on accurate structures.</em> (2014) FEBS J <a href="https://www.ncbi.nlm.nih.gov/pubmed/25040949/">(link)</a></li>
 <li>Weichenberger, Afonine, Kantardjieff, Rupp. <em>The solvent component of macromolecular crystals</em> (2015) Acta D <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4427195/">(link)</a></li>
-</ol>
+<li>Carpenter, Beis, Cameron, Iwata. <em>Overcoming the challenges of membrane protein crystallography</em> (2008) COSB <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2580798/">(link)</a></li>
+<li><a href="http://blanco.biomol.uci.edu/mpstruc/">http://blanco.biomol.uci.edu/mpstruc/</a></li>
+<li>Urzhumtsev. <em>MODELLING OF DISORDERED SOLVENT IN MACROMOLECULAR CRYSTALS</em> <a href="http://www.ccp4.ac.uk/newsletters/newsletter38/08_solvent.html">(CCP4 newsletter)</a></li>
+<li>Wall. <em>Internal protein motions in molecular-dynamics simulations of Bragg and diffuse X-ray scattering.</em> (2018) IUCrJ <a href="https://journals.iucr.org/m/issues/2018/02/00/ec5007/index.html">(link)</a></li>
+</ul>
 
 </div>
 </div>
