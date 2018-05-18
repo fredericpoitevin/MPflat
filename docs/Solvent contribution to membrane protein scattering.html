@@ -12106,6 +12106,27 @@ RuntimeError: the sip module implements API v11.0 to v11.1 but the PyQt4.QtCore 
 
 <pre><code>cd /reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src
 ./build refmac : SUCCESS!</code></pre>
+<h5 id="Attempt-4">Attempt 4<a class="anchor-link" href="#Attempt-4">&#182;</a></h5><p>Altogether, ccp4 uses 10G+ of space on my <code>pslogin home</code> where I am allowed only 20G.</p>
+<details>
+    <summary>Building a lite version (202M)</summary>
+    ```cd $HOME/Toolkit/ccp4
+    mkdir ccp4-lite
+    cd ccp4-7.0-src
+    cp -r build update README.* cj.rc ../ccp4-lite/
+    cd ../ccp4-lite/
+    mkdir checkout
+    cd checkout
+    cp -r ../../ccp4-7.0-src/checkout/refmac5.8 .
+    cp -r ../../ccp4-7.0-src/checkout/devtools .
+    cp -r ../../ccp4-7.0-src/checkout/ccp4-base .
+    cp -r ../../ccp4-7.0-src/checkout/mmdb2 .
+    cp -r ../../ccp4-7.0-src/checkout/libccp4 .
+    cp -r ../../ccp4-7.0-src/checkout/lapack-3.5.0 .
+    cp -r ../../ccp4-7.0-src/checkout/fftw-2.1.5 .
+    cd ../
+    ./build refmac
+    ```
+</details><p><code>ccp4-lite.tar.bz2</code> was archived on git in <code>MPflat/src</code> on May 18, 2018, prior any modification. The original full ccp4 package was removed from <code>psana</code> at the same time.</p>
 
 </div>
 </div>
