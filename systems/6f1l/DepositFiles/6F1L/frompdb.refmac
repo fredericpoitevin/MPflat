@@ -1,7 +1,7 @@
 data_6F1L[frompdb]
 _entry.id                     6F1L
 _diffrn.id                    frompdb
-_audit.creation_date          2018-05-17T15:51:32-07:00
+_audit.creation_date          2018-05-17T18:24:57-07:00
 _software.classification      refinement
 _software.contact_author      'Garib N. Murshudov'
 _software.contact_author_email garib@mrc-lmb.cam.ac.uk
@@ -12,6 +12,7 @@ _software.version 'refmac_5.8.0222  24/04/2001'
 _computing.structure_refinement 'REFMAC 5.8.0222'
 
 _refine.ls_matrix_type '  Method of minimisation  : Sparse Matrix '
+_refine.details 'HYDROGENS HAVE BEEN ADDED IN THE RIDING POSITIONS'
  
 _refine.B_iso_mean            17.878
 _refine.aniso_B[1][1]          0.129

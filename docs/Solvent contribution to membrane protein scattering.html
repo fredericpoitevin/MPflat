@@ -11825,24 +11825,81 @@ Look at <a href="#afonine2008">Afonine's account</a> or Murshudov's code in <a h
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Systems-considered">Systems considered<a class="anchor-link" href="#Systems-considered">&#182;</a></h3><h4 id="bacteriorhodospin-in-bicelles">bacteriorhodospin in bicelles<a class="anchor-link" href="#bacteriorhodospin-in-bicelles">&#182;</a></h4><p>We compare in the table below bR with lysozyme (6f1l), after 20 cycles of rigid-body refinement with refmac5, with and without solvent contribution.</p>
+<h3 id="Systems-considered">Systems considered<a class="anchor-link" href="#Systems-considered">&#182;</a></h3><h4 id="bacteriorhodospin-in-bicelles">bacteriorhodospin in bicelles<a class="anchor-link" href="#bacteriorhodospin-in-bicelles">&#182;</a></h4><p>We compare in the table below bR with lysozyme (6f1l, although might not be the best dataset to start with...) rigid-body refinement with refmac5 and phenix, with and without solvent contribution. 'gready' means detergents and lipids were kept - they were removed otherwise. Interesting curves for refmac are red (Rwork) and green (Rfree).</p>
 <table>
 <thead><tr>
 <th></th>
 <th>without solvent</th>
 <th>with solvent</th>
+<th><em>refined with</em></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>4Y9H (refmac)</td>
+<td>4Y9H (refmac:greasy)</td>
 <td><img src="4y9h-refmac-without-solvent.png" alt="without solvent"></td>
-<td><img src="4y9h-refmac-with-solvent.png" alt="with solvent"> </td>
+<td><img src="4y9h-refmac-with-solvent.png" alt="with solvent"></td>
+<td><em>refmac</em></td>
+</tr>
+<tr>
+<td>4Y9H (phenix:greasy)</td>
+<td><img src="4y9h_nogrease-phenix-without-solvent.png" alt="without solvent"></td>
+<td><img src="4y9h_nogrease-phenix-with-solvent.png" alt="with solvent"></td>
+<td><em>refmac</em></td>
+</tr>
+<tr>
+<td>4Y9H (refmac)</td>
+<td><img src="4y9h_nogrease-refmac-without-solvent.png" alt="without solvent"></td>
+<td><img src="4y9h_nogrease-refmac-with-solvent.png" alt="with solvent"></td>
+<td><em>refmac</em></td>
+</tr>
+<tr>
+<td>4Y9H (phenix)</td>
+<td><img src="4y9h_nogrease-phenix-without-solvent.png" alt="without solvent"></td>
+<td><img src="4y9h_nogrease-phenix-with-solvent.png" alt="with solvent"></td>
+<td><em>refmac</em></td>
+</tr>
+<tr>
+<td>2QMO (refmac)</td>
+<td><img src="2qmo-refmac-without-solvent.png" alt="without solvent"></td>
+<td><img src="2qmo-refmac-with-solvent.png" alt="with solvent"></td>
+<td><em>refmac</em></td>
+</tr>
+<tr>
+<td>2QMO (phenix)</td>
+<td><img src="2qmo-phenix-without-solvent.png" alt="without solvent"></td>
+<td><img src="2qmo-phenix-with-solvent.png" alt="with solvent"></td>
+<td><em>refmac</em></td>
+</tr>
+<tr>
+<td>5TL4 (refmac)</td>
+<td><img src="5tl4-refmac-without-solvent.png" alt="without solvent"></td>
+<td><img src="5tl4-refmac-with-solvent.png" alt="with solvent"></td>
+<td><em>phenix</em></td>
+</tr>
+<tr>
+<td>5TL4 (phenix)</td>
+<td><img src="5tl4-phenix-without-solvent.png" alt="without solvent"></td>
+<td><img src="5tl4-phenix-with-solvent.png" alt="with solvent"></td>
+<td><em>phenix</em></td>
 </tr>
 <tr>
 <td>6F1L (refmac)</td>
 <td><img src="6f1l-refmac-without-solvent.png" alt="without solvent"></td>
-<td><img src="6f1l-refmac-with-solvent.png" alt="with solvent"> </td>
+<td><img src="6f1l-refmac-with-solvent.png" alt="with solvent"></td>
+<td><em>phenix</em></td>
+</tr>
+<tr>
+<td>6F1L (phenix)</td>
+<td><img src="6f1l-phenix-without-solvent-noXYZ.png" alt="without solvent"></td>
+<td><img src="6f1l-phenix-with-solvent-noXYZ.png" alt="with solvent"></td>
+<td><em>phenix</em></td>
+</tr>
+<tr>
+<td>6F1L (phenix:XYZ+realspace)</td>
+<td><img src="6f1l-phenix-without-solvent.png" alt="without solvent"></td>
+<td><img src="6f1l-phenix-with-solvent.png" alt="with solvent"></td>
+<td><em>phenix</em></td>
 </tr>
 </tbody>
 </table>
@@ -12012,6 +12069,13 @@ ImportError: /reg/g/psdm/sw/releases/ana-current/arch/x86_64-rhel7-gcc48-opt/pyt
 *** module ccp4-linux not built due to non buildable arcimboldo *** [110/110]
 *** the following modules were not built *** [110/110]
 cctbx-phaser pointless aimless feckless tcltk84 diff-image ccp4mapwish blend lxml ccp4mg default scipy arcimboldo ccp4-linux</code></p>
+<p><strong>New attempt</strong> at building ccp4-linux:
+somehow, slightly different message at cctbx-phaser:</p>
+<p><code>File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/ccp4-7.0/lib/python2.7/site-packages/PyQt4/uic/__init__.py", line 164, in compileUi
+    from PyQt4.QtCore import PYQT_VERSION_STR
+RuntimeError: the sip module implements API v11.0 to v11.1 but the PyQt4.QtCore module requires API v11.3</code></p>
+<p>Trying <a href="https://stackoverflow.com/questions/40159349/runtimeerror-the-sip-module-implements-api-v11-0-to-v11-2-but-the-pyqt5-qtcore?answertab=votes#tab-top">this fix</a>: failed - exceeded data storage...</p>
+<p><strong>BIG SWITCH</strong> removed and clean conda environment, to be replaced with <code>pip --user</code>.</p>
 
 </div>
 </div>

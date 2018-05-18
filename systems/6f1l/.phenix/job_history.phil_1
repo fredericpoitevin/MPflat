@@ -1,0 +1,119 @@
+LIBTBX_BASE_DIR = "/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/6f1l"
+job_summary {
+  job_id = 1
+  app_id = "Refine"
+  program_name = "phenix.refine"
+  program_args = "/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/6f1l/.phenix/project_data/refine_1.eff" \
+                 "--overwrite" "--unused_ok"
+  config_file = "$(LIBTBX_BASE_DIR)/.phenix/project_data/refine_1.eff"
+  title = "Refine-without-solvent"
+  time_started = 1526602930
+  time_finished = 1526603436
+  result_directory = "$(LIBTBX_BASE_DIR)/Refine_1"
+  status = started failed aborted *complete deleted
+  user_flagged = False
+  r_free = 0.226
+  process_type = 1
+  applet = False
+}
+job_summary {
+  job_id = 2
+  app_id = "Refine"
+  program_name = "phenix.refine"
+  program_args = "/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/6f1l/.phenix/project_data/refine_2.eff" \
+                 "--overwrite" "--unused_ok"
+  config_file = "$(LIBTBX_BASE_DIR)/.phenix/project_data/refine_2.eff"
+  title = "Refine-without-solvent"
+  time_started = 1526603974
+  time_finished = 1526604590
+  result_directory = "$(LIBTBX_BASE_DIR)/Refine_2"
+  status = started failed aborted *complete deleted
+  user_flagged = False
+  r_free = 0.1827
+  process_type = 1
+  applet = False
+}
+job_summary {
+  job_id = 3
+  app_id = "Refine"
+  program_name = "phenix.refine"
+  program_args = "/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/6f1l/.phenix/project_data/refine_3.eff" \
+                 "--overwrite" "--unused_ok"
+  config_file = "$(LIBTBX_BASE_DIR)/.phenix/project_data/refine_3.eff"
+  title = "[ phenix.refine ]"
+  time_started = 1526606036
+  time_finished = 1526606282
+  result_directory = "$(LIBTBX_BASE_DIR)/Refine_3"
+  status = started failed aborted *complete deleted
+  user_flagged = False
+  r_free = 0.2317
+  process_type = 1
+  applet = False
+}
+job_summary {
+  job_id = 4
+  app_id = "Refine"
+  program_name = "phenix.refine"
+  program_args = "/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/6f1l/.phenix/project_data/refine_4.eff" \
+                 "--overwrite" "--unused_ok"
+  config_file = "$(LIBTBX_BASE_DIR)/.phenix/project_data/refine_4.eff"
+  title = "[ phenix.refine ]"
+  time_started = 1526606183
+  time_finished = 1526606593
+  result_directory = "$(LIBTBX_BASE_DIR)/Refine_4"
+  status = started failed aborted *complete deleted
+  user_flagged = False
+  r_free = 0.1839
+  process_type = 1
+  applet = False
+}
+job_summary {
+  job_id = 5
+  app_id = "Refine"
+  program_name = "phenix.refine"
+  program_args = "/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/6f1l/.phenix/project_data/refine_5.eff" \
+                 "--overwrite" "--unused_ok"
+  config_file = "$(LIBTBX_BASE_DIR)/.phenix/project_data/refine_5.eff"
+  title = "[ phenix.refine ]"
+  time_started = 1526607101
+  time_finished = 1526607400
+  result_directory = "$(LIBTBX_BASE_DIR)/Refine_5"
+  status = started failed aborted *complete deleted
+  user_flagged = False
+  r_free = 0.232
+  process_type = 1
+  applet = False
+}
+job_summary {
+  job_id = 6
+  app_id = "Refine"
+  program_name = "phenix.refine"
+  program_args = "/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/6f1l/.phenix/project_data/refine_6.eff" \
+                 "--overwrite" "--unused_ok"
+  config_file = "$(LIBTBX_BASE_DIR)/.phenix/project_data/refine_6.eff"
+  title = "[ phenix.refine ]"
+  time_started = 1526607879
+  time_finished = None
+  result_directory = "$(LIBTBX_BASE_DIR)/Refine_6"
+  status = *started failed aborted complete deleted
+  user_flagged = False
+  r_free = None
+  process_type = 1
+  applet = False
+}
+job_summary {
+  job_id = 7
+  app_id = "Xtriage"
+  program_name = "phenix.xtriage"
+  program_args = "/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/6f1l/.phenix/project_data/xtriage_7.eff"
+  config_file = "$(LIBTBX_BASE_DIR)/.phenix/project_data/xtriage_7.eff"
+  title = "xtriage"
+  time_started = 1526608100
+  time_finished = 1526608108
+  result_directory = "$(LIBTBX_BASE_DIR)/Xtriage_7"
+  status = started failed aborted *complete deleted
+  user_flagged = False
+  r_free = None
+  process_type = 1
+  applet = False
+}

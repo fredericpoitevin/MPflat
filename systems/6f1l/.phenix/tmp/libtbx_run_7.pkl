@@ -1,0 +1,5 @@
+Äcmmtbx.scaling.xtriage
+launcher
+q)Åq}q(U	file_nameqUU/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/6f1l/.phenix/project_data/xtriage_7.pklUargsq]qUU/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/6f1l/.phenix/project_data/xtriage_7.effqaU
+output_dirqU</Users/fpoitevi/gdrive/Toolkit/MPflat/systems/6f1l/Xtriage_7q	U_outq
+NUlog_fileqUU/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/6f1l/.phenix/project_data/xtriage_7.logU	job_titleqNub.

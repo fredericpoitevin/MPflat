@@ -1,0 +1,5 @@
+Äcphenix.refinement.runtime
+run_phenix_refine
+q)Åq}q(U	file_nameqUT/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/5tl4/.phenix/project_data/refine_1.pklUargsq]q(UT/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/5tl4/.phenix/project_data/refine_1.effqU--overwriteqU--unused_okq	eUuse_filled_mapsq
+àU
+output_dirqU;/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/5tl4/Refine_1qU_outqNUlog_fileqUT/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/5tl4/.phenix/project_data/refine_1.logU	job_titleqNub.

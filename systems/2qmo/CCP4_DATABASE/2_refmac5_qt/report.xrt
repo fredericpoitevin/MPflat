@@ -1,0 +1,392 @@
+<report xmlns:xrt="http://www.ccp4.ac.uk/xrt">
+<xrt:results>
+
+<xrt:title select="/Job/Title" />
+<xrt:section progname="Refmac" rundate="/Job/SubJob_000/RunDate" runtime="/Job/SubJob_000/RunTime" title="Run of Refmac on 17/ 5/2018 at 20:16:36">
+
+<xrt:keytext folded="false" name="Reference1" select="/Job/SubJob_000/KeyText_001" />
+<xrt:keytext folded="false" name="Reference2" select="/Job/SubJob_000/KeyText_002" />
+<xrt:keytext folded="false" name="Result" select="/Job/SubJob_000/KeyText_003" />
+
+<xrt:graph>
+
+<xrt:table select="/Job/SubJob_000/Table_001" title="Cycle    1. Rfactor analysis, F distribution v resln" type="plain">
+
+<xrt:data title="M(4SSQ/LL)" />
+<xrt:data title="NR_used" />
+<xrt:data title="%_obs" />
+<xrt:data title="M(Fo_used)" />
+<xrt:data title="M(Fc_used)" />
+<xrt:data title="Rf_used" />
+<xrt:data title="WR_used" />
+<xrt:data title="NR_free" />
+<xrt:data title="M(Fo_free)" />
+<xrt:data title="M(Fc_free)" />
+<xrt:data title="Rf_free" />
+<xrt:data title="WR_free" />
+
+<xrt:plot title="Cycle    1. &lt;Rfactor&gt; v. resln" ymin="0">
+<plotline colour="auto" xcol="0" ycol="5" />
+<plotline colour="auto" xcol="0" ycol="6" />
+<plotline colour="auto" xcol="0" ycol="10" />
+<plotline colour="auto" xcol="0" ycol="11" />
+</xrt:plot>
+
+<xrt:plot title="Cycle    1. &lt;Fobs&gt; and &lt;Fc&gt; v. resln" ymin="0">
+<plotline colour="auto" xcol="0" ycol="3" />
+<plotline colour="auto" xcol="0" ycol="4" />
+<plotline colour="auto" xcol="0" ycol="8" />
+<plotline colour="auto" xcol="0" ycol="9" />
+</xrt:plot>
+
+<xrt:plot title="Cycle    1. % observed v. resln" ymin="0">
+<plotline colour="auto" xcol="0" ycol="2" />
+</xrt:plot>
+
+</xrt:table>
+
+<xrt:table select="/Job/SubJob_000/Table_002" title="Cycle    1. FSC and  Fom(&lt;cos(DelPhi)&gt;-acentric, centric, overall v resln" type="plain">
+
+<xrt:data title="&lt;4SSQ/LL&gt;" />
+<xrt:data title="NREFa" />
+<xrt:data title="FOMa" />
+<xrt:data title="NREFc" />
+<xrt:data title="FOMc" />
+<xrt:data title="NREFall" />
+<xrt:data title="FOMall" />
+<xrt:data title="SigmaA_Fc1" />
+<xrt:data title="FSCfree" />
+<xrt:data title="FSCwork" />
+<xrt:data title="CorrFoFcFree" />
+<xrt:data title="CorrFoFcWork" />
+
+<xrt:plot title="Cycle    1. M(Fom) v. resln" ymin="0">
+<plotline colour="auto" xcol="0" ycol="2" />
+<plotline colour="auto" xcol="0" ycol="4" />
+<plotline colour="auto" xcol="0" ycol="6" />
+<plotline colour="auto" xcol="0" ycol="7" />
+<plotline colour="auto" xcol="0" ycol="8" />
+<plotline colour="auto" xcol="0" ycol="9" />
+<plotline colour="auto" xcol="0" ycol="10" />
+<plotline colour="auto" xcol="0" ycol="11" />
+</xrt:plot>
+
+</xrt:table>
+
+<xrt:table select="/Job/SubJob_000/Table_003" title="Cycle   20. Rfactor analysis, F distribution v resln" type="plain">
+
+<xrt:data title="M(4SSQ/LL)" />
+<xrt:data title="NR_used" />
+<xrt:data title="%_obs" />
+<xrt:data title="M(Fo_used)" />
+<xrt:data title="M(Fc_used)" />
+<xrt:data title="Rf_used" />
+<xrt:data title="WR_used" />
+<xrt:data title="NR_free" />
+<xrt:data title="M(Fo_free)" />
+<xrt:data title="M(Fc_free)" />
+<xrt:data title="Rf_free" />
+<xrt:data title="WR_free" />
+
+<xrt:plot title="Cycle   20. &lt;Rfactor&gt; v. resln" ymin="0">
+<plotline colour="auto" xcol="0" ycol="5" />
+<plotline colour="auto" xcol="0" ycol="6" />
+<plotline colour="auto" xcol="0" ycol="10" />
+<plotline colour="auto" xcol="0" ycol="11" />
+</xrt:plot>
+
+<xrt:plot title="Cycle   20. &lt;Fobs&gt; and &lt;Fc&gt; v. resln" ymin="0">
+<plotline colour="auto" xcol="0" ycol="3" />
+<plotline colour="auto" xcol="0" ycol="4" />
+<plotline colour="auto" xcol="0" ycol="8" />
+<plotline colour="auto" xcol="0" ycol="9" />
+</xrt:plot>
+
+<xrt:plot title="Cycle   20. % observed v. resln" ymin="0">
+<plotline colour="auto" xcol="0" ycol="2" />
+</xrt:plot>
+
+</xrt:table>
+
+<xrt:table select="/Job/SubJob_000/Table_004" title="Cycle   20. FSC and  Fom(&lt;cos(DelPhi)&gt;-acentric, centric, overall v resln" type="plain">
+
+<xrt:data title="&lt;4SSQ/LL&gt;" />
+<xrt:data title="NREFa" />
+<xrt:data title="FOMa" />
+<xrt:data title="NREFc" />
+<xrt:data title="FOMc" />
+<xrt:data title="NREFall" />
+<xrt:data title="FOMall" />
+<xrt:data title="SigmaA_Fc1" />
+<xrt:data title="FSCfree" />
+<xrt:data title="FSCwork" />
+<xrt:data title="CorrFoFcFree" />
+<xrt:data title="CorrFoFcWork" />
+
+<xrt:plot title="Cycle   20. M(Fom) v. resln" ymin="0">
+<plotline colour="auto" xcol="0" ycol="2" />
+<plotline colour="auto" xcol="0" ycol="4" />
+<plotline colour="auto" xcol="0" ycol="6" />
+<plotline colour="auto" xcol="0" ycol="7" />
+<plotline colour="auto" xcol="0" ycol="8" />
+<plotline colour="auto" xcol="0" ycol="9" />
+<plotline colour="auto" xcol="0" ycol="10" />
+<plotline colour="auto" xcol="0" ycol="11" />
+</xrt:plot>
+
+</xrt:table>
+
+<xrt:table select="/Job/SubJob_000/Table_005" title="Cycle   21. Rfactor analysis, F distribution v resln" type="plain">
+
+<xrt:data title="M(4SSQ/LL)" />
+<xrt:data title="NR_used" />
+<xrt:data title="%_obs" />
+<xrt:data title="M(Fo_used)" />
+<xrt:data title="M(Fc_used)" />
+<xrt:data title="Rf_used" />
+<xrt:data title="WR_used" />
+<xrt:data title="NR_free" />
+<xrt:data title="M(Fo_free)" />
+<xrt:data title="M(Fc_free)" />
+<xrt:data title="Rf_free" />
+<xrt:data title="WR_free" />
+
+<xrt:plot title="Cycle   21. &lt;Rfactor&gt; v. resln" ymin="0">
+<plotline colour="auto" xcol="0" ycol="5" />
+<plotline colour="auto" xcol="0" ycol="6" />
+<plotline colour="auto" xcol="0" ycol="10" />
+<plotline colour="auto" xcol="0" ycol="11" />
+</xrt:plot>
+
+<xrt:plot title="Cycle   21. &lt;Fobs&gt; and &lt;Fc&gt; v. resln" ymin="0">
+<plotline colour="auto" xcol="0" ycol="3" />
+<plotline colour="auto" xcol="0" ycol="4" />
+<plotline colour="auto" xcol="0" ycol="8" />
+<plotline colour="auto" xcol="0" ycol="9" />
+</xrt:plot>
+
+<xrt:plot title="Cycle   21. % observed v. resln" ymin="0">
+<plotline colour="auto" xcol="0" ycol="2" />
+</xrt:plot>
+
+</xrt:table>
+
+<xrt:table select="/Job/SubJob_000/Table_006" title="Cycle   21. FSC and  Fom(&lt;cos(DelPhi)&gt;-acentric, centric, overall v resln" type="plain">
+
+<xrt:data title="&lt;4SSQ/LL&gt;" />
+<xrt:data title="NREFa" />
+<xrt:data title="FOMa" />
+<xrt:data title="NREFc" />
+<xrt:data title="FOMc" />
+<xrt:data title="NREFall" />
+<xrt:data title="FOMall" />
+<xrt:data title="SigmaA_Fc1" />
+<xrt:data title="FSCfree" />
+<xrt:data title="FSCwork" />
+<xrt:data title="CorrFoFcFree" />
+<xrt:data title="CorrFoFcWork" />
+
+<xrt:plot title="Cycle   21. M(Fom) v. resln" ymin="0">
+<plotline colour="auto" xcol="0" ycol="2" />
+<plotline colour="auto" xcol="0" ycol="4" />
+<plotline colour="auto" xcol="0" ycol="6" />
+<plotline colour="auto" xcol="0" ycol="7" />
+<plotline colour="auto" xcol="0" ycol="8" />
+<plotline colour="auto" xcol="0" ycol="9" />
+<plotline colour="auto" xcol="0" ycol="10" />
+<plotline colour="auto" xcol="0" ycol="11" />
+</xrt:plot>
+
+</xrt:table>
+
+<xrt:table select="/Job/SubJob_000/Table_007" title="Rfactor analysis, stats vs cycle" type="plain">
+
+<xrt:data title="Ncyc" />
+<xrt:data title="Rfact" />
+<xrt:data title="Rfree" />
+<xrt:data title="FOM" />
+<xrt:data title="-LL" />
+<xrt:data title="-LLfree" />
+<xrt:data title="rmsBOND" />
+<xrt:data title="zBOND" />
+<xrt:data title="rmsANGL" />
+<xrt:data title="zANGL" />
+<xrt:data title="rmsCHIRAL" />
+
+<xrt:plot title="&lt;Rfactor&gt; vs cycle" ymin="0">
+<plotline colour="auto" xcol="0" ycol="1" />
+<plotline colour="auto" xcol="0" ycol="2" />
+</xrt:plot>
+
+<xrt:plot title="FOM vs cycle" ymin="0">
+<plotline colour="auto" xcol="0" ycol="3" />
+</xrt:plot>
+
+<xrt:plot title="-LL vs cycle" ymin="0">
+<plotline colour="auto" xcol="0" ycol="4" />
+</xrt:plot>
+
+<xrt:plot title="-LLfree vs cycle" ymin="0">
+<plotline colour="auto" xcol="0" ycol="5" />
+</xrt:plot>
+
+<xrt:plot title="Geometry vs cycle" ymin="0">
+<plotline colour="auto" xcol="0" ycol="6" />
+<plotline colour="auto" xcol="0" ycol="7" />
+<plotline colour="auto" xcol="0" ycol="8" />
+<plotline colour="auto" xcol="0" ycol="9" />
+<plotline colour="auto" xcol="0" ycol="10" />
+</xrt:plot>
+
+</xrt:table>
+
+</xrt:graph>
+
+
+<xrt:table folded="true" select="/Job/SubJob_000/Table_001" title="Cycle    1. Rfactor analysis, F distribution v resln" type="plain">
+
+<xrt:data title="M(4SSQ/LL)" />
+<xrt:data title="NR_used" />
+<xrt:data title="%_obs" />
+<xrt:data title="M(Fo_used)" />
+<xrt:data title="M(Fc_used)" />
+<xrt:data title="Rf_used" />
+<xrt:data title="WR_used" />
+<xrt:data title="NR_free" />
+<xrt:data title="M(Fo_free)" />
+<xrt:data title="M(Fc_free)" />
+<xrt:data title="Rf_free" />
+<xrt:data title="WR_free" />
+
+</xrt:table>
+
+<xrt:table folded="true" select="/Job/SubJob_000/Table_002" title="Cycle    1. FSC and  Fom(&lt;cos(DelPhi)&gt;-acentric, centric, overall v resln" type="plain">
+
+<xrt:data title="&lt;4SSQ/LL&gt;" />
+<xrt:data title="NREFa" />
+<xrt:data title="FOMa" />
+<xrt:data title="NREFc" />
+<xrt:data title="FOMc" />
+<xrt:data title="NREFall" />
+<xrt:data title="FOMall" />
+<xrt:data title="SigmaA_Fc1" />
+<xrt:data title="FSCfree" />
+<xrt:data title="FSCwork" />
+<xrt:data title="CorrFoFcFree" />
+<xrt:data title="CorrFoFcWork" />
+
+</xrt:table>
+
+<xrt:table folded="true" select="/Job/SubJob_000/Table_003" title="Cycle   20. Rfactor analysis, F distribution v resln" type="plain">
+
+<xrt:data title="M(4SSQ/LL)" />
+<xrt:data title="NR_used" />
+<xrt:data title="%_obs" />
+<xrt:data title="M(Fo_used)" />
+<xrt:data title="M(Fc_used)" />
+<xrt:data title="Rf_used" />
+<xrt:data title="WR_used" />
+<xrt:data title="NR_free" />
+<xrt:data title="M(Fo_free)" />
+<xrt:data title="M(Fc_free)" />
+<xrt:data title="Rf_free" />
+<xrt:data title="WR_free" />
+
+</xrt:table>
+
+<xrt:table folded="true" select="/Job/SubJob_000/Table_004" title="Cycle   20. FSC and  Fom(&lt;cos(DelPhi)&gt;-acentric, centric, overall v resln" type="plain">
+
+<xrt:data title="&lt;4SSQ/LL&gt;" />
+<xrt:data title="NREFa" />
+<xrt:data title="FOMa" />
+<xrt:data title="NREFc" />
+<xrt:data title="FOMc" />
+<xrt:data title="NREFall" />
+<xrt:data title="FOMall" />
+<xrt:data title="SigmaA_Fc1" />
+<xrt:data title="FSCfree" />
+<xrt:data title="FSCwork" />
+<xrt:data title="CorrFoFcFree" />
+<xrt:data title="CorrFoFcWork" />
+
+</xrt:table>
+
+<xrt:table folded="true" select="/Job/SubJob_000/Table_005" title="Cycle   21. Rfactor analysis, F distribution v resln" type="plain">
+
+<xrt:data title="M(4SSQ/LL)" />
+<xrt:data title="NR_used" />
+<xrt:data title="%_obs" />
+<xrt:data title="M(Fo_used)" />
+<xrt:data title="M(Fc_used)" />
+<xrt:data title="Rf_used" />
+<xrt:data title="WR_used" />
+<xrt:data title="NR_free" />
+<xrt:data title="M(Fo_free)" />
+<xrt:data title="M(Fc_free)" />
+<xrt:data title="Rf_free" />
+<xrt:data title="WR_free" />
+
+</xrt:table>
+
+<xrt:table folded="true" select="/Job/SubJob_000/Table_006" title="Cycle   21. FSC and  Fom(&lt;cos(DelPhi)&gt;-acentric, centric, overall v resln" type="plain">
+
+<xrt:data title="&lt;4SSQ/LL&gt;" />
+<xrt:data title="NREFa" />
+<xrt:data title="FOMa" />
+<xrt:data title="NREFc" />
+<xrt:data title="FOMc" />
+<xrt:data title="NREFall" />
+<xrt:data title="FOMall" />
+<xrt:data title="SigmaA_Fc1" />
+<xrt:data title="FSCfree" />
+<xrt:data title="FSCwork" />
+<xrt:data title="CorrFoFcFree" />
+<xrt:data title="CorrFoFcWork" />
+
+</xrt:table>
+
+<xrt:table folded="true" select="/Job/SubJob_000/Table_007" title="Rfactor analysis, stats vs cycle" type="plain">
+
+<xrt:data title="Ncyc" />
+<xrt:data title="Rfact" />
+<xrt:data title="Rfree" />
+<xrt:data title="FOM" />
+<xrt:data title="-LL" />
+<xrt:data title="-LLfree" />
+<xrt:data title="rmsBOND" />
+<xrt:data title="zBOND" />
+<xrt:data title="rmsANGL" />
+<xrt:data title="zANGL" />
+<xrt:data title="rmsCHIRAL" />
+
+</xrt:table>
+
+</xrt:section>
+
+<xrt:section title="Input Files">
+
+<xrt:files>
+<xrt:file key="XYZIN" select="/Job/Files/File_001" type="xyz" />
+<xrt:file key="HKLIN" select="/Job/Files/File_002" type="hkl:hkl" />
+</xrt:files>
+
+</xrt:section>
+
+<xrt:section title="External Restraints">
+
+<xrt:files>
+</xrt:files>
+
+</xrt:section>
+
+<xrt:section title="Output Files">
+
+<xrt:files>
+<xrt:file key="XYZOUT" select="/Job/Files/File_003" type="xyz" />
+<xrt:file key="HKLOUT" select="/Job/Files/File_004" type="hkl:map" />
+</xrt:files>
+
+</xrt:section>
+
+</xrt:results>
+</report>

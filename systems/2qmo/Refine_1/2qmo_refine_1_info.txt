@@ -1,0 +1,208 @@
+phenix.refine summary
+
+Directory: /Users/fpoitevi/gdrive/Toolkit/MPflat/systems/2qmo/Refine_1
+Version: 1.10.1-2155
+Parameter file: /Users/fpoitevi/gdrive/Toolkit/MPflat/systems/2qmo/Refine_1/2qmo_refine_1.eff
+
+
+                    start         final
+  ---------------------------------------
+  R-work:           0.1988        0.1925
+  R-free:           0.2838        0.2548
+  RMS(angles):      1.61           1.61
+  RMS(bonds):       0.018          0.018
+
+
+REFERENCE:
+
+Afonine PV, Grosse-Kunstleve RW, Echols N, Headd JJ, Moriarty NW, Mustyakimov
+M, Terwilliger TC, Urzhumtsev A, Zwart PH, Adams PD. (2012) Towards automated
+crystallographic structure refinement with phenix.refine. Acta Crystallogr D
+Biol Crystallogr 68:352-67.
+
+
+=================================== Summary ===================================
+
+RMS(bonds): 0.018
+RMS(angles): 1.612
+
+========================= Geometry restraint outliers =========================
+
+Top bond length outliers (sorted by deviation):
+atoms                      ideal       model  difference   deviation (sigma)
+----------------------------------------------------------------------------
+ CA AILE A 125             1.545       1.602       0.057                5.41
+ CB AILE A 125      
+
+ C   ASN A 180             1.235       1.174      -0.061               -5.03
+ O   ASN A 180      
+
+ CA  ALA A  80             1.529       1.458      -0.070               -4.45
+ CB  ALA A  80      
+
+ CA  VAL A  78             1.540       1.490      -0.050               -4.36
+ CB  VAL A  78      
+
+Top angle outliers (sorted by deviation):
+atoms                      ideal       model  difference   deviation (sigma)
+----------------------------------------------------------------------------
+ C  AILE A 125           111.800     104.183      -7.617               -6.45
+ CA AILE A 125      
+ CB AILE A 125      
+
+ C  BILE A 125           111.440     105.693      -5.747               -6.05
+ CA BILE A 125      
+ CB BILE A 125      
+
+ N  AVAL A 123           108.950     113.843       4.893                4.99
+ CA AVAL A 123      
+ C  AVAL A 123      
+
+ N  BVAL A 123           109.990     114.770       4.780                4.64
+ CA BVAL A 123      
+ CB BVAL A 123      
+
+ C   LYS A 177           120.140     125.814       5.674                4.54
+ N   GLY A 178      
+ CA  GLY A 178      
+
+ N  AVAL A 123           110.080     106.136      -3.944               -4.24
+ CA AVAL A 123      
+ CB AVAL A 123      
+
+ N   LYS A  13           111.280     115.642       4.362                4.00
+ CA  LYS A  13      
+ C   LYS A  13      
+
+Top dihedral outliers (sorted by deviation):
+atoms                      ideal       model  difference   deviation (sigma)
+----------------------------------------------------------------------------
+ CD  ARG A  59             0.000    -179.104    -179.104              -13.86
+ NE  ARG A  59      
+ CZ  ARG A  59      
+ NH1 ARG A  59      
+
+ CA  SER A  71           180.000    -159.301      20.699                4.14
+ C   SER A  71      
+ N   PHE A  72      
+ CA  PHE A  72      
+
+Top chirality outliers (sorted by deviation):
+*** No deviations above the specified cutoff found.
+
+Top planarity outliers (sorted by deviation):
+*** No deviations above the specified cutoff found.
+
+
+============================ MolProbity validation ============================
+
+                 Ramachandran outliers:   0.0% (Goal: < 0.2%)
+                  Ramachandran favored:  98.7% (Goal: > 98%)
+                      Rotamer outliers:   0.0% (Goal: 1%)
+                       C-beta outliers:   0    (Goal: 0)
+                            Clashscore:   4.91
+                         Overall score:   1.26
+
+Ramachandran outliers:
+Chain   Residue     Residue type     Score       Phi       Psi
+--------------------------------------------------------------
+*** None found
+
+Bad rotamers:
+Chain   Residue          Score      Chi1      Chi2      Chi3      Chi4
+----------------------------------------------------------------------
+*** None found
+
+C-beta position outliers:
+Chain   Residue       Altloc   Deviation     Angle
+--------------------------------------------------
+*** None found
+
+Suggested sidechain flips:
+Chain   Residue     
+--------------------
+*** None found
+
+Bad overlaps (> 0.4A):
+Atom 1              Atom 2                 Overlap
+--------------------------------------------------
+ A 144 BLEU HD12     A 163  LEU HD11         0.650
+ A 144 BLEU HD11     A 159  ASN  HB3         0.615
+ A 125 AILE HG22     A 126  THR HG23         0.607
+ A 125 BILE HD11     A 131  MSE  HE2         0.594
+ A  99  LEU  O       A 103  LEU  HG          0.535
+ A   0  HIS  ND1     A  -1  GLY  HA3         0.468
+ A 157 ALEU HD21     A 194  PHE  CE1         0.462
+ A   7  THR  CG2     A 144 BLEU HD21         0.460
+ A 118  ALA  HB3     A 131  MSE  HE3         0.439
+ A  34  LEU HD13     A 103  LEU HD22         0.432
+ A 102  ARG  CZ      A 513  HOH  O           0.431
+ A  77  LYS  HE3     A  79 BSER  OG          0.425
+ A 127  LEU HD11     A 472  HOH  O           0.421
+
+
+REFERENCES:
+
+Chen VB, Arendall WB, Headd JJ, Keedy DA, Immormino RM, Kapral GJ, Murray LW,
+Richardson JS, Richardson DC. (2010) MolProbity: all-atom structure validation
+for macromolecular crystallography. Acta Cryst. D66:16-21.
+
+
+============================ Real-space correlation ===========================
+
+Residues with real-space CC worse than 0.7:
+chain   residue           CC       B     occ      Fc  2mFo-DFc
+--------------------------------------------------------------
+A       ILE   45    0.67856954830143.0013610889     1.01.73185929860.825505250735
+
+atom                      CC       B    occ.      Fc  2mFo-DFc
+--------------------------------------------------------------
+ NE2 GLN A 167      0.079180973980845.0699951282     1.01.899153483760.581450880364
+ NZ  LYS A  68      0.24670177882356.6090773936     1.01.30943571702-0.133178628584
+ O   HOH A 573      0.33787246627950.0734135783     1.01.441566343761.19671906528
+ CE  LYS A  68      0.40568427718740.9580536586     1.01.822438404191.14154231154
+ NH1 ARG A 102      0.43946040567645.1461408925     1.01.620532287190.410234414084
+ CA  ILE A  45      0.47139684439535.0318714156     1.01.957067488791.39729036859
+ OE1 GLN A 167      0.48451289750250.7181345826     1.01.992260191270.609621205373
+ NH2 ARG A 102      0.51159375346546.3253448314     1.01.650746632060.841640352975
+ CZ  ARG A 102      0.57917231404344.1280437328     1.02.247771997510.967433510733
+ O   HOH A 614      0.58090168379748.3710282581     1.01.294656944720.720991482283
+ O   HOH A 620      0.5852352289132.7104223761     1.02.276616125031.12508065419
+ O   HOH A 595      0.59930384112446.1145664743     1.01.358956633040.733891229414
+ C   ILE A  45      0.60344646048745.3333734913     1.02.058549630540.709228482629
+ O   HOH A 594      0.60625884976937.0651334164     1.02.125912099581.59182033701
+ CD1 ILE A  45      0.61657202793745.9068638287     1.01.397455953580.573080181294
+ CB  ASN A  91      0.62077725703726.8982150036     1.01.850294756411.13113823335
+ O   HOH A 357      0.6256307114831.5023379886     1.02.525632777341.54310145196
+ O   HOH A 582      0.62564466225546.3100583967     1.01.864672049561.15260399415
+ NZ  LYS A 177      0.63335960268738.2959407704     1.01.748923823120.856673924912
+ O   HOH A 315      0.63597321081832.23819428880.4788039129940.6032721758920.988016976415
+ CG  GLN A 167      0.63754492034540.3520149743     1.01.68809885980.665673244468
+ O   HOH A 560      0.63807730870345.1758659236     1.01.266804471441.09814472984
+ O   HOH A 541      0.63899998228644.3982336149     1.01.125534718990.868180491435
+ O   ILE A  45      0.64076702463744.7441908117     1.01.896109264721.19613610022
+ O   HOH A 590      0.6455490032561.9145080354     1.01.146748615630.856852998745
+ O   HOH A 551      0.64765108364337.5813147451     1.01.75090678171.02536221047
+ O   HOH A 588      0.64908023491638.6887822889     1.02.178718387011.22479680077
+ O   HOH A 527      0.64953570135334.1931811312     1.01.767994866930.994221231703
+ O   HOH A 619      0.65321096941.4608936315     1.01.847713103081.0977012738
+ O   HOH A 597      0.65336558407544.3399437466     1.01.474684411821.12550451205
+ O   HOH A 603      0.66400447556943.725113442     1.01.177479539261.35617505091
+ O   HOH A 605      0.66423172331739.1765805408     1.02.084721735691.52453167743
+ NE2 GLN A 101      0.66526858522138.6416498991     1.02.021934146331.49744505066
+ O   HOH A 611      0.66722957213643.9470836509     1.01.336118423790.725757666969
+ CB BTHR A   9      0.66725087147826.46640369330.4617239137142.007066196911.85021886349
+ O   HOH A 469      0.66934504578543.2793982331     1.01.867112344621.49471966408
+ O   HOH A 598      0.67079269229141.5075444402     1.01.771522991841.26027049299
+ O   HOH A 520      0.67144310786438.4185622649     1.01.62520878591.33093841476
+ CA  ASN A  10      0.67281550371825.7987692199     1.02.233011418291.42022680211
+ O   HOH A 544      0.675971022485   40.43     1.01.779969943650.61371465935
+ CB  ILE A  45      0.67722363270143.1927216144     1.01.677716778210.54105343768
+ O   HOH A 569      0.68254556481948.6328875372     1.01.19080749081.0826947313
+ O   HOH A 574      0.6833638675740.4956963128     1.01.76948964461.1382032989
+ O   HOH A 361      0.68395180244846.1483346908     1.01.441778214541.12461007791
+ CG2BTHR A   9      0.69347535658527.38961926240.4617239137140.4807768343571.45725442097
+ N   ASN A  46      0.69672611133337.4063695344     1.02.128961378861.19214022893
+ O   HOH A 355      0.69824979965632.6466296137     1.02.180217639141.15727186342
+ O   HOH A 375      0.69958996313439.8460713157     1.02.033007533611.30675630211
+

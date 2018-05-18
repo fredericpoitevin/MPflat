@@ -1,0 +1,179 @@
+phenix.refine summary
+
+Directory: /Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/Refine_2
+Version: 1.10.1-2155
+Parameter file: /Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/Refine_2/4y9h_refine_2.eff
+
+
+                    start         final
+  ---------------------------------------
+  R-work:           0.2166        0.2146
+  R-free:           0.2407        0.2444
+  RMS(angles):      1.94           1.12
+  RMS(bonds):       0.023          0.007
+
+
+REFERENCE:
+
+Afonine PV, Grosse-Kunstleve RW, Echols N, Headd JJ, Moriarty NW, Mustyakimov
+M, Terwilliger TC, Urzhumtsev A, Zwart PH, Adams PD. (2012) Towards automated
+crystallographic structure refinement with phenix.refine. Acta Crystallogr D
+Biol Crystallogr 68:352-67.
+
+
+=================================== Summary ===================================
+
+RMS(bonds): 0.007
+RMS(angles): 1.117
+
+========================= Geometry restraint outliers =========================
+
+Top bond length outliers (sorted by deviation):
+*** No deviations above the specified cutoff found.
+
+Top angle outliers (sorted by deviation):
+atoms                      ideal       model  difference   deviation (sigma)
+----------------------------------------------------------------------------
+ C2  RET A 301           111.000      87.004     -23.996               -8.00
+ C1  RET A 301      
+ C17 RET A 301      
+
+ C16 RET A 301           111.000      91.361     -19.639               -6.55
+ C1  RET A 301      
+ C17 RET A 301      
+
+ C6  RET A 301           109.470      96.013     -13.457               -4.49
+ C1  RET A 301      
+ C17 RET A 301      
+
+Top dihedral outliers (sorted by deviation):
+atoms                      ideal       model  difference   deviation (sigma)
+----------------------------------------------------------------------------
+ CD BARG A 225             0.000    -179.766    -179.766              -13.86
+ NE BARG A 225      
+ CZ BARG A 225      
+ NH1BARG A 225      
+
+ C5  RET A 301            56.901    -168.097     135.002                6.40
+ C6  RET A 301      
+ C7  RET A 301      
+ C8  RET A 301      
+
+ C3  RET A 301            60.000    -171.749     128.251                6.23
+ C1  RET A 301      
+ C2  RET A 301      
+ C16 RET A 301      
+
+ CB  GLU A 161             0.000    -150.890    -150.890               -4.47
+ CG  GLU A 161      
+ CD  GLU A 161      
+ OE1 GLU A 161      
+
+Top chirality outliers (sorted by deviation):
+atoms                      ideal       model  difference   deviation (sigma)
+----------------------------------------------------------------------------
+ C1  RET A 301             2.642      -0.237      -2.879              -14.40
+ C2  RET A 301      
+ C6  RET A 301      
+ C16 RET A 301      
+
+Top planarity outliers (sorted by deviation):
+*** No deviations above the specified cutoff found.
+
+
+============================ MolProbity validation ============================
+
+                            Clashscore:   6.08
+
+Ramachandran outliers:
+Chain   Residue     Residue type     Score       Phi       Psi
+--------------------------------------------------------------
+*** None found
+
+Bad rotamers:
+Chain   Residue          Score      Chi1      Chi2      Chi3      Chi4
+----------------------------------------------------------------------
+*** None found
+
+C-beta position outliers:
+Chain   Residue       Altloc   Deviation     Angle
+--------------------------------------------------
+*** None found
+
+Suggested sidechain flips:
+Chain   Residue     
+--------------------
+*** None found
+
+Bad overlaps (> 0.4A):
+Atom 1              Atom 2                 Overlap
+--------------------------------------------------
+ A 301  RET  H8      A 301  RET H171         0.679
+ A 221  LEU  O       A 225 BARG  HG3         0.614
+ A 216  LYS  NZ      A 301  RET  C15         0.595
+ A   7  ARG  NE      A   9  GLU  OE2         0.556
+ A 186  PRO  HB3     A 301  RET H183         0.546
+ A  65  GLY  HA3     A  81  ALA  HB2         0.495
+ A 189  TRP  CD1     A 301  RET  H22         0.491
+ A  26  TYR  OH      A 225 AARG  NH2         0.462
+ A 194  GLU  OE1     A 204  GLU  OE2         0.448
+ A 163  MET  HB3     A 163  MET  HE3         0.440
+ A 156  PHE  HB3     A 171  PHE  CZ          0.417
+ A 141  SER  OG      A 301  RET  H41         0.410
+ A  51  ALA  O       A  55 ATHR HG23         0.408
+ A  30  LYS  O       A  34 AVAL HG13         0.405
+
+
+REFERENCES:
+
+Chen VB, Arendall WB, Headd JJ, Keedy DA, Immormino RM, Kapral GJ, Murray LW,
+Richardson JS, Richardson DC. (2010) MolProbity: all-atom structure validation
+for macromolecular crystallography. Acta Cryst. D66:16-21.
+
+
+============================ Real-space correlation ===========================
+
+Residues with real-space CC worse than 0.7:
+chain   residue           CC       B     occ      Fc  2mFo-DFc
+--------------------------------------------------------------
+A       GLY    6    0.39721691897864.738757989     1.01.583918636920.988599953625
+
+atom                      CC       B    occ.      Fc  2mFo-DFc
+--------------------------------------------------------------
+ NE BARG A 225      0.096492341985942.0313706078     0.51.334894512460.29792534902
+ NZ  LYS A  41      0.15477580479658.2322439959     1.01.412112037161.08463747478
+ NZ  LYS A  30      0.25826913312360.8342691954     1.01.289906829320.717704992127
+ CZ BARG A 225      0.30846436211245.9187629891     0.51.384568279450.516588605434
+ NH2BARG A 225      0.35815750424640.9538592622     0.51.055537324380.791610778301
+ NZ  LYS A  40      0.39801992246154.6258171317     1.01.589051266880.771168324786
+ CE  LYS A  41      0.4074181186754.3169736434     1.01.653450504620.297056119729
+ NH2AARG A 225      0.40763271670843.8126047465     0.50.7969688216960.540910106998
+ CG  GLU A 161      0.44348737873433.862961919    0.992.688744106832.19781407454
+ NZ  LYS A 159      0.45652730039852.8812510176     1.01.685723188960.466087490308
+ C   GLY A   6      0.47994003189261.2574504135     1.02.13984652320.93541968549
+ O   HOH A 493      0.48489069433781.105817762     1.01.123323075950.638804006526
+ CD BARG A 225      0.49469343503936.2308895461     0.51.154703636580.201076744091
+ O   GLY A   6      0.50018206823869.8307261846     1.01.560817514720.499623453318
+ O  BHOH A 473      0.51816936744642.1329732992     0.50.9792642856650.85803696661
+ N   ARG A   7      0.59095721480957.6488480773     1.01.920141515980.437651133083
+ O   HOH A 475      0.59134439803157.8369083818     1.01.50016892540.891363084449
+ OE2 GLU A 161      0.59533868938256.622979618    0.992.194465124570.966169076816
+ O   HOH A 477      0.59605971810642.310704027     1.02.200161620141.48502338955
+ O   HOH A 461      0.60922449452661.1646594289     1.01.192020200211.58997463015
+ O   HOH A 483      0.6158056780553.6557003919     1.01.776371488051.44897200562
+ O   HOH A 432      0.61776399655159.9582472382     1.01.03431326981.01406449254
+ O  BHOH A 481      0.62965428466439.9150298295     0.50.9141385541530.946539532827
+ CG  ARG A   7      0.62983320197543.0730063262     1.02.129685642031.52231003436
+ O   HOH A 486      0.65233749461476.5408851025     1.01.215773334340.972265398538
+ CZ  ARG A 227      0.65491680462842.0300596478     1.03.068933179162.34291078148
+ NH1AARG A 225      0.65900876703338.7716388749     0.51.070915065080.558010825525
+ O   HOH A 433      0.66512223385748.1707999563     1.01.686866111652.1136338945
+ O   HOH A 478      0.66757551243162.5700228127     1.01.4623745061.04870127756
+ CZ AARG A 225      0.66883127954142.2288870963     0.51.348036568180.595935971182
+ O   HOH A 437      0.67763207967157.8380122795     1.01.483076509230.951151772538
+ O   HOH A 472      0.68930787038660.0627528368     1.01.576856606621.09157067105
+ NE  ARG A 164      0.69028710979540.7264891533     1.02.915787264752.17331851256
+ CG  GLN A 105      0.6908218352730.7817830462     1.02.557087427061.60046361771
+ O   HOH A 467      0.69260513116944.3867576476     1.02.058682855471.52009953645
+ O   HOH A 402      0.69404790001344.268373352     1.02.061194323991.69199689816
+

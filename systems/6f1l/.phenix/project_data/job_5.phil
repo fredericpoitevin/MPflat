@@ -1,0 +1,81 @@
+LIBTBX_BASE_DIR = "/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/6f1l"
+job {
+  job_id = 5
+  app_id = Refine
+  program_name = None
+  title = """[ phenix.refine ]"""
+  directory = "$(LIBTBX_BASE_DIR)/Refine_5"
+  process_type = None
+  hostname = None
+  queue_id = None
+  citation = None
+  input_file {
+    file_name = "$(LIBTBX_BASE_DIR)/6f1l.pdb"
+    file_type = Input model
+    param_name = refinement.input.pdb.file_name
+  }
+  input_file {
+    file_name = "$(LIBTBX_BASE_DIR)/6f1l-sf.mtz"
+    file_type = Reflections file
+    param_name = refinement.input.xray_data.file_name
+  }
+  input_file {
+    file_name = "$(LIBTBX_BASE_DIR)/6f1l-sf.mtz"
+    file_type = File with R(free) flags
+    param_name = refinement.input.xray_data.r_free_flags.file_name
+  }
+  output_file {
+    file_name = "solvent-correction_refine_5.mtz"
+    file_type = Map coefficients for Coot
+  }
+  output_file {
+    file_name = "solvent-correction_refine_5_info.txt"
+    file_type = Run summary in text format
+  }
+  output_file {
+    file_name = "solvent-correction_refine_5.geo"
+    file_type = Geometry restraints before refinement
+  }
+  output_file {
+    file_name = "solvent-correction_refine_5.log"
+    file_type = phenix.refine log file
+  }
+  output_file {
+    file_name = "solvent-correction_refine_5.pdb"
+    file_type = Refined model
+  }
+  output_file {
+    file_name = "solvent-correction_refine_5.eff"
+    file_type = Effective parameters for this run
+  }
+  output_file {
+    file_name = "solvent-correction_refine_data.mtz"
+    file_type = Data and R-free set used in refinement
+  }
+  statistic {
+    stat_name = R-work
+    stat_value = 0.1972
+  }
+  statistic {
+    stat_name = R-free
+    stat_value = 0.2320
+  }
+  statistic {
+    stat_name = RMSbonds
+    stat_value = 0.007
+  }
+  statistic {
+    stat_name = RMSangles
+    stat_value = 0.916
+  }
+  statistic {
+    stat_name = Clashscore
+    stat_value = 1.0
+  }
+  statistic {
+    stat_name = MolProbity score
+    stat_value = 0.799
+  }
+  user_comments = None
+  deleted = False
+}

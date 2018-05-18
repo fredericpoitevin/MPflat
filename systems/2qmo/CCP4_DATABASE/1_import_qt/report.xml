@@ -1,0 +1,31 @@
+<Job>
+<Title>[No title given]</Title>
+<SubJob_000>
+<RunDate>17/ 5/2018</RunDate>
+<RunTime>20:14:34</RunTime>
+</SubJob_000>
+<SubJob_001>
+<RunDate>17/ 5/2018</RunDate>
+<RunTime>20:14:35</RunTime>
+</SubJob_001>
+<SubJob_002>
+<RunDate>17/ 5/2018</RunDate>
+<RunTime>20:14:35</RunTime>
+</SubJob_002>
+<SubJob_003>
+<RunDate>17/ 5/2018</RunDate>
+<RunTime>20:14:35</RunTime>
+</SubJob_003>
+<SubJob_004>
+<RunDate>17/ 5/2018</RunDate>
+<RunTime>20:14:35</RunTime>
+</SubJob_004>
+<SubJob_005>
+<RunDate>17/ 5/2018</RunDate>
+<RunTime>20:14:36</RunTime>
+</SubJob_005>
+<Files>
+<File_001 path="/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/2qmo/2qmo-sf.cif" />
+<File_002 path="/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/2qmo/2qmo-sf.mtz" />
+</Files>
+</Job>

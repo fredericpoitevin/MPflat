@@ -1,9 +1,9 @@
 #CCP4I VERSION CCP4Interface 7.0.057
 #CCP4I SCRIPT DEF CCP4_Project_Database
-#CCP4I DATE 17 May 2018  16:10:12
+#CCP4I DATE 17 May 2018  19:41:23
 #CCP4I USER fpoitevi
 #CCP4I PROJECT 6F1L /Users/fpoitevi/gdrive/Toolkit/MPflat/systems/6f1l/CCP4_DATABASE
-NJOBS                    3                                       
+NJOBS                    4                                       
 STATUS,1                  FINISHED
 DATE,1                   1526596078
 LOGFILE,1                1_import.log
@@ -37,4 +37,15 @@ INPUT_FILES_STATUS,3     ""
 OUTPUT_FILES,3           "6f1l_refmac2.pdb 6f1l-sf_refmac2.mtz 6F1L_3_frompdb.refmac.cif"
 OUTPUT_FILES_DIR,3       "6F1L 6F1L 6F1L"
 OUTPUT_FILES_STATUS,3    ""
+STATUS,4                  FINISHED
+DATE,4                   1526606698
+LOGFILE,4                4_refmac5.log
+TASKNAME,4               refmac5
+TITLE,4                  "Rigid body refinement using isotropic B factors"
+INPUT_FILES,4            "6f1l.pdb 6f1l-sf.mtz"
+INPUT_FILES_DIR,4        "6F1L 6F1L"
+INPUT_FILES_STATUS,4     ""
+OUTPUT_FILES,4           "6f1l_refmac3.pdb 6f1l-sf_refmac3.mtz 6F1L_4_frompdb.refmac.cif"
+OUTPUT_FILES_DIR,4       "6F1L 6F1L 6F1L"
+OUTPUT_FILES_STATUS,4    ""
 

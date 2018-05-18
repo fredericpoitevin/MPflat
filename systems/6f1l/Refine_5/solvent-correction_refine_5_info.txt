@@ -1,0 +1,120 @@
+phenix.refine summary
+
+Directory: /Users/fpoitevi/gdrive/Toolkit/MPflat/systems/6f1l/Refine_5
+Version: 1.10.1-2155
+Parameter file: /Users/fpoitevi/gdrive/Toolkit/MPflat/systems/6f1l/Refine_5/solvent-correction_refine_5.eff
+
+
+                    start         final
+  ---------------------------------------
+  R-work:           0.1893        0.1972
+  R-free:           0.2082        0.2320
+  RMS(angles):      0.92           0.92
+  RMS(bonds):       0.007          0.007
+
+
+REFERENCE:
+
+Afonine PV, Grosse-Kunstleve RW, Echols N, Headd JJ, Moriarty NW, Mustyakimov
+M, Terwilliger TC, Urzhumtsev A, Zwart PH, Adams PD. (2012) Towards automated
+crystallographic structure refinement with phenix.refine. Acta Crystallogr D
+Biol Crystallogr 68:352-67.
+
+
+=================================== Summary ===================================
+
+RMS(bonds): 0.005
+RMS(angles): 0.799
+
+========================= Geometry restraint outliers =========================
+
+Top bond length outliers (sorted by deviation):
+*** No deviations above the specified cutoff found.
+
+Top angle outliers (sorted by deviation):
+*** No deviations above the specified cutoff found.
+
+Top dihedral outliers (sorted by deviation):
+atoms                      ideal       model  difference   deviation (sigma)
+----------------------------------------------------------------------------
+ CD AARG A  21             0.000    -179.153    -179.153              -13.86
+ NE AARG A  21      
+ CZ AARG A  21      
+ NH1AARG A  21      
+
+ CD  ARG A  73             0.000    -178.800    -178.800              -13.86
+ NE  ARG A  73      
+ CZ  ARG A  73      
+ NH1 ARG A  73      
+
+ CA  TRP A  62           180.000    -157.884      22.116                4.42
+ C   TRP A  62      
+ N   TRP A  63      
+ CA  TRP A  63      
+
+ CA  PHE A   3           180.000     159.550     -20.450               -4.09
+ C   PHE A   3      
+ N   GLY A   4      
+ CA  GLY A   4      
+
+Top chirality outliers (sorted by deviation):
+*** No deviations above the specified cutoff found.
+
+Top planarity outliers (sorted by deviation):
+*** No deviations above the specified cutoff found.
+
+
+============================ MolProbity validation ============================
+
+                 Ramachandran outliers:   0.0% (Goal: < 0.2%)
+                  Ramachandran favored:  99.2% (Goal: > 98%)
+                      Rotamer outliers:   0.0% (Goal: 1%)
+                       C-beta outliers:   0    (Goal: 0)
+                            Clashscore:   1.02
+                         Overall score:   0.80
+
+Ramachandran outliers:
+Chain   Residue     Residue type     Score       Phi       Psi
+--------------------------------------------------------------
+*** None found
+
+Bad rotamers:
+Chain   Residue          Score      Chi1      Chi2      Chi3      Chi4
+----------------------------------------------------------------------
+*** None found
+
+C-beta position outliers:
+Chain   Residue       Altloc   Deviation     Angle
+--------------------------------------------------
+*** None found
+
+Suggested sidechain flips:
+Chain   Residue     
+--------------------
+*** None found
+
+Bad overlaps (> 0.4A):
+Atom 1              Atom 2                 Overlap
+--------------------------------------------------
+ A  33  LYS  HG2     A 123  TRP  CH2         0.436
+ A  63  TRP  CD2     A  98  ILE HG12         0.400
+
+
+REFERENCES:
+
+Chen VB, Arendall WB, Headd JJ, Keedy DA, Immormino RM, Kapral GJ, Murray LW,
+Richardson JS, Richardson DC. (2010) MolProbity: all-atom structure validation
+for macromolecular crystallography. Acta Cryst. D66:16-21.
+
+
+============================ Real-space correlation ===========================
+
+Residues with real-space CC worse than 0.7:
+chain   residue           CC       B     occ      Fc  2mFo-DFc
+--------------------------------------------------------------
+*** No residues below the specified cutoff found.
+
+atom                      CC       B    occ.      Fc  2mFo-DFc
+--------------------------------------------------------------
+*** No atoms below the specified cutoff found.
+

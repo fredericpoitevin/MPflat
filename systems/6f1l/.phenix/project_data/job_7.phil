@@ -1,0 +1,32 @@
+LIBTBX_BASE_DIR = "/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/6f1l"
+job {
+  job_id = 7
+  app_id = Xtriage
+  program_name = None
+  title = """xtriage"""
+  directory = "$(LIBTBX_BASE_DIR)/Xtriage_7"
+  process_type = None
+  hostname = None
+  queue_id = None
+  citation = None
+  input_file {
+    file_name = "$(LIBTBX_BASE_DIR)/6f1l-sf.mtz"
+    file_type = Reflections
+    param_name = scaling.input.xray_data.file_name
+  }
+  input_file {
+    file_name = "$(LIBTBX_BASE_DIR)/6f1l.pdb"
+    file_type = Reference PDB file
+    param_name = scaling.input.xray_data.reference.structure.file_name
+  }
+  output_file {
+    file_name = "xtriage_7.log"
+    file_type = Log file and graphs
+  }
+  statistic {
+    stat_name = Wilson B
+    stat_value = 13.61
+  }
+  user_comments = None
+  deleted = False
+}

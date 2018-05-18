@@ -1,0 +1,40 @@
+#CCP4I VERSION CCP4Interface 7.0.057
+#CCP4I SCRIPT DEF CCP4_Project_Database
+#CCP4I DATE 17 May 2018  20:20:10
+#CCP4I USER fpoitevi
+#CCP4I PROJECT 2QMO /Users/fpoitevi/gdrive/Toolkit/MPflat/systems/2qmo/CCP4_DATABASE
+NJOBS                    3                                       
+STATUS,1                  FINISHED
+DATE,1                   1526613276
+LOGFILE,1                1_import.log
+TASKNAME,1               import
+TITLE,1                  "[No title given]"
+INPUT_FILES,1            "2qmo-sf.cif"
+INPUT_FILES_DIR,1        "2QMO"
+INPUT_FILES_STATUS,1     ""
+OUTPUT_FILES,1           "2qmo-sf.mtz"
+OUTPUT_FILES_DIR,1       "2QMO"
+OUTPUT_FILES_STATUS,1    ""
+STATUS,2                  FINISHED
+DATE,2                   1526613435
+LOGFILE,2                2_refmac5.log
+TASKNAME,2               refmac5
+TITLE,2                  "Rigid body refinement using isotropic B factors"
+INPUT_FILES,2            "2qmo.pdb 2qmo-sf.mtz"
+INPUT_FILES_DIR,2        "2QMO 2QMO"
+INPUT_FILES_STATUS,2     ""
+OUTPUT_FILES,2           "2qmo_refmac1.pdb 2qmo-sf_refmac1.mtz 2QMO_2_frompdb.refmac.cif"
+OUTPUT_FILES_DIR,2       "2QMO 2QMO 2QMO"
+OUTPUT_FILES_STATUS,2    ""
+STATUS,3                  FINISHED
+DATE,3                   1526613515
+LOGFILE,3                3_refmac5.log
+TASKNAME,3               refmac5
+TITLE,3                  "2qmo_with_solvent"
+INPUT_FILES,3            "2qmo.pdb 2qmo-sf.mtz"
+INPUT_FILES_DIR,3        "2QMO 2QMO"
+INPUT_FILES_STATUS,3     ""
+OUTPUT_FILES,3           "2qmo_refmac2.pdb 2qmo-sf_refmac2.mtz 2QMO_3_frompdb.refmac.cif"
+OUTPUT_FILES_DIR,3       "2QMO 2QMO 2QMO"
+OUTPUT_FILES_STATUS,3    ""
+

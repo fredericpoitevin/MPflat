@@ -1,0 +1,52 @@
+LIBTBX_BASE_DIR = "/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h"
+job_summary {
+  job_id = 1
+  app_id = "Refine"
+  program_name = "phenix.refine"
+  program_args = "/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/.phenix/project_data/refine_1.eff" \
+                 "--overwrite" "--unused_ok"
+  config_file = "$(LIBTBX_BASE_DIR)/.phenix/project_data/refine_1.eff"
+  title = "without-solvent"
+  time_started = 1526603165
+  time_finished = 1526603655
+  result_directory = "$(LIBTBX_BASE_DIR)/Refine_1"
+  status = started failed aborted *complete deleted
+  user_flagged = False
+  r_free = 0.2764
+  process_type = 1
+  applet = False
+}
+job_summary {
+  job_id = 2
+  app_id = "Refine"
+  program_name = "phenix.refine"
+  program_args = "/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/.phenix/project_data/refine_2.eff" \
+                 "--overwrite" "--unused_ok"
+  config_file = "$(LIBTBX_BASE_DIR)/.phenix/project_data/refine_2.eff"
+  title = "without-solvent"
+  time_started = 1526604058
+  time_finished = 1526604693
+  result_directory = "$(LIBTBX_BASE_DIR)/Refine_2"
+  status = started failed aborted *complete deleted
+  user_flagged = False
+  r_free = 0.2444
+  process_type = 1
+  applet = False
+}
+job_summary {
+  job_id = 3
+  app_id = Refine
+  program_name = phenix.refine
+  program_args = /Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/.phenix/project_data/refine_3.eff \
+                 --overwrite --unused_ok
+  config_file = "$(LIBTBX_BASE_DIR)/.phenix/project_data/refine_3.eff"
+  title = """[ phenix.refine ]"""
+  time_started = 1526606301.4
+  time_finished = None
+  result_directory = "$(LIBTBX_BASE_DIR)/Refine_3"
+  status = *started failed aborted complete deleted
+  user_flagged = False
+  r_free = None
+  process_type = 1
+  applet = False
+}

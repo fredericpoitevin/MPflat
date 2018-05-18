@@ -1,0 +1,13 @@
+PYTHON /Applications/ccp4-7.0/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python
+XRT_GEN /Applications/ccp4-7.0/share/smartie/qtrgeneric.py
+JOB_ID 7
+PROJECT 4Y9H
+DIR_DEF /Users/fpoitevi/.CCP4/unix/directories.def
+LOGFILE /Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/7_refmac5.log
+REP_DIR /Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/CCP4_DATABASE/7_refmac5_qt
+REP_XRT /Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/CCP4_DATABASE/7_refmac5_qt/report.xrt
+REP_XML /Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/CCP4_DATABASE/7_refmac5_qt/report.xml
+STATUS FINISHED
+CLEANUP NO
+RUN_COOT /Applications/ccp4-7.0/bin/coot
+RUN_CCP4MG /Applications/ccp4-7.0/bin/ccp4mg

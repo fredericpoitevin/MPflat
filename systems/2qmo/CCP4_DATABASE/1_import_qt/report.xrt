@@ -1,0 +1,46 @@
+<report xmlns:xrt="http://www.ccp4.ac.uk/xrt">
+<xrt:results>
+
+<xrt:title select="/Job/Title" />
+<xrt:section progname="cif2mtz" rundate="/Job/SubJob_000/RunDate" runtime="/Job/SubJob_000/RunTime" title="Run of cif2mtz on 17/ 5/2018 at 20:14:34">
+
+</xrt:section>
+
+<xrt:section progname="MTZDUMP" rundate="/Job/SubJob_001/RunDate" runtime="/Job/SubJob_001/RunTime" title="Run of MTZDUMP on 17/ 5/2018 at 20:14:35">
+
+</xrt:section>
+
+<xrt:section progname="UNIQUE" rundate="/Job/SubJob_002/RunDate" runtime="/Job/SubJob_002/RunTime" title="Run of UNIQUE on 17/ 5/2018 at 20:14:35">
+
+</xrt:section>
+
+<xrt:section progname="CAD" rundate="/Job/SubJob_003/RunDate" runtime="/Job/SubJob_003/RunTime" title="Run of CAD on 17/ 5/2018 at 20:14:35">
+
+</xrt:section>
+
+<xrt:section progname="FREERFLAG" rundate="/Job/SubJob_004/RunDate" runtime="/Job/SubJob_004/RunTime" title="Run of FREERFLAG on 17/ 5/2018 at 20:14:35">
+
+</xrt:section>
+
+<xrt:section progname="MTZUTILS" rundate="/Job/SubJob_005/RunDate" runtime="/Job/SubJob_005/RunTime" title="Run of MTZUTILS on 17/ 5/2018 at 20:14:36">
+
+</xrt:section>
+
+<xrt:section title="Input Files">
+
+<xrt:files>
+<xrt:file key="CIF_INPUT_FILE" select="/Job/Files/File_001" type="other" />
+</xrt:files>
+
+</xrt:section>
+
+<xrt:section title="Output Files">
+
+<xrt:files>
+<xrt:file key="HKLOUT" select="/Job/Files/File_002" type="hkl:hkl" />
+</xrt:files>
+
+</xrt:section>
+
+</xrt:results>
+</report>
