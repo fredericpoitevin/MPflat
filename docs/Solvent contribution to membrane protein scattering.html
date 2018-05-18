@@ -11825,7 +11825,7 @@ Look at <a href="#afonine2008">Afonine's account</a> or Murshudov's code in <a h
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Systems-considered">Systems considered<a class="anchor-link" href="#Systems-considered">&#182;</a></h3><h4 id="bacteriorhodospin-in-bicelles">bacteriorhodospin in bicelles<a class="anchor-link" href="#bacteriorhodospin-in-bicelles">&#182;</a></h4><p>We compare in the table below bR with lysozyme (6f1l, although might not be the best dataset to start with...) rigid-body refinement with refmac5 and phenix, with and without solvent contribution. 'gready' means detergents and lipids were kept - they were removed otherwise. Interesting curves for refmac are red (Rwork) and green (Rfree).</p>
+<h3 id="Systems-considered">Systems considered<a class="anchor-link" href="#Systems-considered">&#182;</a></h3><h4 id="bacteriorhodospin-in-bicelles">bacteriorhodospin in bicelles<a class="anchor-link" href="#bacteriorhodospin-in-bicelles">&#182;</a></h4><p>We compare in the table below bR to soluble proteins (previously refined with either refmac or phenix) using rigid-body refinement with refmac5 and phenix, with and without solvent contribution. 'greasy' means detergents and lipids were kept - they were removed otherwise. Interesting curves for refmac are red (Rwork) and green (Rfree). <em>The resolution range is often inconsistent between the two methods: this needs to be fixed.</em></p>
 <table>
 <thead><tr>
 <th></th>
@@ -11968,114 +11968,144 @@ Look at <a href="#afonine2008">Afonine's account</a> or Murshudov's code in <a h
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="CCP4-Installation">CCP4 Installation<a class="anchor-link" href="#CCP4-Installation">&#182;</a></h3><h4 id="option-1:--on-my-Mac-(failed-so-far)">option 1:  on my Mac (failed so far)<a class="anchor-link" href="#option-1:--on-my-Mac-(failed-so-far)">&#182;</a></h4><p>install <a href="http://www.ccp4.ac.uk/dev/main.php">ccp4</a> (failed so far). Second try: <a href="http://devtools.fg.oisin.rc-harwell.ac.uk/src-readme.html">downloaded this</a>. Had to install BLAS and LAPACK libraries <a href="https://pheiter.wordpress.com/2012/09/04/howto-installing-lapack-and-blas-on-mac-os/">see here</a>. Encountered a problem with the -static option, that seems to cause problems with my gcc. Trying again following the BUILD protocol...</p>
-<p><code>(in SRC = /Applications/ccp4-7.0/src/ccp4-src-2016-02-10/ )
+<h3 id="CCP4-Install-on-Mac-(failed-so-far)">CCP4 Install on Mac (failed so far)<a class="anchor-link" href="#CCP4-Install-on-Mac-(failed-so-far)">&#182;</a></h3><p>Source code available on <a href="http://www.ccp4.ac.uk/dev/main.php">ccp4 dev page</a>. For the record, maybe check <a href="ftp://ftp.ccp4.ac.uk/ccp4/6.0.2/prerelease/">this</a> too. <a href="http://devtools.fg.oisin.rc-harwell.ac.uk/src-readme.html">How to install</a>.</p>
+<details>
+    <summary>First shot</summary>
+Had to install [BLAS and LAPACK libraries](https://pheiter.wordpress.com/2012/09/04/howto-installing-lapack-and-blas-on-mac-os/). 
+
+Encountered a problem with the -static option, that seems to cause problems with my gcc. 
+</details><details>
+    <summary>Trying full protocol...</summary>
+```
+(in SRC = /Applications/ccp4-7.0/src/ccp4-src-2016-02-10/ )
  ./build patchelf : OK
  ./update qt4 : OK
  ./build qt4 : failed, instead linked /Applications/ccp4-7.0/lib/qt4 in SRC/ccp4-dev/lib/
- ./build ccp4-osx : failed list = molrep, sfcheck</code></p>
-<p>edited <code>cj.rc</code>:</p>
-<ul>
-<li>number of jobs : 4</li>
-</ul>
-<p>Now going to refmac only, <code>makefile_linuxgfortran</code> seems promising...
-We need</p>
-<p><code>gfortran: error: /Applications/ccp4-7.0/lib/libmmdb.a: No such file or directory
-gfortran: error: /Applications/ccp4-7.0/lib/libfftw.a: No such file or directory</code></p>
-<p>working on <code>makefile</code>, reinstalled gcc with Homebrew (version 8), and had to change <code>/opt/local/bin/as</code> to <code>/opt/local/bin/as.bak</code>, and <code>/opt/local/bin/ld</code> to <code>/opt/local/bin/ld.bak</code>
-As a consequence, had to change <code>gibbs_gm_sampler.f90</code> so <code>random_seed</code> from the updated gcc work.
-Also installed <a href="https://github.com/VerKnowSys/Sofin-llds">ld</a> in <code>usr/local/bin</code>, and <code>sudo ln -s /usr/local/bin/ld</code> in <code>/opt/local/bin</code>.</p>
-<p>(for the record, maybe check <a href="ftp://ftp.ccp4.ac.uk/ccp4/6.0.2/prerelease/ (failed so far">this</a>).</p>
-<h4 id="option-2:-on-psana">option 2: on psana<a class="anchor-link" href="#option-2:-on-psana">&#182;</a></h4><p>careful with <a href="https://confluence.slac.stanford.edu/display/PCDS/Data+Retention+Policy">data retention policy</a> : <code>df -h ~fpoitevi</code></p>
-<p>will work on psana in <code>/reg/d/psdm/misc/CryoEM/cgati/detergent-flattening</code></p>
-<h5 id="Installation">Installation<a class="anchor-link" href="#Installation">&#182;</a></h5><p>untarred ccp4 in <code>/reg/neh/home5/fpoitevi/Toolkit/ccp4/</code>.</p>
-<p>Thought of using <code>yum</code> for a moment.
-<code>pip install rpm-py-installer : failed (no permission)
-(can be solved by doing it in myana)
-(did not try further)</code></p>
-<p>Seems that we already have most libraries, and can probably install missing ones with pip within myana <a href="https://confluence.slac.stanford.edu/display/PSDMInternal/User+Documentation#UserDocumentation-UserCondaEnvironments">How-To</a>. Let's follow the <a href="http://devtools.fg.oisin.rc-harwell.ac.uk/src-readme.html">procedure</a>:</p>
-<p><code>./build patchelf (had to do that twive)
+ ./build ccp4-osx : failed list = molrep, sfcheck, ...
+```
+</details><details>
+    <summary>Refmac only</summary>
+Install those first:
+``gfortran: error: /Applications/ccp4-7.0/lib/libmmdb.a: No such file or directory
+gfortran: error: /Applications/ccp4-7.0/lib/libfftw.a: No such file or directory
+``
+
+Working on `makefile`, reinstalled gcc with Homebrew (version 8), and had to change `/opt/local/bin/as` to `/opt/local/bin/as.bak`, and `/opt/local/bin/ld` to `/opt/local/bin/ld.bak`
+As a consequence, had to change `gibbs_gm_sampler.f90` so `random_seed` from the updated gcc work.
+Also installed [ld](https://github.com/VerKnowSys/Sofin-llds) in `usr/local/bin`, and `sudo ln -s /usr/local/bin/ld` in `/opt/local/bin`.
+</details><h3 id="CCP4-Install-on-psana">CCP4 Install on psana<a class="anchor-link" href="#CCP4-Install-on-psana">&#182;</a></h3><p>careful with <a href="https://confluence.slac.stanford.edu/display/PCDS/Data+Retention+Policy">data retention policy</a> : <code>df -h ~fpoitevi</code></p>
+<p>will work on psana in <code>/reg/d/psdm/misc/CryoEM/cgati/detergent-flattening</code>.</p>
+<p>untarred ccp4 in <code>/reg/neh/home5/fpoitevi/Toolkit/ccp4/</code>.</p>
+<h4 id="YUM">YUM<a class="anchor-link" href="#YUM">&#182;</a></h4><p>Thought of using <code>yum</code> for a moment: <code>pip install rpm-py-installer : failed (no permission)</code>. To be tried: <code>pip --user ...</code>.</p>
+<h4 id="CONDA-environment">CONDA environment<a class="anchor-link" href="#CONDA-environment">&#182;</a></h4><p>Seems that we already have most libraries, and can probably install missing ones with pip within myana <a href="https://confluence.slac.stanford.edu/display/PSDMInternal/User+Documentation#UserDocumentation-UserCondaEnvironments">How-To</a>.</p>
+<h5 id="Attempt-1">Attempt 1<a class="anchor-link" href="#Attempt-1">&#182;</a></h5><details>
+<summary>Let's follow the [procedure](http://devtools.fg.oisin.rc-harwell.ac.uk/src-readme.html)</summary>
+```
+./build patchelf (had to do that twice)
 ./update qt4
 ./build qt4
-./build ccp4-linux</code></p>
-<p>problem installing <code>scala</code>:
-<code>CMake Error at /reg/neh/home5/fpoitevi/.conda/envs/myana/share/cmake-3.6/Modules/FindLAPACK.cmake:364 (message):
-  A required library with LAPACK API not found.  Please specify library
-  location.
+./build ccp4-linux
+```
+</details><ul>
+<li>Pb with <strong>SCALA</strong>: 
+<details><summary>Error</summary>
+```
+CMake Error at /reg/neh/home5/fpoitevi/.conda/envs/myana/share/cmake-3.6/Modules/FindLAPACK.cmake:364 (message):
+A required library with LAPACK API not found.  Please specify library
+location.
 Call Stack (most recent call first):
-  CMakeLists.txt:4 (find_package)</code>
-Attempted fixes:</p>
-<ul>
+CMakeLists.txt:4 (find_package)
+```
+</details>
+<details>
+<summary>Fix</summary></li>
 <li><a href="https://github.com/ros-planning/moveit_robots/issues/33">add set(LAPACK_lapack_WORKS TRUE) to checkout/scala/CMakeLists.txt</a>: failed</li>
-<li><code>conda install -n myana -c conda-forge lapack</code>: worked</li>
-</ul>
-<p>problem installing <code>cctbx-phaser</code>":</p>
-<p><code>*** Building cctbx-phaser *** [26/110]
+<li><p><code>conda install -n myana -c conda-forge lapack</code> : worked
+&lt;/details&gt;</p>
+</li>
+<li><p>Pb with <strong>CCTBX-PHASER</strong>:
+<details></p>
+<summary>Error in build step</summary>
+```
+*** Building cctbx-phaser *** [26/110]
 make -j 2
 sh bin/libtbx.scons -j 2
 scons: Reading SConscript files ...
 libtbx.scons: using flags from initial environment: 
-              CXXFLAGS =  -O2
-              CFLAGS =  -O2
-              CPPFLAGS =  
-              LDFLAGS =  -L/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/ccp4-7.0/lib 
-              extra LINKFLAGS: ['-L/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/ccp4-7.0/lib', '']
+            CXXFLAGS =  -O2
+            CFLAGS =  -O2
+            CPPFLAGS =  
+            LDFLAGS =  -L/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/ccp4-7.0/lib 
+            extra LINKFLAGS: ['-L/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/ccp4-7.0/lib', '']
 libtbx.scons: OpenMP is available.
 AttributeError: environment instance has no attribute 'boost_version':
-  File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/builddir/cctbx-phaser-dials-2015-12-22/SConstruct", line 8:
-    SConscript("boost_adaptbx/SConscript")
-  File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/scons/engine/SCons/Script/SConscript.py", line 614:
-    return method(*args, **kw)
-  File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/scons/engine/SCons/Script/SConscript.py", line 551:
-    return _SConscript(self.fs, *files, **subst_kw)
-  File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/scons/engine/SCons/Script/SConscript.py", line 260:
-    exec _file_ in call_stack[-1].globals
-  File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/cctbx_project/boost_adaptbx/SConscript", line 23:
-    env_etc.boost_version = libtbx.env.boost_version
+File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/builddir/cctbx-phaser-dials-2015-12-22/SConstruct", line 8:
+  SConscript("boost_adaptbx/SConscript")
+File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/scons/engine/SCons/Script/SConscript.py", line 614:
+  return method(*args, **kw)
+File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/scons/engine/SCons/Script/SConscript.py", line 551:
+  return _SConscript(self.fs, *files, **subst_kw)
+File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/scons/engine/SCons/Script/SConscript.py", line 260:
+  exec _file_ in call_stack[-1].globals
+File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/cctbx_project/boost_adaptbx/SConscript", line 23:
+  env_etc.boost_version = libtbx.env.boost_version
 usr+sys time: 0.98 seconds
 wall clock time: 2.23 seconds
-make: *** [default] Error 2</code></p>
-<p>Comparing with <a href="http://devtools.fg.oisin.rc-harwell.ac.uk/nightly/7.0/logs-linux64/2015-11-17-1435/cctbx-phaser.html">nightly built log</a>, identified an error in the configure step:</p>
-<p><code>Processing: "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/cctbx_project/crys3d/libtbx_refresh.py"
-  Processing *.ui files in "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/cctbx_project/crys3d/qttbx"
+make: *** [default] Error 2
+```
+</details>
+<details>
+<summary>Comparing with [nightly built log](http://devtools.fg.oisin.rc-harwell.ac.uk/nightly/7.0/logs-linux64/2015-11-17-1435/cctbx-phaser.html), identified an error in the configure step</summary>
+```
+Processing: "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/cctbx_project/crys3d/libtbx_refresh.py"
+Processing *.ui files in "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/cctbx_project/crys3d/qttbx"
 Traceback (most recent call last):
-  File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/cctbx_project/libtbx/configure.py", line 22, in &lt;module&gt;
-    if not run():
-  File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/cctbx_project/libtbx/configure.py", line 17, in run
-    libtbx.env_config.cold_start(sys.argv)
-  File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/cctbx_project/libtbx/env_config.py", line 2279, in cold_start
-    env.refresh()
-  File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/cctbx_project/libtbx/env_config.py", line 1547, in refresh
-    module.process_libtbx_refresh_py()
-  File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/cctbx_project/libtbx/env_config.py", line 1824, in process_libtbx_refresh_py
-    execfile(abs(custom_refresh), {}, {"self": self})
-  File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/cctbx_project/crys3d/libtbx_refresh.py", line 10, in &lt;module&gt;
-    uic.compileUiDir(ui_dir, recurse=True)
-  File "/reg/g/psdm/sw/releases/ana-current/arch/x86_64-rhel7-gcc48-opt/python/PyQt4/uic/__init__.py", line 134, in compileUiDir
-    compile_ui(root, ui)
-  File "/reg/g/psdm/sw/releases/ana-current/arch/x86_64-rhel7-gcc48-opt/python/PyQt4/uic/__init__.py", line 126, in compile_ui
-    compileUi(ui_file, py_file, **compileUi_args)
-  File "/reg/g/psdm/sw/releases/ana-current/arch/x86_64-rhel7-gcc48-opt/python/PyQt4/uic/__init__.py", line 164, in compileUi
-    from PyQt4.QtCore import PYQT_VERSION_STR
-ImportError: /reg/g/psdm/sw/releases/ana-current/arch/x86_64-rhel7-gcc48-opt/python/PyQt4/QtCore.so: undefined symbol: PyUnicodeUCS2_AsUTF8String</code></p>
-<ul>
-<li><p>Might be one of the 'known error' ? <code>Compiling Phaser with GCC 4.2 and OpenMP causes "internal compiler error". Use newer compiler or remove --enable-openmp-if-possible=True from checkout/devtools/conf.py.</code> Trying that out...: failed (was probably not accounted for, or overwritten somehow). Cancelled the build procedure, and restarted it. Although this time the change was taken into account, outcome was same... Reverting the change.</p>
-</li>
-<li><p>Might be a <a href="https://stackoverflow.com/questions/2584198/undefined-symbol-pyunicodeucs2-decode-whilst-trying-to-install-psycopg2?utm_medium=organic&amp;utm_source=google_rich_qa&amp;utm_campaign=google_rich_qa">UCS2/UCS4 problem</a> ?</p>
-</li>
+File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/cctbx_project/libtbx/configure.py", line 22, in <module>
+  if not run():
+File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/cctbx_project/libtbx/configure.py", line 17, in run
+  libtbx.env_config.cold_start(sys.argv)
+File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/cctbx_project/libtbx/env_config.py", line 2279, in cold_start
+  env.refresh()
+File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/cctbx_project/libtbx/env_config.py", line 1547, in refresh
+  module.process_libtbx_refresh_py()
+File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/cctbx_project/libtbx/env_config.py", line 1824, in process_libtbx_refresh_py
+  execfile(abs(custom_refresh), {}, {"self": self})
+File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/checkout/cctbx-phaser-dials-2015-12-22/cctbx_project/crys3d/libtbx_refresh.py", line 10, in <module>
+  uic.compileUiDir(ui_dir, recurse=True)
+File "/reg/g/psdm/sw/releases/ana-current/arch/x86_64-rhel7-gcc48-opt/python/PyQt4/uic/__init__.py", line 134, in compileUiDir
+  compile_ui(root, ui)
+File "/reg/g/psdm/sw/releases/ana-current/arch/x86_64-rhel7-gcc48-opt/python/PyQt4/uic/__init__.py", line 126, in compile_ui
+  compileUi(ui_file, py_file, **compileUi_args)
+File "/reg/g/psdm/sw/releases/ana-current/arch/x86_64-rhel7-gcc48-opt/python/PyQt4/uic/__init__.py", line 164, in compileUi
+  from PyQt4.QtCore import PYQT_VERSION_STR
+ImportError: /reg/g/psdm/sw/releases/ana-current/arch/x86_64-rhel7-gcc48-opt/python/PyQt4/QtCore.so: undefined symbol: PyUnicodeUCS2_AsUTF8String
+```
+</details>
+<details>
+<summary>Debugging in progress</summary></li>
+<li>Might be one of the 'known error' ? <code>Compiling Phaser with GCC 4.2 and OpenMP causes "internal compiler error". Use newer compiler or remove --enable-openmp-if-possible=True from checkout/devtools/conf.py.</code> Trying that out...: failed (was probably not accounted for, or overwritten somehow). Cancelled the build procedure, and restarted it. Although this time the change was taken into account, outcome was same... Reverting the change.</li>
+<li>Might be a <a href="https://stackoverflow.com/questions/2584198/undefined-symbol-pyunicodeucs2-decode-whilst-trying-to-install-psycopg2?utm_medium=organic&amp;utm_source=google_rich_qa&amp;utm_campaign=google_rich_qa">UCS2/UCS4 problem</a> ?
+&lt;/details&gt;</li>
 </ul>
-<p><code>*** module ccp4-linux not built due to non buildable default *** [110/110]
+<details>
+    <summary>Building error list</summary>
+```*** module ccp4-linux not built due to non buildable default *** [110/110]
 *** module ccp4-linux not built due to non buildable tcltk84 *** [110/110]
 *** module ccp4-linux not built due to non buildable arcimboldo *** [110/110]
 *** the following modules were not built *** [110/110]
-cctbx-phaser pointless aimless feckless tcltk84 diff-image ccp4mapwish blend lxml ccp4mg default scipy arcimboldo ccp4-linux</code></p>
-<p><strong>New attempt</strong> at building ccp4-linux:
-somehow, slightly different message at cctbx-phaser:</p>
-<p><code>File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/ccp4-7.0/lib/python2.7/site-packages/PyQt4/uic/__init__.py", line 164, in compileUi
+cctbx-phaser pointless aimless feckless tcltk84 diff-image ccp4mapwish blend lxml ccp4mg default scipy arcimboldo ccp4-linux
+```
+</details><h5 id="Attempt-2-at-building-ccp4-linux:">Attempt 2 at building ccp4-linux:<a class="anchor-link" href="#Attempt-2-at-building-ccp4-linux:">&#182;</a></h5><details>
+    <summary>somehow, slightly different message at cctbx-phaser:</summary>
+```File "/reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src/ccp4-7.0/lib/python2.7/site-packages/PyQt4/uic/__init__.py", line 164, in compileUi
     from PyQt4.QtCore import PYQT_VERSION_STR
-RuntimeError: the sip module implements API v11.0 to v11.1 but the PyQt4.QtCore module requires API v11.3</code></p>
-<p>Trying <a href="https://stackoverflow.com/questions/40159349/runtimeerror-the-sip-module-implements-api-v11-0-to-v11-2-but-the-pyqt5-qtcore?answertab=votes#tab-top">this fix</a>: failed - exceeded data storage...</p>
-<p><strong>BIG SWITCH</strong> removed and clean conda environment, to be replaced with <code>pip --user</code>.</p>
+RuntimeError: the sip module implements API v11.0 to v11.1 but the PyQt4.QtCore module requires API v11.3
+```
+</details><p>Trying <a href="https://stackoverflow.com/questions/40159349/runtimeerror-the-sip-module-implements-api-v11-0-to-v11-2-but-the-pyqt5-qtcore?answertab=votes#tab-top">this fix</a>: failed - exceeded data storage...</p>
+<h5 id="Attempt-3">Attempt 3<a class="anchor-link" href="#Attempt-3">&#182;</a></h5><p>removed and clean conda environment, to be replaced with <code>pip --user</code> in the future.</p>
+
+<pre><code>cd /reg/neh/home5/fpoitevi/Toolkit/ccp4/ccp4-7.0-src
+./build refmac : SUCCESS!</code></pre>
 
 </div>
 </div>
