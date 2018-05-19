@@ -11825,7 +11825,7 @@ Look at <a href="#afonine2008">Afonine's account</a> or Murshudov's code in <a h
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Systems-considered">Systems considered<a class="anchor-link" href="#Systems-considered">&#182;</a></h3><h4 id="bacteriorhodospin-in-bicelles">bacteriorhodospin in bicelles<a class="anchor-link" href="#bacteriorhodospin-in-bicelles">&#182;</a></h4><p>We compare in the table below bR to soluble proteins (previously refined with either refmac or phenix) using rigid-body refinement with refmac5 and phenix, with and without solvent contribution. 'greasy' means detergents and lipids were kept - they were removed otherwise. Interesting curves for refmac are red (Rwork) and green (Rfree). <em>The resolution range is often inconsistent between the two methods: this needs to be fixed.</em></p>
+<h3 id="Log-book">Log-book<a class="anchor-link" href="#Log-book">&#182;</a></h3><h4 id="membrane-vs-soluble-/-phenix-vs-refmac">membrane-vs-soluble / phenix-vs-refmac<a class="anchor-link" href="#membrane-vs-soluble-/-phenix-vs-refmac">&#182;</a></h4><p>Using current Mac versions of phenix and ccp4, we compare in the table below bR to soluble proteins (previously refined with either refmac or phenix) using rigid-body refinement with refmac5 and phenix, with and without solvent contribution. 'greasy' means detergents and lipids were kept - they were removed otherwise. Interesting curves for refmac are red (Rwork) and green (Rfree). <em>The resolution range is often inconsistent between the two methods: this needs to be fixed.</em></p>
 <table>
 <thead><tr>
 <th></th>
@@ -11903,7 +11903,62 @@ Look at <a href="#afonine2008">Afonine's account</a> or Murshudov's code in <a h
 </tr>
 </tbody>
 </table>
-<h4 id="GLIC">GLIC<a class="anchor-link" href="#GLIC">&#182;</a></h4><p><a href="http://www.rcsb.org/structure/4IL4">GLIC with Se-DDM</a></p>
+<h4 id="ccp4-lite-/-test">ccp4-lite / test<a class="anchor-link" href="#ccp4-lite-/-test">&#182;</a></h4><p>Comparing the following REFMAC input (not much difference detected between BULK and SIMPL):</p>
+<details>
+    <summary>No solvent</summary>
+```
+make    hydrogen ALL     hout NO     peptide NO     cispeptide YES     ssbridg
+ e YES     symmetry YES     sugar YES     connectivity NO     link NO
+refi     type RIGID     resi MLKF     meth CGMAT     bref over
+rigid ncycle 20
+scal     type SIMP     LSSC     ANISO     EXPE
+solvent NO
+weight     AUTO
+monitor MEDIUM     torsion 10.0     distance 10.0     angle 10.0     plane 10.0
+      chiral 10.0     bfactor 10.0     bsphere 10.0     rbond 10.0     ncsr 10.0
+labin  FP=FP SIGFP=SIGFP    FREE=FREE
+labout  FC=FC FWT=FWT PHIC=PHIC PHWT=PHWT DELFWT=DELFWT PHDELWT=PHDELWT FOM=FOM
+PNAME 4Y9H
+DNAME frompdb
+RSIZE 80
+```
+</details><details>
+    <summary>solvent SIMPL</summary>
+```
+make    hydrogen ALL     hout NO     peptide NO     cispeptide YES     ssbridg
+ e YES     symmetry YES     sugar YES     connectivity NO     link NO
+refi     type RIGID     resi MLKF     meth CGMAT     bref over
+rigid ncycle 2
+scal     type SIMP     LSSC     ANISO     EXPE
+solvent YES
+weight     AUTO
+monitor MEDIUM     torsion 10.0     distance 10.0     angle 10.0     plane 10.0
+      chiral 10.0     bfactor 10.0     bsphere 10.0     rbond 10.0     ncsr 10.0
+labin  FP=FP SIGFP=SIGFP    FREE=FREE
+labout  FC=FC FWT=FWT PHIC=PHIC PHWT=PHWT DELFWT=DELFWT PHDELWT=PHDELWT FOM=FOM
+PNAME 4Y9H
+DNAME frompdb
+RSIZE 80
+```
+</details><details>
+    <summary>solvent BULK</summary>
+```
+make    hydrogen ALL     hout NO     peptide NO     cispeptide YES     ssbridg
+ e YES     symmetry YES     sugar YES     connectivity NO     link NO
+refi     type RIGID     resi MLKF     meth CGMAT     bref over
+rigid ncycle 2
+scal     type BULK     LSSC     ANISO     EXPE
+solvent YES
+weight     AUTO
+monitor MEDIUM     torsion 10.0     distance 10.0     angle 10.0     plane 10.0
+      chiral 10.0     bfactor 10.0     bsphere 10.0     rbond 10.0     ncsr 10.0
+labin  FP=FP SIGFP=SIGFP    FREE=FREE
+labout  FC=FC FWT=FWT PHIC=PHIC PHWT=PHWT DELFWT=DELFWT PHDELWT=PHDELWT FOM=FOM
+PNAME 4Y9H
+DNAME frompdb
+RSIZE 80
+```
+</details><p><img src="4yh9-refmac-lite-solnosol.png" alt="ccp4-lite 4yh9 test"></p>
 
 </div>
 </div>
