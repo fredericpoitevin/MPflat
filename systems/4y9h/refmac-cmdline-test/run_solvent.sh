@@ -16,7 +16,7 @@ XYZOUT $outpdb \
 make    hydrogen ALL     hout NO     peptide NO     cispeptide YES     ssbridg
  e YES     symmetry YES     sugar YES     connectivity NO     link NO
 refi     type RIGID     resi MLKF     meth CGMAT     bref over
-rigid ncycle 2
+rigid ncycle 0
 scal     type BULK     LSSC     ANISO     EXPE
 solvent YES
 weight     AUTO

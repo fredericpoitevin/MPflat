@@ -10,7 +10,7 @@
  ###############################################################
  ### CCP4 7.0: Refmac_5.8.0135     version 5.8.0135 : 01/10/15##
  ###############################################################
- User: fpoitevi  Run date: 21/ 5/2018 Run time: 18:13:52 
+ User: fpoitevi  Run date: 21/ 5/2018 Run time: 18:45:29 
 
 
  Please reference: Collaborative Computational Project, Number 4. 2011.
@@ -41,7 +41,7 @@
   Data line--- e YES     symmetry YES     sugar YES     connectivity NO     link NO
 ===> Warning: Unrecognized keyword: E
   Data line--- refi     type RIGID     resi MLKF     meth CGMAT     bref over
-  Data line--- rigid ncycle 2
+  Data line--- rigid ncycle 0
   Data line--- scal     type BULK     LSSC     ANISO     EXPE
   Data line--- solvent YES
   Data line--- weight     AUTO
@@ -155,7 +155,8 @@ Number of   all  reflections      55771
  Number of reflections in file      55771
  Number of reflections read          55771
 
-     Rigid body cycle =      1
+ WRITTEN OUTPUT MTZ FILE 
+ Logical Name: HKLOUT   Filename: out_solvent.mtz 
 
 
 -----------------------------------------------------------------------------
@@ -247,228 +248,11 @@ Free correlation coefficient         =     0.9435
 Cruickshanks DPI for coordinate error=     0.0632
 DPI based on free R factor           =     0.0691
 Overall figure of merit              =     0.7707
-ML based su of positional parameters =     0.0583
-ML based su of thermal parameters    =     1.6955
------------------------------------------------------------------------------
-
-     Rigid body cycle =      2
-
-
------------------------------------------------------------------------------
-Overall               : scale =    1.018, B  =  -0.331
-Babinet"s bulk solvent: scale =    0.108, B  = 400.000
-Partial structure    1: scale =    0.376, B  =  80.898
-Overall anisotropic scale factors
-   B11 = -0.14 B22 =  0.01 B33 =  0.13 B12 = -0.00 B13 =  0.00 B23 = -0.00
------------------------------------------------------------------------------
-
------------------------------------------------------------------------------
-
-    ****                Things for loggraph, R factor and others                ****
-
-
-$TABLE: Cycle    2. Rfactor analysis, F distribution v resln  :
-$GRAPHS:Cycle    2. <Rfactor> v. resln :N:1,6,7,11,12:
-:Cycle    2. <Fobs> and <Fc> v. resln :N:1,4,5,9,10:
-:Cycle    2. % observed v. resln :N:1,3:
-$$
-M(4SSQ/LL) NR_used %_obs M(Fo_used) M(Fc_used) Rf_used WR_used
-NR_free M(Fo_free) M(Fc_free) Rf_free   WR_free $$
-$$
- 0.012     684  99.58   787.2   746.3  0.24  0.28      28   742.7   767.5  0.24  0.31
- 0.037    1155 100.00   720.0   655.1  0.22  0.23      58   739.8   708.2  0.26  0.28
- 0.061    1445 100.00   821.1   720.5  0.19  0.19      87   796.9   679.9  0.23  0.23
- 0.086    1693 100.00   532.4   512.9  0.16  0.16     104   534.5   516.5  0.18  0.19
- 0.110    1903 100.00   390.1   394.3  0.15  0.14     106   380.2   367.3  0.18  0.18
- 0.135    2124 100.00   325.9   336.7  0.15  0.14     113   354.4   363.5  0.16  0.15
- 0.159    2273 100.00   272.6   284.1  0.15  0.14     127   270.9   278.6  0.18  0.16
- 0.184    2423  99.92   238.8   247.3  0.15  0.13     123   245.9   262.5  0.19  0.16
- 0.208    2609  99.75   221.2   222.9  0.14  0.12     135   210.6   211.8  0.18  0.16
- 0.233    2730  99.86   188.5   186.4  0.15  0.12     150   192.2   189.8  0.17  0.15
- 0.257    2876  99.67   154.9   152.7  0.17  0.14     134   162.1   160.3  0.19  0.16
- 0.282    3004  99.40   134.4   129.0  0.19  0.15     143   133.6   130.3  0.20  0.16
- 0.306    3106  99.45   118.4   110.2  0.24  0.20     147   122.0   106.0  0.27  0.21
- 0.331    3200  99.41   111.2    97.9  0.26  0.21     188   110.6    88.8  0.30  0.22
- 0.355    3305  99.15   104.9    86.3  0.29  0.24     203   104.0    86.0  0.30  0.26
- 0.380    3434  99.21    99.8    77.4  0.32  0.27     200    99.5    73.0  0.34  0.29
- 0.404    3525  98.99    96.0    69.5  0.36  0.31     204    93.0    69.0  0.34  0.31
- 0.429    3636  98.76    92.5    62.2  0.39  0.34     180    98.0    66.2  0.37  0.32
- 0.453    3722  98.36    91.9    56.2  0.43  0.38     181    94.5    60.6  0.42  0.37
- 0.478    3528  91.43    88.7    49.3  0.48  0.43     186    87.6    48.6  0.48  0.45
-$$
-
-    ****                      Fom and SigmaA vs resolution                      ****
-
- $TABLE: Cycle    2. FSC and  Fom(<cos(DelPhi)>-acentric, centric, overall v resln:
- $GRAPHS:Cycle    2. M(Fom) v. resln :N:1,3,5,7,8,9,10,11,12:
- $$
- <4SSQ/LL> NREFa  FOMa  NREFc FOMc NREFall FOMall  SigmaA_Fc1 FSCfree  FSCwork CorrFoFcFree CorrFoFcWork$$
- $$
-  0.0125    476   0.794    208   0.735    684   0.776  0.960  0.9152  0.9213  0.8601  0.8689
-  0.0370    943   0.835    212   0.699   1155   0.810  1.028  0.9257  0.9403  0.8133  0.9071
-  0.0615   1235   0.918    210   0.829   1445   0.905  1.072  0.9572  0.9647  0.8892  0.9289
-  0.0859   1475   0.903    218   0.758   1693   0.885  0.996  0.9574  0.9625  0.9222  0.9357
-  0.1104   1697   0.912    206   0.833   1903   0.903  0.955  0.9548  0.9668  0.9070  0.9452
-  0.1349   1907   0.936    217   0.871   2124   0.930  0.938  0.9709  0.9719  0.9351  0.9443
-  0.1594   2056   0.932    217   0.873   2273   0.926  0.924  0.9645  0.9706  0.9301  0.9455
-  0.1839   2221   0.930    202   0.849   2423   0.923  0.921  0.9652  0.9682  0.9251  0.9450
-  0.2084   2392   0.935    217   0.835   2609   0.927  0.939  0.9595  0.9701  0.9080  0.9500
-  0.2329   2518   0.929    212   0.830   2730   0.921  0.941  0.9601  0.9650  0.9196  0.9430
-  0.2574   2673   0.911    203   0.847   2876   0.906  0.927  0.9469  0.9504  0.8731  0.9175
-  0.2818   2797   0.890    207   0.811   3004   0.885  0.915  0.9307  0.9327  0.8634  0.8922
-  0.3063   2900   0.804    206   0.765   3106   0.802  0.877  0.8531  0.8713  0.7742  0.8089
-  0.3308   2985   0.791    215   0.703   3200   0.785  0.905  0.8249  0.8515  0.7096  0.7567
-  0.3553   3105   0.732    200   0.653   3305   0.728  0.896  0.7856  0.7994  0.5564  0.6742
-  0.3798   3220   0.701    214   0.628   3434   0.697  0.903  0.7578  0.7652  0.5714  0.5961
-  0.4043   3322   0.693    203   0.607   3525   0.688  0.935  0.7489  0.7411  0.5727  0.4792
-  0.4288   3432   0.531    204   0.422   3636   0.525  0.810  0.6458  0.5994  0.5116  0.3602
-  0.4533   3516   0.404    206   0.348   3722   0.401  0.699  0.4906  0.4783  0.1828  0.2986
-  0.4777   3346   0.384    183   0.336   3529   0.381  0.729  0.4560  0.4410  0.3432  0.2253
- $$
-Resolution limits                    =     64.169     1.429
-Number of used reflections           =      52375
-Percentage observed                  =    98.8497
-Percentage of free reflections       =     5.0696
-Overall R factor                     =     0.2160
-Free R factor                        =     0.2360
-Average Fourier shell correlation    =     0.8158
-AverageFree Fourier shell correlation=     0.8159
-Overall weighted R factor            =     0.1780
-Free weighted R factor               =     0.2020
-Overall weighted R2 factor           =     0.2244
-Free weighted R2 factor              =     0.2640
-Average correlation coefficient      =     0.7121
-Overall correlation coefficient      =     0.9530
-Free correlation coefficient         =     0.9434
-Cruickshanks DPI for coordinate error=     0.0632
-DPI based on free R factor           =     0.0691
-Overall figure of merit              =     0.7537
-ML based su of positional parameters =     0.0587
-ML based su of thermal parameters    =     1.7365
------------------------------------------------------------------------------
-----------------------------------------------------------
-  Rigid body parameters will be applied to coordinates
-  as following
-
- Xnew = Rot*Xold - Rot*Tg + Tg +deltaTg
-Where
- Xnew and Xold are new and old coordinates of atoms in
-              this domain
- Rot           is rotation matrix derived from Euler angles
- Tg            is centre of mass of this domain
- deltaTg       is shift of centre of mass
-----------------------------------------------------------
-Domain     1
-Centre of mass:     21.704    14.238     2.813
- Euler angles and deltaTg:      -180.00     0.00  -180.00    -0.00    -0.00    -0.00
-
- Matrix and deltaTg
-        1.000    -0.000    -0.000
-        0.000     1.000    -0.000
-        0.000    -0.000     1.000
-       -0.000    -0.000    -0.000
-
-   Polar angles: PHI, PSI(or Omega), CHI(or Kappa), deltaTg:      0.00     0.00     0.00    -0.00    -0.00    -0.00
-
-
- WRITTEN OUTPUT MTZ FILE 
- Logical Name: HKLOUT   Filename: out_solvent.mtz 
-
-
------------------------------------------------------------------------------
-Overall               : scale =    1.015, B  =  -0.371
-Babinet"s bulk solvent: scale =    0.106, B  = 400.000
-Partial structure    1: scale =    0.376, B  =  81.002
-Overall anisotropic scale factors
-   B11 = -0.15 B22 =  0.01 B33 =  0.14 B12 = -0.00 B13 =  0.00 B23 = -0.00
------------------------------------------------------------------------------
-
------------------------------------------------------------------------------
-
-    ****                Things for loggraph, R factor and others                ****
-
-
-$TABLE: Cycle    3. Rfactor analysis, F distribution v resln  :
-$GRAPHS:Cycle    3. <Rfactor> v. resln :N:1,6,7,11,12:
-:Cycle    3. <Fobs> and <Fc> v. resln :N:1,4,5,9,10:
-:Cycle    3. % observed v. resln :N:1,3:
-$$
-M(4SSQ/LL) NR_used %_obs M(Fo_used) M(Fc_used) Rf_used WR_used
-NR_free M(Fo_free) M(Fc_free) Rf_free   WR_free $$
-$$
- 0.012     684  99.58   789.0   746.9  0.24  0.28      28   744.3   768.0  0.24  0.30
- 0.037    1155 100.00   721.6   655.3  0.22  0.23      58   741.4   708.5  0.26  0.28
- 0.061    1445 100.00   822.9   720.9  0.19  0.19      87   798.7   680.3  0.23  0.23
- 0.086    1693 100.00   533.6   513.3  0.16  0.16     104   535.7   517.0  0.18  0.19
- 0.110    1903 100.00   391.0   394.7  0.15  0.14     106   381.0   367.7  0.18  0.18
- 0.135    2124 100.00   326.6   337.2  0.15  0.14     113   355.2   364.0  0.16  0.15
- 0.159    2273 100.00   273.2   284.5  0.15  0.14     127   271.5   279.0  0.18  0.16
- 0.184    2423  99.92   239.4   247.8  0.15  0.13     123   246.5   263.0  0.19  0.16
- 0.208    2609  99.75   221.7   223.4  0.14  0.12     135   211.0   212.2  0.18  0.16
- 0.233    2730  99.86   188.9   186.8  0.15  0.12     150   192.7   190.2  0.17  0.15
- 0.257    2876  99.67   155.2   153.0  0.17  0.14     134   162.5   160.7  0.19  0.16
- 0.282    3004  99.40   134.7   129.4  0.19  0.15     143   133.9   130.6  0.20  0.16
- 0.306    3106  99.45   118.6   110.5  0.24  0.20     147   122.2   106.4  0.27  0.21
- 0.331    3200  99.41   111.4    98.2  0.26  0.21     188   110.8    89.0  0.30  0.22
- 0.355    3305  99.15   105.1    86.6  0.29  0.24     203   104.2    86.3  0.30  0.26
- 0.380    3434  99.21   100.0    77.7  0.32  0.27     200    99.7    73.3  0.34  0.29
- 0.404    3525  98.99    96.2    69.8  0.36  0.31     204    93.2    69.3  0.34  0.31
- 0.429    3636  98.76    92.7    62.5  0.39  0.34     180    98.2    66.5  0.36  0.32
- 0.453    3722  98.36    92.1    56.4  0.43  0.38     181    94.7    60.9  0.42  0.36
- 0.478    3528  91.43    88.9    49.6  0.47  0.43     186    87.8    48.8  0.48  0.45
-$$
-
-    ****                      Fom and SigmaA vs resolution                      ****
-
- $TABLE: Cycle    3. FSC and  Fom(<cos(DelPhi)>-acentric, centric, overall v resln:
- $GRAPHS:Cycle    3. M(Fom) v. resln :N:1,3,5,7,8,9,10,11,12:
- $$
- <4SSQ/LL> NREFa  FOMa  NREFc FOMc NREFall FOMall  SigmaA_Fc1 FSCfree  FSCwork CorrFoFcFree CorrFoFcWork$$
- $$
-  0.0125    476   0.794    208   0.735    684   0.776  0.960  0.9152  0.9213  0.8603  0.8689
-  0.0370    943   0.835    212   0.699   1155   0.810  1.032  0.9260  0.9404  0.8133  0.9071
-  0.0615   1235   0.918    210   0.830   1445   0.905  1.075  0.9572  0.9647  0.8892  0.9289
-  0.0859   1475   0.903    218   0.758   1693   0.884  0.996  0.9573  0.9625  0.9222  0.9357
-  0.1104   1697   0.912    206   0.832   1903   0.903  0.955  0.9547  0.9667  0.9070  0.9452
-  0.1349   1907   0.936    217   0.871   2124   0.929  0.938  0.9709  0.9718  0.9351  0.9443
-  0.1594   2056   0.932    217   0.873   2273   0.926  0.924  0.9645  0.9706  0.9301  0.9456
-  0.1839   2221   0.930    202   0.849   2423   0.923  0.921  0.9652  0.9682  0.9252  0.9450
-  0.2084   2392   0.935    217   0.835   2609   0.927  0.939  0.9595  0.9701  0.9081  0.9500
-  0.2329   2518   0.929    212   0.830   2730   0.921  0.941  0.9601  0.9650  0.9196  0.9430
-  0.2574   2673   0.911    203   0.847   2876   0.907  0.927  0.9469  0.9505  0.8732  0.9175
-  0.2818   2797   0.890    207   0.811   3004   0.885  0.915  0.9306  0.9327  0.8635  0.8922
-  0.3063   2900   0.802    206   0.763   3106   0.799  0.877  0.8519  0.8700  0.7742  0.8089
-  0.3308   2985   0.790    215   0.702   3200   0.784  0.899  0.8242  0.8510  0.7098  0.7568
-  0.3553   3105   0.728    200   0.649   3305   0.723  0.889  0.7827  0.7968  0.5566  0.6742
-  0.3798   3220   0.696    214   0.623   3434   0.691  0.903  0.7538  0.7612  0.5717  0.5962
-  0.4043   3322   0.691    203   0.604   3525   0.686  0.935  0.7473  0.7396  0.5728  0.4793
-  0.4288   3432   0.505    204   0.399   3636   0.499  0.776  0.6249  0.5779  0.5118  0.3604
-  0.4533   3516   0.381    206   0.328   3722   0.378  0.665  0.4674  0.4546  0.1835  0.2989
-  0.4777   3346   0.381    183   0.333   3529   0.379  0.729  0.4536  0.4386  0.3440  0.2254
- $$
-Resolution limits                    =     64.169     1.429
-Number of used reflections           =      52375
-Percentage observed                  =    98.8497
-Percentage of free reflections       =     5.0696
-Overall R factor                     =     0.2160
-Free R factor                        =     0.2359
-Average Fourier shell correlation    =     0.8118
-AverageFree Fourier shell correlation=     0.8121
-Overall weighted R factor            =     0.1780
-Free weighted R factor               =     0.2019
-Overall weighted R2 factor           =     0.2245
-Free weighted R2 factor              =     0.2639
-Average correlation coefficient      =     0.7122
-Overall correlation coefficient      =     0.9530
-Free correlation coefficient         =     0.9433
-Cruickshanks DPI for coordinate error=     0.0632
-DPI based on free R factor           =     0.0691
-Overall figure of merit              =     0.7490
 ML based su of positional parameters =     0.0000
 ML based su of thermal parameters    =     0.0018
 -----------------------------------------------------------------------------
-  Time in seconds: CPU =        72.81
-             Elapsed =           0.00
+  Time in seconds: CPU =        26.21
+             Elapsed =         128.00
 
     ****           Things for loggraph, R factor and others vs cycle            ****
 
@@ -483,17 +267,15 @@ $$
     Ncyc    Rfact    Rfree     FOM      -LL     -LLfree  rmsBOND  zBOND rmsANGL  zANGL rmsCHIRAL $$
 $$
        0   0.2160   0.2361   0.771      267627.   14447   0.0      0.0    0.0     0.0      0.0
-       1   0.2160   0.2360   0.754      267689.   14463   0.0      0.0    0.0     0.0      0.0
-       2   0.2160   0.2359   0.749      267870.   14473   0.0      0.0    0.0     0.0      0.0
  $$
  $TEXT:Result: $$ Final results $$
                       Initial    Final
            R factor    0.2160   0.2160
-             R free    0.2361   0.2359
+             R free    0.2361   0.2361
  $$
 <B><FONT COLOR="#FF0000"><!--SUMMARY_BEGIN-->
  Refmac_5.8.0135:  End of Refmac_5.8.0135  
-Times: User:      73.9s System:    0.1s Elapsed:     1:14  
+Times: User:      27.4s System:    0.1s Elapsed:     0:27  
 </pre>
 </html>
 <!--SUMMARY_END--></FONT></B>
