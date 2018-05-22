@@ -1,0 +1,42 @@
+f_obs_1_file_name = /Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/out_solvent.mtz
+f_obs_1_label = FP,SIGFP
+f_obs_2_file_name = /Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/out_nosolvent.mtz
+f_obs_2_label = FP,SIGFP
+high_resolution = 1.4
+low_resolution = 64.0
+sigma_cutoff = None
+phase_source = /Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/out_nosolvent.pdb
+scattering_table = *xray neutron
+output_file = None
+output_dir = /Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test
+file_name_prefix = """4y9h_fo_minus_fo"""
+job_id = 5
+ignore_non_isomorphous_unit_cells = False
+job_title = """test"""
+advanced {
+  multiscale = False
+  omit_selection = None
+  anomalous = False
+}
+find_peaks_holes = False
+map_cutoff = 3.0
+peak_search {
+  use_sigma_scaled_maps = True
+  resolution_factor = 1./4.
+  map_next_to_model {
+    min_model_peak_dist = 1.8
+    max_model_peak_dist = 6.0
+    min_peak_peak_dist = 1.8
+    use_hydrogens = False
+  }
+  max_number_of_peaks = None
+  peak_search {
+    peak_search_level = 1
+    max_peaks = 0
+    interpolate = True
+    min_distance_sym_equiv = None
+    general_positions_only = False
+    min_cross_distance = 1.8
+    min_cubicle_edge = 5
+  }
+}

@@ -1,8 +1,8 @@
 project {
   project_id = "4y9h"
   directory = "/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h"
-  last_modified = 1526606591
-  job_count = 3
+  last_modified = 1526954674
+  job_count = 8
   best_r_free = 0.2444
   default_file {
     file_name = None
@@ -17,4 +17,5 @@ project {
   citation = None
   group_id = None
   cached_output_dir = "/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h"
+  cached_output_dir = "/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test"
 }

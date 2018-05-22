@@ -1,0 +1,119 @@
+
+========================== phenix.fobs_minus_fobs_map =========================
+
+Command line arguments: 
+['/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/.phenix/project_data/fobs_minus_fobs_map_8.eff', 'f_obs_1_file_name=/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/out_solvent.mtz', 'f_obs_2_file_name=/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/out_nosolvent.mtz', 'phase_source=/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/out_nosolvent.pdb']
+
+*** Parameters:
+f_obs_1_file_name = /Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/out_solvent.mtz
+f_obs_1_label = FP,SIGFP
+f_obs_2_file_name = /Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/out_nosolvent.mtz
+f_obs_2_label = FP,SIGFP
+high_resolution = 3.0
+low_resolution = 10.0
+sigma_cutoff = None
+phase_source = /Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/out_nosolvent.pdb
+scattering_table = *xray neutron
+output_file = None
+output_dir = /Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test
+file_name_prefix = """4y9h_fo_minus_fo"""
+job_id = 8
+ignore_non_isomorphous_unit_cells = False
+job_title = """sanitycheck"""
+advanced {
+  multiscale = False
+  omit_selection = None
+  anomalous = False
+}
+find_peaks_holes = False
+map_cutoff = 3.0
+peak_search {
+  use_sigma_scaled_maps = True
+  resolution_factor = 1./4.
+  map_next_to_model {
+    min_model_peak_dist = 1.8
+    max_model_peak_dist = 6.0
+    min_peak_peak_dist = 1.8
+    use_hydrogens = False
+  }
+  max_number_of_peaks = None
+  peak_search {
+    peak_search_level = 1
+    max_peaks = 0
+    interpolate = True
+    min_distance_sym_equiv = None
+    general_positions_only = False
+    min_cross_distance = 1.8
+    min_cubicle_edge = 5
+  }
+}
+
+*** Summary for data set 0:
+Miller array info: /Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/out_solvent.mtz:FP,SIGFP
+Observation type: xray.amplitude
+Type of data: double, size=55173
+Type of sigmas: double, size=55173
+Number of Miller indices: 55173
+Anomalous flag: False
+Unit cell: (45.215, 102.794, 128.337, 90, 90, 90)
+Space group: C 2 2 21 (No. 20)
+Systematic absences: 0
+Centric reflections: 4365
+Resolution range: 47.7129 1.4286
+Completeness in resolution range: 0.988533
+Completeness with d_max=infinity: 0.988498
+Wavelength: 0.0000
+
+*** Summary for data set 1:
+Miller array info: /Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/out_nosolvent.mtz:FP,SIGFP
+Observation type: xray.amplitude
+Type of data: double, size=55173
+Type of sigmas: double, size=55173
+Number of Miller indices: 55173
+Anomalous flag: False
+Unit cell: (45.215, 102.794, 128.337, 90, 90, 90)
+Space group: C 2 2 21 (No. 20)
+Systematic absences: 0
+Centric reflections: 4365
+Resolution range: 47.7129 1.4286
+Completeness in resolution range: 0.988533
+Completeness with d_max=infinity: 0.988498
+Wavelength: 0.0000
+
+*** Model summary:
+Number of scatterers: 2109
+At special positions: 0
+Unit cell: (45.215, 102.794, 128.337, 90, 90, 90)
+Space group: C 2 2 21 (No. 20)
+
+Data set: 0
+|--(resolution: 3.00 - 9.99 A, n_refl.=6096 (all), 100.00% free)--------------|
+|                                                                             |
+| r_work= 0.1754 r_free= 0.1754 coordinate error (max.-lik. estimate): 0.16 A |
+|                                                                             |
+| x-ray target function (ls_wunit_k1) for work reflections: 0.038734          |
+|-----------------------------------------------------------------------------|
+
+Data set: 1
+|--(resolution: 3.00 - 9.99 A, n_refl.=6096 (all), 100.00% free)--------------|
+|                                                                             |
+| r_work= 0.1754 r_free= 0.1754 coordinate error (max.-lik. estimate): 0.16 A |
+|                                                                             |
+| x-ray target function (ls_wunit_k1) for work reflections: 0.038730          |
+|-----------------------------------------------------------------------------|
+
+
+Fobs1_vs_Fobs2 statistics:
+Bin# Resolution range  Compl.  No.of refl. CC   R-factor
+  1: 9.9949 - 6.2973     1.00    538         1.000  0.0000
+  2: 6.2973 - 5.2258     1.00    527         1.000  0.0000
+  3: 5.2258 - 4.6400     1.00    509         1.000  0.0000
+  4: 4.6400 - 4.2515     1.00    501         1.000  0.0000
+  5: 4.2515 - 3.9672     1.00    514         1.000  0.0000
+  6: 3.9672 - 3.7463     1.00    496         1.000  0.0000
+  7: 3.7463 - 3.5677     1.00    512         1.000  0.0000
+  8: 3.5677 - 3.4189     1.00    497         1.000  0.0000
+  9: 3.4189 - 3.2921     1.00    496         1.000  0.0000
+ 10: 3.2921 - 3.1823     1.00    505         1.000  0.0000
+ 11: 3.1823 - 3.0858     1.00    508         1.000  0.0000
+ 12: 3.0858 - 3.0000     1.00    493         1.000  0.0000

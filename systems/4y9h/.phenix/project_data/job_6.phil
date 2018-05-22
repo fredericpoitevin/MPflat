@@ -1,0 +1,27 @@
+LIBTBX_BASE_DIR = "/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h"
+job {
+  job_id = 6
+  app_id = IsomorphousDifference
+  program_name = None
+  title = """test"""
+  directory = "$(LIBTBX_BASE_DIR)/refmac-cmdline-test/fobs_minus_fobs_6"
+  process_type = None
+  hostname = None
+  queue_id = None
+  citation = None
+  input_file {
+    file_name = None
+    file_type = None
+    param_name = None
+  }
+  output_file {
+    file_name = "4y9h_fo_minus_fo_6.mtz"
+    file_type = Map coefficients
+  }
+  statistic {
+    stat_name = None
+    stat_value = None
+  }
+  user_comments = None
+  deleted = False
+}

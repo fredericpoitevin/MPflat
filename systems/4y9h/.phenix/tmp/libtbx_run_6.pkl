@@ -1,0 +1,5 @@
+Äcmmtbx.maps.fobs_minus_fobs_map
+launcher
+q)Åq}q(U	file_nameqUa/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/.phenix/project_data/fobs_minus_fobs_map_6.pklUargsq]q(Ua/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/.phenix/project_data/fobs_minus_fobs_map_6.effqUhf_obs_1_file_name=/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/out_solvent.mtzqUjf_obs_2_file_name=/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/out_nosolvent.mtzq	Ucphase_source=/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/out_solvent.pdbq
+eU
+output_dirqUX/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/fobs_minus_fobs_6qU_outqNUlog_fileqUa/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/.phenix/project_data/fobs_minus_fobs_map_6.logU	job_titleqNub.

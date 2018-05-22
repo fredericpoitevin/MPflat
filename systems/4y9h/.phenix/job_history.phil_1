@@ -35,15 +35,110 @@ job_summary {
 }
 job_summary {
   job_id = 3
-  app_id = Refine
-  program_name = phenix.refine
-  program_args = /Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/.phenix/project_data/refine_3.eff \
-                 --overwrite --unused_ok
+  app_id = "Refine"
+  program_name = "phenix.refine"
+  program_args = "/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/.phenix/project_data/refine_3.eff" \
+                 "--overwrite" "--unused_ok"
   config_file = "$(LIBTBX_BASE_DIR)/.phenix/project_data/refine_3.eff"
-  title = """[ phenix.refine ]"""
-  time_started = 1526606301.4
-  time_finished = None
+  title = "[ phenix.refine ]"
+  time_started = 1526606301
+  time_finished = 1526606602
   result_directory = "$(LIBTBX_BASE_DIR)/Refine_3"
+  status = started failed aborted *complete deleted
+  user_flagged = False
+  r_free = 0.2731
+  process_type = 1
+  applet = False
+}
+job_summary {
+  job_id = 4
+  app_id = "IsomorphousDifference"
+  program_name = "phenix.fobs_minus_fobs_map"
+  program_args = "/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/.phenix/project_data/fobs_minus_fobs_map_4.eff" \
+                 "f_obs_1_file_name=/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/out_solvent.mtz" \
+                 "f_obs_2_file_name=/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/out_nosolvent.mtz" \
+                 "phase_source=/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/out_nosolvent.pdb"
+  config_file = "$(LIBTBX_BASE_DIR)/.phenix/project_data/fobs_minus_fobs_map_4.eff"
+  title = "test"
+  time_started = 1526951878
+  time_finished = 1526951898
+  result_directory = "$(LIBTBX_BASE_DIR)/refmac-cmdline-test/fobs_minus_fobs_4"
+  status = started failed aborted *complete deleted
+  user_flagged = False
+  r_free = None
+  process_type = 1
+  applet = False
+}
+job_summary {
+  job_id = 5
+  app_id = "IsomorphousDifference"
+  program_name = "phenix.fobs_minus_fobs_map"
+  program_args = "/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/.phenix/project_data/fobs_minus_fobs_map_5.eff" \
+                 "f_obs_1_file_name=/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/out_solvent.mtz" \
+                 "f_obs_2_file_name=/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/out_nosolvent.mtz" \
+                 "phase_source=/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/out_nosolvent.pdb"
+  config_file = "$(LIBTBX_BASE_DIR)/.phenix/project_data/fobs_minus_fobs_map_5.eff"
+  title = "test"
+  time_started = 1526953404
+  time_finished = 1526953424
+  result_directory = "$(LIBTBX_BASE_DIR)/refmac-cmdline-test/fobs_minus_fobs_5"
+  status = started failed aborted *complete deleted
+  user_flagged = False
+  r_free = None
+  process_type = 1
+  applet = False
+}
+job_summary {
+  job_id = 6
+  app_id = "IsomorphousDifference"
+  program_name = "phenix.fobs_minus_fobs_map"
+  program_args = "/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/.phenix/project_data/fobs_minus_fobs_map_6.eff" \
+                 "f_obs_1_file_name=/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/out_solvent.mtz" \
+                 "f_obs_2_file_name=/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/out_nosolvent.mtz" \
+                 "phase_source=/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/out_solvent.pdb"
+  config_file = "$(LIBTBX_BASE_DIR)/.phenix/project_data/fobs_minus_fobs_map_6.eff"
+  title = "test"
+  time_started = 1526953748
+  time_finished = 1526953768
+  result_directory = "$(LIBTBX_BASE_DIR)/refmac-cmdline-test/fobs_minus_fobs_6"
+  status = started failed aborted *complete deleted
+  user_flagged = False
+  r_free = None
+  process_type = 1
+  applet = False
+}
+job_summary {
+  job_id = 7
+  app_id = "IsomorphousDifference"
+  program_name = "phenix.fobs_minus_fobs_map"
+  program_args = "/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/.phenix/project_data/fobs_minus_fobs_map_7.eff" \
+                 "f_obs_1_file_name=/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/out_nosolvent.mtz" \
+                 "f_obs_2_file_name=/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/out_nosolvent.mtz" \
+                 "phase_source=/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/out_nosolvent.pdb"
+  config_file = "$(LIBTBX_BASE_DIR)/.phenix/project_data/fobs_minus_fobs_map_7.eff"
+  title = "sanitycheck"
+  time_started = 1526954531
+  time_finished = 1526954551
+  result_directory = "$(LIBTBX_BASE_DIR)/refmac-cmdline-test/fobs_minus_fobs_7"
+  status = started failed aborted *complete deleted
+  user_flagged = False
+  r_free = None
+  process_type = 1
+  applet = False
+}
+job_summary {
+  job_id = 8
+  app_id = IsomorphousDifference
+  program_name = phenix.fobs_minus_fobs_map
+  program_args = /Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/.phenix/project_data/fobs_minus_fobs_map_8.eff \
+                 f_obs_1_file_name=/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/out_solvent.mtz \
+                 f_obs_2_file_name=/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/out_nosolvent.mtz \
+                 phase_source=/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/out_nosolvent.pdb
+  config_file = "$(LIBTBX_BASE_DIR)/.phenix/project_data/fobs_minus_fobs_map_8.eff"
+  title = """sanitycheck"""
+  time_started = 1526954673.5
+  time_finished = None
+  result_directory = "$(LIBTBX_BASE_DIR)/refmac-cmdline-test/fobs_minus_fobs_8"
   status = *started failed aborted complete deleted
   user_flagged = False
   r_free = None

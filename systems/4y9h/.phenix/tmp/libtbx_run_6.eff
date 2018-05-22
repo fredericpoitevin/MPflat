@@ -1,0 +1,8 @@
+run_file = "/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/.phenix/tmp/libtbx_run_6.pkl"
+prefix = "6"
+output_dir = None
+tmp_dir = "/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/.phenix/tmp"
+debug = False
+timeout = 200
+buffer_stdout = False
+fsync = True
