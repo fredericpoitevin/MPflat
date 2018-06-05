@@ -1,0 +1,27 @@
+LIBTBX_BASE_DIR = "/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h"
+job {
+  job_id = 9
+  app_id = CifAsMtz
+  program_name = None
+  title = """[ phenix.cif_as_mtz ]"""
+  directory = None
+  process_type = None
+  hostname = None
+  queue_id = None
+  citation = None
+  input_file {
+    file_name = None
+    file_type = None
+    param_name = None
+  }
+  output_file {
+    file_name = "MTZ file"
+    file_type = /Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/toto
+  }
+  statistic {
+    stat_name = Number of reflections
+    stat_value = 81299
+  }
+  user_comments = None
+  deleted = False
+}

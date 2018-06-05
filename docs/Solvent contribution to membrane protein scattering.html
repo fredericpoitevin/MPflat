@@ -11803,7 +11803,9 @@ What are possible improvements in order to increase the amount of extractable in
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Simulations">Simulations<a class="anchor-link" href="#Simulations">&#182;</a></h3><p>Coarse-grained simulations of unit cells (with fixed macromolecules) might give some insight on how detergent and lipids partition themselves in the solvent channel. Might be useful as a starting point for refining against Bragg and continuous scattering.</p>
+<h3 id="Simulations">Simulations<a class="anchor-link" href="#Simulations">&#182;</a></h3><h4 id="diluted-sample">diluted sample<a class="anchor-link" href="#diluted-sample">&#182;</a></h4><p>The distribution of lipids, detergents, etc. can be studied with <a href="#martini">Martini</a>. See examples carried on <a href="#melo2017">ion channels</a>, <a href="#vaneerden2017">photosystems</a>, <a href="#periole2017">GPCR</a>. It would be interesting to look at their spontaneous arrangement around a restrained protein. In particular, what would the average density look like as a function of resolution ?</p>
+<h4 id="crystallized-sample">crystallized sample<a class="anchor-link" href="#crystallized-sample">&#182;</a></h4><p>Going further, same could be done in the context of the crystal.</p>
+<p>Coarse-grained simulations of unit cells (with fixed macromolecules) might give some insight on how detergent and lipids partition themselves in the solvent channel. Might be useful as a starting point for refining against Bragg and continuous scattering.</p>
 <p>See <a href="#wall2018">Wall (2018)</a> for a possible method. The difficulty lies in equilibrating the system while preserving the volume of the unit cell. For efficient simulation of the lipid distribution, check-out <a href="#martini">Martini</a>.</p>
 
 </div>
@@ -11825,7 +11827,34 @@ Look at <a href="#afonine2008">Afonine's account</a> or Murshudov's code in <a h
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Log-book">Log-book<a class="anchor-link" href="#Log-book">&#182;</a></h3><h4 id="membrane-vs-soluble-/-phenix-vs-refmac">membrane-vs-soluble / phenix-vs-refmac<a class="anchor-link" href="#membrane-vs-soluble-/-phenix-vs-refmac">&#182;</a></h4><p>Using current Mac versions of phenix and ccp4, we compare in the table below bR to soluble proteins (previously refined with either refmac or phenix) using rigid-body refinement with refmac5 and phenix, with and without solvent contribution. 'greasy' means detergents and lipids were kept - they were removed otherwise. Interesting curves for refmac are red (Rwork) and green (Rfree). <em>The resolution range is often inconsistent between the two methods: this needs to be fixed.</em></p>
+<h3 id="Log-book">Log-book<a class="anchor-link" href="#Log-book">&#182;</a></h3><h4 id="pipeline">pipeline<a class="anchor-link" href="#pipeline">&#182;</a></h4><ul>
+<li><p><a href="https://www.rcsb.org/pages/download/ftp_site_layout">FTP</a></p>
+<ul>
+<li><a href="ftp://ftp.wwpdb.org/pub/pdb/data/structures/divided/pdb/">PDB</a></li>
+<li><a href="ftp://ftp.wwpdb.org/pub/pdb/data/structures/divided/structure_factors/">SF</a></li>
+</ul>
+</li>
+<li><details>
+  <summary>cif2mtz</summary>
+  ```cif2mtz \
+  hklin r1gmesf.ent \
+  hklout 1gme.mtz 
+  <<eof
+  END
+  eof
+  ```
+</details></li>
+</ul>
+<h4 id="TODO">TODO<a class="anchor-link" href="#TODO">&#182;</a></h4><ul>
+<li>difference map with and withou solvent flattening</li>
+</ul>
+<h4 id="Candidate-list">Candidate list<a class="anchor-link" href="#Candidate-list">&#182;</a></h4><ul>
+<li>DDM detergent:<ul>
+<li><a href="https://www.rcsb.org/structure/2BBJ">PDB 2BBG</a> <a href="http://www.ebi.ac.uk/pdbe/entry/emdb/EMD-6551">EMDB 6551</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="membrane-vs-soluble-/-phenix-vs-refmac">membrane-vs-soluble / phenix-vs-refmac<a class="anchor-link" href="#membrane-vs-soluble-/-phenix-vs-refmac">&#182;</a></h4><p>Using current Mac versions of phenix and ccp4, we compare in the table below bR to soluble proteins (previously refined with either refmac or phenix) using rigid-body refinement with refmac5 and phenix, with and without solvent contribution. 'greasy' means detergents and lipids were kept - they were removed otherwise. Interesting curves for refmac are red (Rwork) and green (Rfree). <em>The resolution range is often inconsistent between the two methods: this needs to be fixed.</em></p>
 <table>
 <thead><tr>
 <th></th>
@@ -11996,6 +12025,12 @@ RSIZE 80
 </li>
 <li><p><a name="martini"></a> <strong>Marrinck</strong> <a href="http://cgmartini.nl/index.php"><em>MARTINI website</em></a></p>
 </li>
+<li><p><a name="periole2017"></a><strong>Periole</strong>. <a href="https://pubs.acs.org/doi/abs/10.1021/acs.chemrev.6b00344"><em>Interplay of G Protein-Coupled Receptors with the Membrane: Insights from Supra-Atomic Coarse Grain Molecular Dynamics Simulations</em></a> (2017) Chem. Rev.</p>
+</li>
+<li><p><a name="vaneerden2017"></a><strong>van Eerden</strong> et al. <a href="https://pubs.acs.org/doi/abs/10.1021/acs.jpcb.6b06865"><em>Molecular Dynamics of Photosystem II Embedded in the Thylakoid Membrane</em></a> (2017) J. Phys. Chem. B</p>
+</li>
+<li><p><a name="melo2017"></a><strong>Melo</strong> et al. <a href="https://pubs.acs.org/doi/abs/10.1021/jacs.6b11091"><em>High-Throughput Simulations Reveal Membrane-Mediated Effects of Alcohols on MscL Gating</em></a> (2017) JACS</p>
+</li>
 </ul>
 
 </div>
@@ -12016,6 +12051,40 @@ RSIZE 80
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Appendix">Appendix<a class="anchor-link" href="#Appendix">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="CCP4-Keywords">CCP4 <a href="http://www.ccp4.ac.uk/html/refmac5/keywords/">Keywords</a><a class="anchor-link" href="#CCP4-Keywords">&#182;</a></h3><ul>
+<li><p><strong>FP/SIGFP</strong> : FP is the observed structure factor and SIGFP its standard error. FCn and PCn are the partial calculated structure factors and phases for symmetry operation n. Known structure may be added in by defining FC and PHIC.</p>
+</li>
+<li><p><strong>FC/PHIC</strong> : FC PHIC are the structure factor contributions from the input atoms only, without any FPARTi terms added.</p>
+</li>
+<li><p><strong>FWT/PHWT</strong> : FWT and PHWT are amplitude and phase for weighted "2Fo-Fc" map (2mFo-DFcalc).</p>
+</li>
+<li><p><strong>DELFWT/PHDELFWT</strong> : DELFWT and PHDELWT are amplitude and phase for weighted 'difference' map (mFo-DFCalc).</p>
+</li>
+<li><p><strong>Example 4: MODE SFCALC XYZIN HKLIN [ ATMMAP ]</strong>
+A structure factor calculation is performed using the input coordinates. HKLIN is read, and the FP are scaled to FC. HKLOUT contains at least H K L scaled_FP scaled_SIGFP FC PHIC 
+(You can output unscaled FP by using the keyword NOSCALE). An R-factor is calculated. If keyword ATMMAP is given the electron density map created from the atomic coordinates is saved on MAPOUT.</p>
+</li>
+<li><p>in <a href="https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/coot/web/docs/coot-user-manual.pdf">COOT: 11.15.2 map-from-mtz-by-refmac-calc-phases</a>
+<code>map-from-mtz-by-refmac-calc-phases mtz file name f col sigf col [function]
+imol coords
+Where:
+• mtz file name is a string
+• f col is a string
+• sigf col is a string
+• imol coords is an integer number
+Calculate SFs (using refmac optionally) from an MTZ file and generate a map. Get
+F and SIGF automatically (first of their type) from the mtz file.
+Returns: the new molecule number, -1 on a problem.</code></p>
+</li>
+</ul>
+
 </div>
 </div>
 </div>

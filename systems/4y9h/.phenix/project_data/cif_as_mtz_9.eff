@@ -1,0 +1,23 @@
+input {
+  pdb_id = None
+  cif_file = /Users/fpoitevi/Downloads/r3eamsf.ent
+  pdb_file = None
+  wavelength_id = None
+  crystal_id = None
+}
+crystal_symmetry {
+  space_group = C 1 2 1
+  unit_cell = 183.32 133.64 160.18 90 102.938 90
+}
+output_file_name = /Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/toto
+job_title = None
+options {
+  merge = False
+  map_to_asu = True
+  eliminate_sys_absent = False
+  show_details_if_error = True
+  incompatible_flags_to_work_set = False
+  ignore_bad_sigmas = False
+  extend_flags = False
+  show_log = True
+}

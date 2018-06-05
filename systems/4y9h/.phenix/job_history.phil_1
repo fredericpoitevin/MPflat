@@ -128,17 +128,33 @@ job_summary {
 }
 job_summary {
   job_id = 8
-  app_id = IsomorphousDifference
-  program_name = phenix.fobs_minus_fobs_map
-  program_args = /Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/.phenix/project_data/fobs_minus_fobs_map_8.eff \
-                 f_obs_1_file_name=/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/out_solvent.mtz \
-                 f_obs_2_file_name=/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/out_nosolvent.mtz \
-                 phase_source=/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/out_nosolvent.pdb
+  app_id = "IsomorphousDifference"
+  program_name = "phenix.fobs_minus_fobs_map"
+  program_args = "/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/.phenix/project_data/fobs_minus_fobs_map_8.eff" \
+                 "f_obs_1_file_name=/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/out_solvent.mtz" \
+                 "f_obs_2_file_name=/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/out_nosolvent.mtz" \
+                 "phase_source=/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/refmac-cmdline-test/out_nosolvent.pdb"
   config_file = "$(LIBTBX_BASE_DIR)/.phenix/project_data/fobs_minus_fobs_map_8.eff"
-  title = """sanitycheck"""
-  time_started = 1526954673.5
-  time_finished = None
+  title = "sanitycheck"
+  time_started = 1526954674
+  time_finished = 1526954680
   result_directory = "$(LIBTBX_BASE_DIR)/refmac-cmdline-test/fobs_minus_fobs_8"
+  status = started failed aborted *complete deleted
+  user_flagged = False
+  r_free = None
+  process_type = 1
+  applet = False
+}
+job_summary {
+  job_id = 9
+  app_id = CifAsMtz
+  program_name = phenix.cif_as_mtz
+  program_args = /Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/.phenix/project_data/cif_as_mtz_9.eff
+  config_file = "$(LIBTBX_BASE_DIR)/.phenix/project_data/cif_as_mtz_9.eff"
+  title = """[ phenix.cif_as_mtz ]"""
+  time_started = 1527005477.1
+  time_finished = None
+  result_directory = None
   status = *started failed aborted complete deleted
   user_flagged = False
   r_free = None

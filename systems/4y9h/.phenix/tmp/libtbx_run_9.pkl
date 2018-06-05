@@ -1,0 +1,5 @@
+Äcmmtbx.command_line.cif_as_mtz
+launcher
+q)Åq}q(U	file_nameqUX/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/.phenix/project_data/cif_as_mtz_9.pklUargsq]qUX/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/.phenix/project_data/cif_as_mtz_9.effqaU
+output_dirqU2/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9hU_outq	NUlog_fileq
+UX/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/.phenix/project_data/cif_as_mtz_9.logU	job_titleqNub.

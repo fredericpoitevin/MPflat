@@ -145,3 +145,19 @@ job_summary {
   process_type = 1
   applet = False
 }
+job_summary {
+  job_id = 9
+  app_id = "CifAsMtz"
+  program_name = "phenix.cif_as_mtz"
+  program_args = "/Users/fpoitevi/gdrive/Toolkit/MPflat/systems/4y9h/.phenix/project_data/cif_as_mtz_9.eff"
+  config_file = "$(LIBTBX_BASE_DIR)/.phenix/project_data/cif_as_mtz_9.eff"
+  title = "[ phenix.cif_as_mtz ]"
+  time_started = 1527005477
+  time_finished = 1527005481
+  result_directory = None
+  status = started failed aborted *complete deleted
+  user_flagged = False
+  r_free = None
+  process_type = 1
+  applet = False
+}
