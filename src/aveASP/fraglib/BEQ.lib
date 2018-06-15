@@ -1,0 +1,25 @@
+BEQ  24             
+N1   N1     5       
+CB   CB     4       
+CG   CG     4       
+CD   CD     3       
+CE   CE     1       
+OE1  OE1    9       
+OE2  OE2    9       
+C1   C1     3       
+C2   C2     3       
+C3   C3     3       
+N2   N2     6       
+C4   C4     1       
+O    O      9       
+C5   C5     3       
+C6   C6     3       
+C7   C7     3       
+C8   C8     3       
+C9   C9     3       
+C10  C10    3       
+C11  C11    3       
+C12  C12    3       
+C13  C13    3       
+C14  C14    3       
+C15  C15    4       

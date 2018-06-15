@@ -1,0 +1,11 @@
+REMARK 200 Generated with PyMOL and psico                                       
+CRYST1  183.320  133.640  160.180  90.00 102.94  90.00 C 1 2 1      1
+HELIX    1   1 VAL A   57  VAL A   57  1                                   1
+ATOM      1  N   VAL A  57       2.703  -2.919  -5.279  1.00100.87           N  
+ATOM      2  CA  VAL A  57       1.444  -3.223  -5.979  1.00102.24           C  
+ATOM      3  C   VAL A  57       1.574  -4.370  -7.028  1.00103.55           C  
+ATOM      4  O   VAL A  57       1.026  -5.478  -6.814  1.00103.64           O  
+ATOM      5  CB  VAL A  57       0.771  -1.916  -6.555  1.00101.97           C  
+ATOM      6  CG1 VAL A  57      -0.700  -2.152  -6.862  1.00101.13           C  
+ATOM      7  CG2 VAL A  57       0.914  -0.745  -5.560  1.00100.95           C  
+END

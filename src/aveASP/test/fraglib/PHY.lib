@@ -1,0 +1,17 @@
+PHY  16             
+C1   C1     2       
+C2   C2     4       
+C1'  C1'    3       
+C2'  C2'    2       
+C3'  C3'    4       
+C    C      1       
+O1   O1     9       
+O2   O2    10       
+N1   N1     7       
+P1   P1    13       
+O1P  O1P    9       
+O2P  O2P    9       
+P2   P2    13       
+O3P  O3P    9       
+O4P  O4P   10       
+O5P  O5P   10       

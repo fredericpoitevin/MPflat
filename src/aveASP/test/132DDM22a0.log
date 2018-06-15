@@ -1,0 +1,41 @@
+#### Welcome to AquaSAXS ####
+  
+# Input/Parameter Summary #
+
+>> Name of input PDB/PQR file: 132DDM22a.pdb                 
+>> Fitting will be performed...
+>> Name of exp. SAXS profile : Ave_DDMPeak_33_trunc.dat      
+>> Solvation accounted for through SAS
+  
+  
+# Reading PDB/PQR file #
+  
+>> Number of atoms read:   4620
+>> Number of water molecule discarded:     0
+>> Average atomic radius for this molecule: 1.681 A
+>> Number of atoms recognized:   4620
+  
+  
+# Reading experimental profile #
+  
+>> Number of computed points:   46
+>>   ranging from:  0.015 to:  0.225 A-1
+  
+  
+# Computing/Storing info on the hydration term #
+  
+>> Approx. total Solvent Accessible Surface:  30609.857 A2
+  
+  
+# Actual computation of the SAXS profile #
+  
+>> C1 scanned range: 0.900 to 1.120
+>> C2 scanned range: 0.000 to 4.000
+>> C1 used value: 1.008
+>>    ie an average atomic radius of: 1.694 A
+>> C2 used value: 0.000
+>> Chi value    : .23884E+02
+>> Profile computation started at: 17:38:24
+>> Profile computation ended at: 17:38:55
+  
+  

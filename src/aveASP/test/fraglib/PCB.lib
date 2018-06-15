@@ -1,0 +1,25 @@
+PCB  24             
+C1   C1     1       
+C2   C2     1       
+CL2  CL2    1       
+C3   C3     2       
+C4   C4     1       
+C5   C5     1       
+CL5  CL5    1       
+C6   C6     2       
+S    S     11       
+O1   O1     9       
+O2   O2     9       
+CM   CM     4       
+C1'  C1'    1       
+C2'  C2'    1       
+CL2' CL2'   1       
+C3'  C3'    2       
+C4'  C4'    1       
+C5'  C5'    1       
+CL5' CL5'   1       
+C6'  C6'    2       
+S'   S'    11       
+O1'  O1'    9       
+O2'  O2'    9       
+CM'  CM'    4       

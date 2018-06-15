@@ -1,0 +1,17 @@
+#### Welcome to AquaSAXS ####
+  
+# Input/Parameter Summary #
+>> Name of input PDB/PQR file: arginine.pdb                  
+>> Solvation accounted for through SAS
+  
+  
+# Reading PDB/PQR file #
+  
+>> Number of atoms read:     11
+>> Number of water molecule discarded:     0
+>> Average atomic radius for this molecule: 1.553 A
+>> Number of atoms recognized:     11
+  
+  
+# Computing/Storing info on the hydration term #
+  

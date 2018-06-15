@@ -1,0 +1,20 @@
+#### Welcome to AquaSAXS ####
+  
+# Input/Parameter Summary #
+>> Name of input PDB/PQR file: tmd.pdb                       
+>> Fitting will be performed...
+>> Name of exp. SAXS profile : Ave_DDMPeak_33_trunc.dat      
+>> Solvation accounted for through SAS
+  
+  
+# Reading PDB/PQR file #
+  
+>> Number of atoms read:   5100
+>> Number of water molecule discarded:     0
+>> Average atomic radius for this molecule: 1.607 A
+>> Number of atoms recognized:   5100
+  
+  
+# Computing/Storing info on the hydration term #
+  
+>> Approx. total Solvent Accessible Surface:  29701.274 A2

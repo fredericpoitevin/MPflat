@@ -1,0 +1,20 @@
+# Frederic Poitevin	November 2010
+#
+#	<<< AQUASAXS v2.0 >>>
+#
+# Typical parameter file...
+#
+SOLUTE  pdb                       :  132DDM22b.pdb        !
+EXPER.  saxs profile filename     : Ave_DDMPeak_33_trunc.dat               !
+PROFILE q-max                     :	 0.24
+PROFILE q-step                    :	 0.005
+PROFILE unit                      :      1
+SOLVATION SAS(0) or Dipolar(1)  ? :      0            ! Default: 0
+  if Dipolar, solvent map name    :
+ADDITIONAL res/monomer type file  :    res2.dat
+ADDITIONAL atom types             :    atoma.dat   !
+Chain(s) to read ?                :  
+If no fit and no default, c1 value:  
+If no fit and no default, c2 value:  
+BULK    Density (default:0.334)   :  0.334
+#
