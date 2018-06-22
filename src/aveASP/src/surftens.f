@@ -26,7 +26,7 @@ c
 	real*8 pos(3),sas(natot),sastot
 	real*8 map(ix,iy,iz),cell(6),sigma,ave
 	real*8 resol
-        real*8 asp(6), avesurftens
+        real*8 asp(6), avesurftens, aspi, hydrophobas
 c	
 	character*3 atname(natot),resname(natot),chain(natot)*1
 	character*64 fpdb,fasexp,fsolvent,fprof,flog
@@ -39,6 +39,7 @@ c
 4	format(">> Approx. total Solvent Accessible Surface: ",f10.3," A2")
 5	format(">> Solvent map resolution: ",f10.3," A")
 6       format(">> Average Surface Tension: ",e12.5," kcal/mol/A2")
+7       format(">> Hydrophobic surface ratio: ",e12.5)
 c	
 	common /flags/ flagsolv,flagfit,flagmeth,fsolvfmt
 	common /files/ fpdb,fasexp,fsolvent,fprof,flog,ulog
@@ -144,9 +145,14 @@ c       ================
         asp(4) = -24.0
         asp(5) = 16.0
         asp(6) = 21.0
+        hydrophobas = 0.d0
         avesurftens = 0.d0
         do 500 i = 1,natom
-          avesurftens = avesurftens + sas(i)*asp(atmsolvtyp(i))
+          aspi = asp(atmsolvtyp(i))
+          if(aspi.gt.0.d0) then
+            hydrophobas = hydrophobas + sas(i)
+          endif
+          avesurftens = avesurftens + sas(i)*aspi
 500     continue
 c        write(6) avesurftens
 c

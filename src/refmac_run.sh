@@ -1,5 +1,8 @@
 #!/bin/bash -f 
 #
+# CAREFUL! As of June 20, 2018, we use refmac in a minimalist way. All reflections are used,
+#          regardless of whether they should be free or not.
+#
 if [ $# -ne 5 ]; then
   echo "USAGE ERROR... Abort! $0 [in.mtz] [in.pdb] [out.mtz] [out.pdb] [NO/BAB/ALL]"; exit; fi
 inmtz=$1

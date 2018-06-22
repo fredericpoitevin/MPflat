@@ -1,0 +1,21 @@
+#### Welcome to AquaSAXS ####
+  
+# Input/Parameter Summary #
+>> Name of input PDB/PQR file: arginine.pdb                  
+>> Fitting will be performed...
+>> Name of exp. SAXS profile : Ave_DDMPeak_33_trunc.dat      
+>> Solvation accounted for through SAS
+  
+  
+# Reading PDB/PQR file #
+  
+>> Number of atoms read:     11
+>> Number of water molecule discarded:     0
+>> Average atomic radius for this molecule: 1.553 A
+>> Number of atoms recognized:     11
+  
+  
+# Computing/Storing info on the hydration term #
+  
+>> Approx. total Solvent Accessible Surface:    330.477 A2
+>> Average Surface Tension: -0.15626E+01 kcal/mol/A2
