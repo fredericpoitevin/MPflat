@@ -16,7 +16,10 @@ while $ok; do
       for solvent in $solvent_list; do key=refmac_${id}_solv${solvent}; if [ -f ${key}.log ]; then do=` expr $do + 1`; fi; done
       if [ $do -eq 3 ]; then # we do this only if refmac has been run already
         echo -ne "o"
-        if [ "$force_redo" = true ]; then rm -f aveASP.${id}.log ; fi
+        if [ "$force_redo" = true ]; then rm -f aveASP.${id}.log 
+        else
+          if grep -q "Hydrophobic" aveASP.${id}.log; then echo -ne ""; else rm -f aveASP.${id}.log ; fi
+        fi
         if [ ! -f aveASP.${id}.log ]; then
           gunzip ${id}.pdb.gz
           echo "SOLUTE  pdb                       : ${id}.pdb" > aveASP.in

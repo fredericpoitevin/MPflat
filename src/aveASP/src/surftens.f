@@ -164,6 +164,7 @@ c	... Check: write output ...
 	    ulogtmp = ulog
 	  endif
 	  write(ulogtmp,4) sastot
+          write(ulogtmp,7) hydrophobas
           write(ulogtmp,6) avesurftens
 101	continue
 c	
